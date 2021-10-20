@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Grupp_33
         public Form1()
         {
             InitializeComponent();
+            RssController controller = new RssController();
         }
     }
 }
