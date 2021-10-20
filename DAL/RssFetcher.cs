@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MODELS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
@@ -22,6 +23,7 @@ namespace DAL
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
             Console.WriteLine("--- Title: " + feed.Title.Text);
             Console.WriteLine("--- Desc: " + feed.Description.Text);
+            Podcast pod = new Podcast(feed.Title.Text);
 
 
 

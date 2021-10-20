@@ -16,9 +16,10 @@ namespace MODELS
 
         public List<Episode> episodes;
 
-        public Podcast ()
+        public Podcast (string name)
         {
-
+            this.Name = name;
+            Console.WriteLine(Name);
         }
     }
 }
