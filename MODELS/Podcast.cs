@@ -12,6 +12,8 @@ namespace MODELS
         public int NumberOfEpisodes { get; set; }
         public string UpdateFrequency { get; set; }
 
+        public Category Category { get; set; }
+
         public List<Episode> episodes;
 
         public Podcast ()
