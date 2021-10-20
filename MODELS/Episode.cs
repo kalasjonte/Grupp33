@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace MODELS
 {
-    public class Podcast
+    public class Episode
     {
         public string Name { get; set; }
-        public int NumberOfEpisodes { get; set; }
-        public string UpdateFrequency { get; set; }
+        public string Description { get; set; }
 
-        public List<Episode> episodes;
-
-        public Podcast ()
+        public Episode()
         {
 
         }
