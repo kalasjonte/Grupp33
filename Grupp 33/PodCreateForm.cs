@@ -25,7 +25,7 @@ namespace Grupp_33
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Category category = new Category(coBoxCat.SelectedItem.ToString());
-            pod = new Podcast(txtTitle.Text, category, Int32.Parse(coBoxUpdFreq.SelectedItem.ToString()));
+            pod = new Podcast(txtTitle.Text, category, Int32.Parse(coBoxUpdFreq.SelectedItem.ToString()), txtURL.Text, "Podcast");
             this.Close();
         }
 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MODELS
 {
-    public class Podcast
+    public class Podcast : MediaItem
     {
-        public string Name { get; set; }
         public int NumberOfEpisodes { get; set; }
         public int UpdateFrequency { get; set; }
 
@@ -16,13 +15,20 @@ namespace MODELS
 
         public List<Episode> episodes;
 
-        public Podcast (string name, Category cate, int freq)
+        public Podcast (string name, Category cate, int freq, string url, string type) : base(url, name, type)
         {
-            this.Name = name;
+            
             this.Category = cate;
             this.UpdateFrequency = freq;
             this.NumberOfEpisodes = 11;
             Console.WriteLine("hej nu skapades pod " + Name);
+        }
+
+        public override string DisplayInfo()
+        {
+            string baseString = base.DisplayInfo();
+            baseString += "/n med kategorin " + Category + "/nsom har " + NumberOfEpisodes.ToString() + " avsnitt";
+            return baseString;
         }
     }
 }
