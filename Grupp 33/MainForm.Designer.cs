@@ -126,6 +126,7 @@ namespace Grupp_33
             this.btnPodCreate.TabIndex = 8;
             this.btnPodCreate.Text = "Skapa Podcast";
             this.btnPodCreate.UseVisualStyleBackColor = true;
+            this.btnPodCreate.Click += new System.EventHandler(this.btnPodCreate_Click);
             // 
             // btnPodSave
             // 
@@ -184,6 +185,7 @@ namespace Grupp_33
             this.btnCatCreate.TabIndex = 15;
             this.btnCatCreate.Text = "Skapa Kategori";
             this.btnCatCreate.UseVisualStyleBackColor = true;
+            this.btnCatCreate.Click += new System.EventHandler(this.btnCatCreate_Click);
             // 
             // btnCatSave
             // 

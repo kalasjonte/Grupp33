@@ -16,6 +16,7 @@ namespace Grupp_33
         public PodCreateForm()
         {
             InitializeComponent();
+            
         }
     }
 }

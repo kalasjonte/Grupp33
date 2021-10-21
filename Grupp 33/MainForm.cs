@@ -19,5 +19,18 @@ namespace Grupp_33
             RssController controller = new RssController();
         }
 
+        private void btnPodCreate_Click(object sender, EventArgs e)
+        {
+            PodCreateForm podCreateForm = new PodCreateForm();
+            podCreateForm.Visible = true;
+            podCreateForm.Focus();
+        }
+
+        private void btnCatCreate_Click(object sender, EventArgs e)
+        {
+            CatCreateForm catCreateForm = new CatCreateForm();
+            catCreateForm.Visible = true;
+            catCreateForm.Focus();
+        }
     }
 }
