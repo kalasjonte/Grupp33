@@ -125,6 +125,7 @@ namespace Grupp_33
             this.btnCreate.TabIndex = 9;
             this.btnCreate.Text = "Lägg till";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnCancel
             // 

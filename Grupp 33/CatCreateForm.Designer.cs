@@ -69,6 +69,7 @@ namespace Grupp_33
             this.btnCatCancel.TabIndex = 3;
             this.btnCatCancel.Text = "Tillbaka";
             this.btnCatCancel.UseVisualStyleBackColor = true;
+            this.btnCatCancel.Click += new System.EventHandler(this.btnCatCancel_Click);
             // 
             // btnCatCreate
             // 
@@ -78,6 +79,7 @@ namespace Grupp_33
             this.btnCatCreate.TabIndex = 4;
             this.btnCatCreate.Text = "Skapa";
             this.btnCatCreate.UseVisualStyleBackColor = true;
+            this.btnCatCreate.Click += new System.EventHandler(this.btnCatCreate_Click);
             // 
             // CatCreateForm
             // 

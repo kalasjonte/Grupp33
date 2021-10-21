@@ -1,4 +1,5 @@
 ﻿using BLL;
+using MODELS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,19 @@ namespace Grupp_33
     {
         public CatCreateForm()
         {
+
             InitializeComponent();
+        }
+
+        private void btnCatCreate_Click(object sender, EventArgs e)
+        {
+            Category category = new Category(txtCatName.Text);
+            this.Close();
+        }
+
+        private void btnCatCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
