@@ -21,8 +21,8 @@ namespace MODELS
             this.Name = name;
             this.Category = cate;
             this.UpdateFrequency = freq;
-            this.NumberOfEpisodes = episodes.Count;
-            Console.WriteLine(Name);
+            this.NumberOfEpisodes = 11;
+            Console.WriteLine("hej nu skapades pod " + Name);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace DAL
 {
     public class RssFetcher
     {
+        public List<Category> categories;
         public RssFetcher()
         {
 
@@ -25,10 +26,17 @@ namespace DAL
             //Console.WriteLine("--- Desc: " + feed.Description.Text);
             ////Podcast pod = new Podcast(feed.Title.Text);
 
+            //serializer typeof(<products>)
+            //filestream
+            //List<Podcast>
+            //serializer.serialize(fs, product)
+            //
 
 
             //foreach (var item in feed.Items)
             //{
+            // Episode ep = new Ep(item.title.text, item.title.desc)
+            //Episodelista.add(ep);
             //    Console.WriteLine(item.Title.Text);
             //    Console.WriteLine("->" + item.Summary.Text);
             //}

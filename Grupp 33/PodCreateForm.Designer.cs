@@ -74,9 +74,9 @@ namespace Grupp_33
             this.lblUpdFreq.AutoSize = true;
             this.lblUpdFreq.Location = new System.Drawing.Point(458, 236);
             this.lblUpdFreq.Name = "lblUpdFreq";
-            this.lblUpdFreq.Size = new System.Drawing.Size(169, 20);
+            this.lblUpdFreq.Size = new System.Drawing.Size(246, 20);
             this.lblUpdFreq.TabIndex = 3;
-            this.lblUpdFreq.Text = "Uppdateringsfrekvens:";
+            this.lblUpdFreq.Text = "Uppdateringsfrekvens i sekunder:";
             // 
             // lblCategory
             // 
@@ -90,6 +90,8 @@ namespace Grupp_33
             // coBoxCat
             // 
             this.coBoxCat.FormattingEnabled = true;
+            this.coBoxCat.Items.AddRange(new object[] {
+            "PLACEHOLDER"});
             this.coBoxCat.Location = new System.Drawing.Point(227, 270);
             this.coBoxCat.Name = "coBoxCat";
             this.coBoxCat.Size = new System.Drawing.Size(137, 28);
@@ -98,6 +100,10 @@ namespace Grupp_33
             // coBoxUpdFreq
             // 
             this.coBoxUpdFreq.FormattingEnabled = true;
+            this.coBoxUpdFreq.Items.AddRange(new object[] {
+            "15",
+            "30",
+            "60"});
             this.coBoxUpdFreq.Location = new System.Drawing.Point(462, 270);
             this.coBoxUpdFreq.Name = "coBoxUpdFreq";
             this.coBoxUpdFreq.Size = new System.Drawing.Size(165, 28);
