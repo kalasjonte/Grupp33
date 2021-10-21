@@ -228,7 +228,7 @@ namespace Grupp_33
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2379, 1214);
+            this.ClientSize = new System.Drawing.Size(2856, 1437);
             this.Controls.Add(this.listViewCat);
             this.Controls.Add(this.listViewEp);
             this.Controls.Add(this.lblPodEp);
