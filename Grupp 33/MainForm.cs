@@ -1,4 +1,5 @@
 ﻿using BLL;
+using MODELS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,8 +30,9 @@ namespace Grupp_33
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
             CatCreateForm catCreateForm = new CatCreateForm();
-            catCreateForm.Visible = true;
-            catCreateForm.Focus();
+            Category category = catCreateForm.GetNewCategory();
+            listViewCat.Items.Add(category.Name);
+            
         }
     }
 }

@@ -20,15 +20,24 @@ namespace Grupp_33
             InitializeComponent();
         }
 
+        private Category category;
+
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
-            Category category = new Category(txtCatName.Text);
+            category = new Category(txtCatName.Text);
             this.Close();
         }
 
         private void btnCatCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public Category GetNewCategory()
+        {
+            this.ShowDialog();
+            return category;
+            
         }
     }
 }

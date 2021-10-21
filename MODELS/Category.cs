@@ -14,8 +14,10 @@ namespace MODELS
 
         public Category (string name)
         {
+            Console.WriteLine("skapad sånhär");
             this.Name = name;
             this.podcastsList = new List<Podcast>();
+            Console.WriteLine(Name);
         }
 
         public Category (string name, List<Podcast> podLista)
