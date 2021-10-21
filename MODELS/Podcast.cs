@@ -10,15 +10,18 @@ namespace MODELS
     {
         public string Name { get; set; }
         public int NumberOfEpisodes { get; set; }
-        public string UpdateFrequency { get; set; }
+        public int UpdateFrequency { get; set; }
 
         public Category Category { get; set; }
 
         public List<Episode> episodes;
 
-        public Podcast (string name)
+        public Podcast (string name, Category cate, int freq)
         {
             this.Name = name;
+            this.Category = cate;
+            this.UpdateFrequency = freq;
+            this.NumberOfEpisodes = episodes.Count;
             Console.WriteLine(Name);
         }
     }
