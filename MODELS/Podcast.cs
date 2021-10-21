@@ -20,14 +20,21 @@ namespace MODELS
             
             this.Category = cate;
             this.UpdateFrequency = freq;
-            this.NumberOfEpisodes = 11;
-            Console.WriteLine("hej nu skapades pod " + Name);
+            this.NumberOfEpisodes = 0;
+            
+        }
+
+        //SKA BORT SEN E BARA FÖR ATT TESTA
+        public Podcast() : base()
+        {
+            this.Name = "test";
+            this.UpdateFrequency = 15;
         }
 
         public override string DisplayInfo()
         {
             string baseString = base.DisplayInfo();
-            baseString += "/n med kategorin " + Category + "/nsom har " + NumberOfEpisodes.ToString() + " avsnitt";
+            baseString += "\n med kategorin " + Category.Name + "\nsom har " + NumberOfEpisodes.ToString() + " avsnitt";
             return baseString;
         }
     }

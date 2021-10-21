@@ -15,5 +15,11 @@ namespace MODELS
         {
 
         }
+
+        public Episode(string name, string desc)
+        {
+            this.Name = name;
+            this.Description = desc;
+        }
     }
 }

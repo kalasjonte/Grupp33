@@ -29,7 +29,7 @@ namespace Grupp_33
             this.Close();
         }
 
-        public Podcast GetNewPodcast()
+        public MediaItem GetNewPodcast()
         {
             this.ShowDialog();
             return pod;

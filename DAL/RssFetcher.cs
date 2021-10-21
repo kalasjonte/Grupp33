@@ -20,11 +20,15 @@ namespace DAL
         public void FetchRss()
         {
 
-            //XmlReader xmlReader = XmlReader.Create("https://www.espn.com/espn/rss/news");
-            //SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-            //Console.WriteLine("--- Title: " + feed.Title.Text);
-            //Console.WriteLine("--- Desc: " + feed.Description.Text);
-            ////Podcast pod = new Podcast(feed.Title.Text);
+            XmlReader xmlReader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+            Console.WriteLine("--- Title: " + feed.Title.Text);
+            Console.WriteLine("--- Desc: " + feed.Description.Text);
+
+            //IEnumerable<SyndicationItem> test = feed.Items; här ska vi splitta till ny metod med IEnumerable
+            Podcast pod = new Podcast();
+            pod.episodes = new List<Episode>();
+
 
             //serializer typeof(<products>)
             //filestream
@@ -33,13 +37,21 @@ namespace DAL
             //
 
 
-            //foreach (var item in feed.Items)
-            //{
-            // Episode ep = new Ep(item.title.text, item.title.desc)
-            //Episodelista.add(ep);
-            //    Console.WriteLine(item.Title.Text);
-            //    Console.WriteLine("->" + item.Summary.Text);
-            //}
+            foreach (var item in feed.Items)
+            {
+                Episode ep = new Episode(item.Title.Text, item.Summary.Text);
+                pod.episodes.Add(ep);
+                //Console.WriteLine(item.Title.Text);
+                //Console.WriteLine("->" + item.Summary.Text);
+            }
+
+            foreach (var item in pod.episodes)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Description);
+            }
+
+            
         }
     }
 }

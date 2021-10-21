@@ -18,9 +18,14 @@ namespace MODELS
             this.Type = type;
         }
 
+        public MediaItem()
+        {
+
+        }
+
         public virtual string DisplayInfo ()
         {
-            return "Du har skapat en " + Type + "/nMed adressen: " + Url + "/nsom har namnet: " + Name;
+            return "Du har skapat en " + Type + "\nMed adressen: " + Url + "\nsom har namnet: " + Name;
         }
     }
 }
