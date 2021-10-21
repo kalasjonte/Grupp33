@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Grupp_33
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             RssController controller = new RssController();

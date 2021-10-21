@@ -1,7 +1,7 @@
 ﻿
 namespace Grupp_33
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -224,7 +224,7 @@ namespace Grupp_33
             this.listViewCat.TabIndex = 21;
             this.listViewCat.UseCompatibleStateImageBehavior = false;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,8 +249,8 @@ namespace Grupp_33
             this.Controls.Add(this.coBoxFreq);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.listViewPod);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "MainForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
