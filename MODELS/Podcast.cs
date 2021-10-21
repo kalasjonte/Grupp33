@@ -15,7 +15,6 @@ namespace MODELS
         public Category Category { get; set; }
 
         public List<Episode> episodes;
-        public string hej;
 
         public Podcast (string name)
         {
