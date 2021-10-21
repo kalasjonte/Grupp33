@@ -34,10 +34,10 @@ namespace Grupp_33
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUpdFreq = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.coBoxCat = new System.Windows.Forms.ComboBox();
+            this.coBoxUpdFreq = new System.Windows.Forms.ComboBox();
+            this.txtURL = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -87,35 +87,35 @@ namespace Grupp_33
             this.lblCategory.TabIndex = 4;
             this.lblCategory.Text = "Kategori:";
             // 
-            // comboBox1
+            // coBoxCat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(227, 270);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 28);
-            this.comboBox1.TabIndex = 5;
+            this.coBoxCat.FormattingEnabled = true;
+            this.coBoxCat.Location = new System.Drawing.Point(227, 270);
+            this.coBoxCat.Name = "coBoxCat";
+            this.coBoxCat.Size = new System.Drawing.Size(137, 28);
+            this.coBoxCat.TabIndex = 5;
             // 
-            // comboBox2
+            // coBoxUpdFreq
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(462, 270);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(165, 28);
-            this.comboBox2.TabIndex = 6;
+            this.coBoxUpdFreq.FormattingEnabled = true;
+            this.coBoxUpdFreq.Location = new System.Drawing.Point(462, 270);
+            this.coBoxUpdFreq.Name = "coBoxUpdFreq";
+            this.coBoxUpdFreq.Size = new System.Drawing.Size(165, 28);
+            this.coBoxUpdFreq.TabIndex = 6;
             // 
-            // textBox1
+            // txtURL
             // 
-            this.textBox1.Location = new System.Drawing.Point(227, 94);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 26);
-            this.textBox1.TabIndex = 7;
+            this.txtURL.Location = new System.Drawing.Point(227, 94);
+            this.txtURL.Name = "txtURL";
+            this.txtURL.Size = new System.Drawing.Size(400, 26);
+            this.txtURL.TabIndex = 7;
             // 
-            // textBox2
+            // txtTitle
             // 
-            this.textBox2.Location = new System.Drawing.Point(227, 176);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(400, 26);
-            this.textBox2.TabIndex = 8;
+            this.txtTitle.Location = new System.Drawing.Point(227, 176);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(400, 26);
+            this.txtTitle.TabIndex = 8;
             // 
             // btnCreate
             // 
@@ -142,10 +142,10 @@ namespace Grupp_33
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.txtURL);
+            this.Controls.Add(this.coBoxUpdFreq);
+            this.Controls.Add(this.coBoxCat);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblUpdFreq);
             this.Controls.Add(this.lblTitle);
@@ -165,10 +165,10 @@ namespace Grupp_33
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblUpdFreq;
         private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox coBoxCat;
+        private System.Windows.Forms.ComboBox coBoxUpdFreq;
+        private System.Windows.Forms.TextBox txtURL;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancel;
     }
