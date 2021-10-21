@@ -18,5 +18,6 @@ namespace Grupp_33
             InitializeComponent();
             RssController controller = new RssController();
         }
+
     }
 }
