@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryController.cs" />
+    <Compile Include="EpisodeController.cs" />
+    <Compile Include="PodcastController.cs" />
     <Compile Include="RssController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
