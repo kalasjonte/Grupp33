@@ -26,8 +26,8 @@ namespace DAL
             Console.WriteLine("--- Desc: " + feed.Description.Text);
 
             //IEnumerable<SyndicationItem> test = feed.Items; här ska vi splitta till ny metod med IEnumerable
-            Podcast pod = new Podcast();
-            pod.episodes = new List<Episode>();
+            Media pod = new Media();
+            pod.items = new List<Item>();
 
 
             //serializer typeof(<products>)
@@ -39,13 +39,13 @@ namespace DAL
 
             foreach (var item in feed.Items)
             {
-                Episode ep = new Episode(item.Title.Text, item.Summary.Text);
-                pod.episodes.Add(ep);
+                Item ep = new Item(item.Title.Text, item.Summary.Text);
+                pod.items.Add(ep);
                 //Console.WriteLine(item.Title.Text);
                 //Console.WriteLine("->" + item.Summary.Text);
             }
 
-            foreach (var item in pod.episodes)
+            foreach (var item in pod.items)
             {
                 Console.WriteLine(item.Name);
                 Console.WriteLine(item.Description);

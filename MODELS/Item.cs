@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace MODELS
 {
-    public class Episode
+    public class Item
     {
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public Episode()
+        public Item()
         {
 
         }
 
-        public Episode(string name, string desc)
+        public Item(string name, string desc)
         {
             this.Name = name;
             this.Description = desc;

@@ -10,23 +10,23 @@ namespace MODELS
     {
         public string Name { get; set; }
 
-        public List<Podcast> podcastsList;
+        public List<Media> podcastsList;
 
         public Category (string name)
         {
             Console.WriteLine("skapad sånhär");
             this.Name = name;
-            this.podcastsList = new List<Podcast>();
+            this.podcastsList = new List<Media>();
             Console.WriteLine(Name);
         }
 
-        public Category (string name, List<Podcast> podLista)
+        public Category (string name, List<Media> podLista)
         {
             this.Name = name;
             this.podcastsList = podLista;
         }
 
-        public void addPodcastToList(Podcast podcast)
+        public void addPodcastToList(Media podcast)
         {
             podcastsList.Add(podcast);
         }

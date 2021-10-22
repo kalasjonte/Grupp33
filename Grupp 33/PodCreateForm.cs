@@ -20,16 +20,16 @@ namespace Grupp_33
             
         }
 
-        private Podcast pod;
+        private Media pod;
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             Category category = new Category(coBoxCat.SelectedItem.ToString());
-            pod= new Podcast(txtTitle.Text, category, Int32.Parse(coBoxUpdFreq.SelectedItem.ToString()), txtURL.Text, "Podcast");
+            pod= new Media(txtTitle.Text, txtURL.Text, "Podcast", Int32.Parse(coBoxUpdFreq.SelectedItem.ToString()),  category);
             this.Close();
         }
 
-        public Podcast GetNewPodcast()
+        public Media GetNewPodcast()
         {
             this.ShowDialog();
             return pod;
