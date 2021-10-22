@@ -30,6 +30,10 @@ namespace Grupp_33
         private void InitializeComponent()
         {
             this.listViewPod = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Avsnitt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Frekvens = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Kategori = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.coBoxFreq = new System.Windows.Forms.ComboBox();
             this.coBoxCat = new System.Windows.Forms.ComboBox();
@@ -49,10 +53,6 @@ namespace Grupp_33
             this.lblPodEp = new System.Windows.Forms.Label();
             this.listViewEp = new System.Windows.Forms.ListView();
             this.listViewCat = new System.Windows.Forms.ListView();
-            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Avsnitt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Frekvens = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Kategori = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listViewPod
@@ -69,6 +69,22 @@ namespace Grupp_33
             this.listViewPod.Size = new System.Drawing.Size(749, 285);
             this.listViewPod.TabIndex = 0;
             this.listViewPod.UseCompatibleStateImageBehavior = false;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            // 
+            // Avsnitt
+            // 
+            this.Avsnitt.Text = "Avsnitt";
+            // 
+            // Frekvens
+            // 
+            this.Frekvens.Text = "Frekvens";
+            // 
+            // Kategori
+            // 
+            this.Kategori.Text = "Kategori";
             // 
             // txtUrl
             // 
@@ -205,6 +221,7 @@ namespace Grupp_33
             this.btnCatSave.TabIndex = 16;
             this.btnCatSave.Text = "Spara Ändringar";
             this.btnCatSave.UseVisualStyleBackColor = true;
+            this.btnCatSave.Click += new System.EventHandler(this.btnCatSave_Click);
             // 
             // btnCatDelete
             // 
@@ -254,22 +271,6 @@ namespace Grupp_33
             this.listViewCat.Size = new System.Drawing.Size(458, 249);
             this.listViewCat.TabIndex = 21;
             this.listViewCat.UseCompatibleStateImageBehavior = false;
-            // 
-            // Title
-            // 
-            this.Title.Text = "Title";
-            // 
-            // Avsnitt
-            // 
-            this.Avsnitt.Text = "Avsnitt";
-            // 
-            // Frekvens
-            // 
-            this.Frekvens.Text = "Frekvens";
-            // 
-            // Kategori
-            // 
-            this.Kategori.Text = "Kategori";
             // 
             // MainForm
             // 

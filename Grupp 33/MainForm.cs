@@ -18,7 +18,11 @@ namespace Grupp_33
         {
             InitializeComponent();
             RssController controller = new RssController();
+            CategoryController ccontroller = new CategoryController();
+            ccontroller.DeSerializeCat();
         }
+
+        public List<Category> categories = new List<Category>();
 
         private void btnPodCreate_Click(object sender, EventArgs e)
         {
@@ -43,7 +47,15 @@ namespace Grupp_33
         {
             CatCreateForm catCreateForm = new CatCreateForm();
             Category category = catCreateForm.GetNewCategory();
+            categories.Add(category);
             listViewCat.Items.Add(category.Name);
+            
+        }
+
+        private void btnCatSave_Click(object sender, EventArgs e)
+        {
+            CategoryController controller = new CategoryController();
+            controller.SerializeCat(categories);
             
         }
     }

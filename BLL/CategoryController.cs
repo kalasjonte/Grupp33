@@ -16,10 +16,16 @@ namespace BLL
 
         }
 
-        public void SerializeCat(Category cat)
+        public void SerializeCat(List<Category> categorys)
         {
             SerializerXml xml = new SerializerXml();
-            xml.SerializeCategory(cat);
+            xml.SerializeCategory(categorys);
+        }
+
+        public List<Category> DeSerializeCat()
+        {
+            SerializerXml xml = new SerializerXml();
+            return xml.DeserializeCategory();
         }
     }
 

@@ -13,12 +13,49 @@ namespace DAL
 {
     public class SerializerXml
     {
-        
-        
+
+        //string path = Directory.GetCurrentDirectory();
+
+       // path += @"..\..\..\..\Dal\XML\Categories.xml";
 
         public SerializerXml()
         {
 
+        }
+
+        public void SerializeCategory(List<Category> listOfCategorys)
+        {
+
+            //string path = Directory.GetCurrentDirectory();
+            //path += @"..\..\..\..\Dal\XML\Categories.xml";
+            XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
+            //XmlWriterSettings settings = new XmlWriterSettings();
+            ////settings.Indent = true;
+            //XmlWriter writer = XmlWriter.Create("Kategorier.xml", settings);
+            //Category king = cat;
+            using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
+            {
+                xmlSerializer.Serialize(fs, listOfCategorys);
+            }
+
+
+        }
+
+        public List<Category> DeserializeCategory()
+        {
+            List<Category> categories;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
+            using (FileStream fs = new FileStream("Categorys.xml", FileMode.Open, FileAccess.Read))
+            {
+                categories = (List<Category>)xmlSerializer.Deserialize(fs);
+            }
+
+            foreach (var item in categories)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            return categories;
         }
 
         //public void SerializeCategory(Category cat)

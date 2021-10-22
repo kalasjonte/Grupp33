@@ -20,20 +20,20 @@ namespace Grupp_33
             InitializeComponent();
         }
 
+        
+
         private Category category;
 
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
             category = new Category(txtCatName.Text);
-            //ska splittas upp
-            CategoryController categoryController = new CategoryController();
-            categoryController.SerializeCat(category);
-
+            
             this.Close();
         }
 
         private void btnCatCancel_Click(object sender, EventArgs e)
         {
+
             this.Close();
         }
 
