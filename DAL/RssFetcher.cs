@@ -17,24 +17,14 @@ namespace DAL
 
         }
 
-        public void FetchRss()
+        public Podcast FetchRss(Podcast pod)
         {
-            
-            XmlReader xmlReader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+            string url = pod.URL;
+            XmlReader xmlReader = XmlReader.Create(url);
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-            Console.WriteLine("--- Title: " + feed.Title.Text);
-            Console.WriteLine("--- Desc: " + feed.Description.Text);
 
             //IEnumerable<SyndicationItem> test = feed.Items; här ska vi splitta till ny metod med IEnumerable
-            Podcast pod = new Podcast();
             pod.items = new List<Item>();
-
-
-            //serializer typeof(<products>)
-            //filestream
-            //List<Podcast>
-            //serializer.serialize(fs, product)
-            //
 
 
             foreach (var item in feed.Items)
@@ -45,13 +35,8 @@ namespace DAL
                 //Console.WriteLine("->" + item.Summary.Text);
             }
 
-            //Ner i xml fil 
-            foreach (var item in pod.items)
-            {
-                Console.WriteLine(item.Name);
-                Console.WriteLine(item.Description);
-            }
-
+            pod.NumberOfItems = pod.items.Count;
+            return pod;
             //upp i listview
 
 

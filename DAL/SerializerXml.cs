@@ -26,13 +26,9 @@ namespace DAL
         public void SerializeCategory(List<Category> listOfCategorys)
         {
 
-            //string path = Directory.GetCurrentDirectory();
-            //path += @"..\..\..\..\Dal\XML\Categories.xml";
+            
             XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
-            //XmlWriterSettings settings = new XmlWriterSettings();
-            ////settings.Indent = true;
-            //XmlWriter writer = XmlWriter.Create("Kategorier.xml", settings);
-            //Category king = cat;
+           
             using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(fs, listOfCategorys);
@@ -58,75 +54,45 @@ namespace DAL
             return categories;
         }
 
-        //public void SerializeCategory(Category cat)
-        //{
-        //    string path = Directory.GetCurrentDirectory();
-        //    path += @"..\..\..\..\Dal\XML\Categories.xml";
-        //    XmlWriterSettings settings = new XmlWriterSettings();
-        //    settings.OmitXmlDeclaration = true;
-
-
-
-        //        XElement categories = XElement.Load(path);
-        //    categories = new XElement("Categories",
-        //        new XElement("Category",
-        //        new XElement("Name", cat.Name),
-        //        new XElement("Podcasts",
-        //        new XElement("Podcast", "Placeholder")
-        //        )));
-        //    //using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-        //    using (StringWriter fs = new StringWriter())
-        //    using (XmlWriter writer = XmlWriter.Create(path, settings))
-        //    {
-        //        categories.Save(fs);
-        //        writer.Close();
-        //        fs.Close();
-        //    }
-
-
-
-        //}
-
-        public void SerializeCategory(Category cat)
+        public void SerializePodcast(List<Podcast> listOfPodcast)
         {
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            XmlSerializer serialize = new XmlSerializer(typeof(Category));
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = true;
-            settings.IndentChars = "    ";
-            settings.NewLineOnAttributes = true;
+            //Behövs kanske en egen generic list klass för att lösa detta
+            
+            XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
 
-            string path = Directory.GetCurrentDirectory();
-
-            path += @"..\..\..\..\Dal\XML\Categories.xml"; //Det gick inte att hitta en del av sökvägen C:\Users\jonat\Documents\GitHub\Grupp33\.
-            XmlDocument xdoc = new XmlDocument();  //C:\Users\jonat\Documents\GitHub\Grupp33\   DAL\XML path + @"DAL\XML\
-            xdoc.Load(path);
-            using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-            //using (StringWriter stream = new StringWriter())
-            using (XmlWriter writer = XmlWriter.Create(fs, settings))
+            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
             {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("Categories");
-
-                serialize.Serialize(writer, cat, ns);
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
-                fs.Close();
+                xmlSerializer.Serialize(fs, listOfPodcast);
             }
 
 
-            //var rootNode = xdoc.GetElementsByTagName("Categories")[0];
-            //using (XmlWriter writer = rootNode.CreateNavigator().AppendChild())
-            //{
-            //    new XmlSerializer(cat.GetType()).Serialize(writer,cat);
-            //}
-
-
         }
+
+        public List<Podcast> DeserializePodcast()
+        {
+            List<Podcast> podcastList;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
+            {
+                podcastList = (List<Podcast>)xmlSerializer.Deserialize(fs);
+            }
+
+            foreach (var item in podcastList)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.URL);
+                Console.WriteLine(item.NumberOfItems);
+                foreach (var episode in item.items)
+                {
+                    Console.WriteLine(episode.Name);
+                    Console.WriteLine(episode.Description);
+                }
+            }
+
+            return podcastList;
+        }
+
+
 
     }
 

@@ -1,4 +1,5 @@
 ﻿using DAL;
+using MODELS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,13 @@ namespace BLL
     {
         public RssController()
         {
+            
+        }
+
+        public Podcast PodcastRss(Podcast pod)
+        {
             RssFetcher fetcher = new RssFetcher();
-            fetcher.FetchRss();
+            return fetcher.FetchRss(pod);
         }
     }
 }
