@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMediaRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="MediaRepository.cs" />
     <Compile Include="RssFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
