@@ -23,7 +23,7 @@ namespace Grupp_33
         private void btnPodCreate_Click(object sender, EventArgs e)
         {
             PodCreateForm podCreateForm = new PodCreateForm();
-            MediaItem podcast = podCreateForm.GetNewPodcast();
+            Podcast podcast = podCreateForm.GetNewPodcast();
             
 
             listViewPod.View = View.Details;
@@ -31,9 +31,9 @@ namespace Grupp_33
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);
-            //item1.SubItems.Add(podcast.NumberOfEpisodes.ToString());
-            //item1.SubItems.Add(podcast.UpdateFrequency.ToString());
-            //item1.SubItems.Add(podcast.Category.Name);
+            item1.SubItems.Add(podcast.NumberOfEpisodes.ToString());
+            item1.SubItems.Add(podcast.UpdateFrequency.ToString());
+            item1.SubItems.Add(podcast.Category.Name);
             
 
             listViewPod.Items.Add(item1);
