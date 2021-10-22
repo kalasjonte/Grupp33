@@ -27,7 +27,7 @@ namespace Grupp_33
         private void btnPodCreate_Click(object sender, EventArgs e)
         {
             PodCreateForm podCreateForm = new PodCreateForm();
-            Media podcast = podCreateForm.GetNewPodcast();
+            Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
             
 
             listViewPod.View = View.Details;

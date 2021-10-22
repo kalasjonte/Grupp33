@@ -19,14 +19,14 @@ namespace DAL
 
         public void FetchRss()
         {
-
+            
             XmlReader xmlReader = XmlReader.Create("https://www.espn.com/espn/rss/news");
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
             Console.WriteLine("--- Title: " + feed.Title.Text);
             Console.WriteLine("--- Desc: " + feed.Description.Text);
 
             //IEnumerable<SyndicationItem> test = feed.Items; här ska vi splitta till ny metod med IEnumerable
-            Media pod = new Media();
+            Podcast pod = new Podcast();
             pod.items = new List<Item>();
 
 
