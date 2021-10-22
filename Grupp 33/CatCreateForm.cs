@@ -26,7 +26,9 @@ namespace Grupp_33
         {
             category = new Category(txtCatName.Text);
             //ska splittas upp
-            
+            CategoryController categoryController = new CategoryController();
+            categoryController.SerializeCat(category);
+
             this.Close();
         }
 

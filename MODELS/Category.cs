@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MODELS
 {
+
     public class Category
     {
         public string Name { get; set; }
@@ -18,6 +19,11 @@ namespace MODELS
             this.Name = name;
             this.podcastsList = new List<Media>();
             Console.WriteLine(Name);
+        }
+
+        public Category()
+        {
+
         }
 
         public Category (string name, List<Media> podLista)

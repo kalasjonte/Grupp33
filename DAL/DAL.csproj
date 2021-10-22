@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SerializerXml.cs" />
     <Compile Include="IMediaRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="MediaRepository.cs" />
