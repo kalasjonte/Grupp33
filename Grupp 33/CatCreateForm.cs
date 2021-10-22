@@ -25,6 +25,8 @@ namespace Grupp_33
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
             category = new Category(txtCatName.Text);
+            //ska splittas upp
+            
             this.Close();
         }
 

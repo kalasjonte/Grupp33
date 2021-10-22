@@ -45,13 +45,16 @@ namespace DAL
                 //Console.WriteLine("->" + item.Summary.Text);
             }
 
+            //Ner i xml fil 
             foreach (var item in pod.items)
             {
                 Console.WriteLine(item.Name);
                 Console.WriteLine(item.Description);
             }
 
-            
+            //upp i listview
+
+
         }
     }
 }
