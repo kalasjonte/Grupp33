@@ -18,14 +18,6 @@ namespace Grupp_33
         {
             InitializeComponent();
 
-            listViewPod.View = View.Details;
-            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-            listViewEp.View = View.Details;
-            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
             listViewCat.View = View.Details;
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -34,7 +26,8 @@ namespace Grupp_33
              ccontroller.DeSerializeCat();
             PodcastController podcontroll = new PodcastController();
             podcontroll.DeserializePodcast();
- 
+
+            loadPodListView();
         }
 
         public List<Category> categories = new List<Category>();
@@ -80,23 +73,33 @@ namespace Grupp_33
             controller.SerializePodcasts(podcastList);
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void loadPodListView()
+        {
+            PodcastController podcontroll = new PodcastController();
+            List<Podcast> podcast = podcontroll.DeserializePodcast();
+            fillPodListview(podcast);
+        }
+
         public void fillPodListview(List<Podcast> PodList)
         {
-            foreach (Podcast pod in PodList)
+            listViewPod.View = View.Details;
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            foreach (var pod in PodList)
             {
+
                 ListViewItem item1 = new ListViewItem(pod.Name, 0);
                 item1.SubItems.Add(pod.NumberOfItems.ToString());
                 item1.SubItems.Add(pod.UpdateFrequency.ToString());
                 item1.SubItems.Add(pod.Category.Name);
+
+                listViewPod.Items.Add(item1);
             }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            PodcastController podcontroll = new PodcastController();
-            List<Podcast> podcast = podcontroll.DeserializePodcast(); 
-
-            fillPodListview(podcast);
         }
     }
 }
