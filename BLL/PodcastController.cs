@@ -16,13 +16,16 @@ namespace BLL
             podList = DeserializePodcast();
         }
 
-        public async void FetchNewPodcastAsync(Podcast pod)
+        public async Task<bool> FetchNewPodcastAsync(Podcast pod)
         {
+            bool returnvalue = false;
             RssFetcher rssFetcher = new RssFetcher();
             Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
             podList.Add(podcastFull);
-            SerializePodcasts(podList);
+            SerializePodcasts(podList); //ha kvar eller inte?
             podList = DeserializePodcast();  //en lista av poddar 
+            returnvalue = true;
+            return returnvalue;
 
         }
 

@@ -34,15 +34,16 @@ namespace Grupp_33
         public List<Category> categories = new List<Category>();
         public List<Podcast> podcastList = new List<Podcast>();
 
-        private void btnPodCreate_Click(object sender, EventArgs e)
+        private async void btnPodCreate_Click(object sender, EventArgs e)
         {
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
-            RssController controller = new RssController();
-            controller.PodcastRss(podcast);
-            //PodcastController podcontroll = new PodcastController();
-            //podcontroll.FetchNewPodcastAsync(podcast);
+           // RssController controller = new RssController();
+           // controller.PodcastRss(podcast);
+            PodcastController podcontroll = new PodcastController();
+            var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
             podcastList.Add(podcast);
+            
 
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);
             item1.SubItems.Add(podcast.NumberOfItems.ToString());

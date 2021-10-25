@@ -27,7 +27,7 @@ namespace DAL
 
                 //IEnumerable<SyndicationItem> test = feed.Items; här ska vi splitta till ny metod med IEnumerable
                 pod.items = new List<Item>();
-
+                
             try
             {
                 foreach (var item in feed.Items)
@@ -64,30 +64,31 @@ namespace DAL
             Task<SyndicationFeed> taskAvsnitt = Task.Run(()=>SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
-
+            pod.NumberOfItems = feed.Items.Count();
             
+
             try
             {
                 foreach (var item in feed.Items)
                 {
-                    // kanske ändra till validering?
+                    
 
 
                     Item ep = new Item(item.Title.Text, item.Summary.Text);
 
                     pod.items.Add(ep);
-                    //Console.WriteLine(item.Title.Text);
-                    //Console.WriteLine("->" + item.Summary.Text);
+                    
 
                 }
+
+                
             }
             catch (Exception e)
             {
 
                 MessageBox.Show("Rss hämtaren kunde ej hitta ITEM title eller så kunde den inte hitta item DESCRIPTION, felskriven rss? Kontrollera hemsidan");
             }
-
-            pod.NumberOfItems = pod.items.Count;
+            
             return pod;
             //upp i listview
 

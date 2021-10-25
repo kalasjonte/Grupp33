@@ -93,13 +93,13 @@ namespace DAL
 
             foreach (var item in podcastList)
             {
-                Console.WriteLine(item.Name);
-                Console.WriteLine(item.URL);
-                Console.WriteLine(item.NumberOfItems);
+                //Console.WriteLine(item.Name);
+                //Console.WriteLine(item.URL);
+                //Console.WriteLine(item.NumberOfItems);
                 foreach (var episode in item.items)
                 {
-                    Console.WriteLine(episode.Name);
-                    Console.WriteLine(episode.Description);
+                    //Console.WriteLine(episode.Name);
+                    //Console.WriteLine(episode.Description);
                 }
             }
 
