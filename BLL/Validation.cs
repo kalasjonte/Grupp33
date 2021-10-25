@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -16,21 +17,32 @@ namespace BLL
             bool correctURL = 
             Uri.TryCreate(url, UriKind.Absolute, out uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
 
-
-            if (!correctURL)
+            try
             {
-                throw new UserException("FEL: Den angedda URL-adressen är inte korrekt.");
+                if (!correctURL)
+                {
+                    throw new UserException("FEL");
+                }
+            }
+            catch (UserException ex)
+            {
+                MessageBox.Show(ex.Message, "Den angedda URL-adressen är inte korrekt.");
             }
             return correctURL;
         }
         public  bool CheckEmptyTxt(string text)
         {
             bool isEmpty = String.IsNullOrEmpty(text);
-
-
-            if (isEmpty)
+            try
             {
-                throw new UserException("FEL: Ett obligatoriskt textfält är inte ifyllt.");
+                if (isEmpty)
+                {
+                    throw new UserException("FEL");
+                }
+            }
+            catch(UserException ex)
+            {
+                MessageBox.Show(ex.Message, "Ett obligatoriskt textfält är inte ifyllt.");
             }
             return isEmpty;
         }
