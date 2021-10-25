@@ -80,8 +80,8 @@ namespace Grupp_33
         private void loadPodListView()
         {
             PodcastController podcontroll = new PodcastController();
-            List<Podcast> podcast = podcontroll.DeserializePodcast();
-            fillPodListview(podcast);
+            podcastList = podcontroll.DeserializePodcast();
+            fillPodListview(podcastList);
         }
 
         public void fillPodListview(List<Podcast> PodList)
@@ -92,7 +92,6 @@ namespace Grupp_33
 
             foreach (var pod in PodList)
             {
-
                 ListViewItem item1 = new ListViewItem(pod.Name, 0);
                 item1.SubItems.Add(pod.NumberOfItems.ToString());
                 item1.SubItems.Add(pod.UpdateFrequency.ToString());
