@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Egen exceptionklass, ärver från Exception
 
 namespace BLL
 {
-    class UserException : Exception
+    public class UserException : Exception
     {
         public UserException(string text) : base(text)
         {
         }
-        
-        public virtual bool SomethingThatShouldBeInt32(string intString)
+        public UserException()
+        { 
+        }
+
+        public virtual bool CheckURL(string urlAdress) //virtual för att kunna override:a i Validation
         {
-            bool correct = Int32.TryParse(intString, out int result);
-            if (!correct)
+            Uri uri;
+            bool correctURL = false;
+            if (!correctURL)
             {
                 throw new UserException("");
             }
-            return correct;
+            return correctURL;
         }
-
 
     }
 }
