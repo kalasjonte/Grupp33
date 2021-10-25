@@ -46,8 +46,7 @@ namespace Grupp_33
             item1.SubItems.Add(podcast.UpdateFrequency.ToString());
             item1.SubItems.Add(podcast.Category.Name);
             
-
-            listViewPod.Items.Add(item1);
+             listViewPod.Items.Add(item1);
         }
 
         private void btnCatCreate_Click(object sender, EventArgs e)

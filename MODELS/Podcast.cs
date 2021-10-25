@@ -8,6 +8,8 @@ namespace MODELS
 {
     public class Podcast : Media
     {
+
+        //eventhandler
         public int UpdateFrequency { get; set; }
 
         public Category Category { get; set; }

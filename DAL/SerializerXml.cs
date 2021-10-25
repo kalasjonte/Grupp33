@@ -68,6 +68,20 @@ namespace DAL
 
         }
 
+        public async void SerializePodcastAsync(List<Podcast> listOfPodcast)
+        {
+            //Behövs kanske en egen generic list klass för att lösa detta
+
+            XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
+
+            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
+            {
+                xmlSerializer.Serialize(fs, listOfPodcast);
+            }
+
+
+        }
+
         public List<Podcast> DeserializePodcast()
         {
             List<Podcast> podcastList;

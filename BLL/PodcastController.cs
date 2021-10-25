@@ -10,9 +10,21 @@ namespace BLL
 {
     public class PodcastController
     {
+        List<Podcast> podList = new List<Podcast>();
         public PodcastController()
         {
+            podList = DeserializePodcast();
+        }
 
+        public async void FetchNewPodcastAsync(Podcast pod)
+        {
+            RssFetcher rssFetcher = new RssFetcher();
+            Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+            podList.Add(podcastFull);
+            SerializePodcasts(podList);
+            podList = DeserializePodcast();  //en lista av poddar 
+
+            //lägger in i listview --> metod
         }
 
         public void SerializePodcasts(List<Podcast> podList)
