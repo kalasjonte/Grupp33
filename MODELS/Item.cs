@@ -10,12 +10,11 @@ namespace MODELS
     {
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public string Guid { get; set; }
         public Item()
         {
 
         }
-
         public Item(string name, string desc)
         {
             this.Name = name;

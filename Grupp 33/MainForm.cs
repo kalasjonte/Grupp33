@@ -136,5 +136,23 @@ namespace Grupp_33
             }
 
         }
+
+        private void listViewEp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //txtEpDes.Text = "";
+            //if (listViewEp.SelectedItems.Count > 0)
+            //{
+
+            //    var eprad = listViewEp.SelectedItems[0];
+            //    string name = eprad.Text; // == namnet på avsnittet
+            //    var query = from pod in podcastList
+            //                where pod.Name == name
+            //                select pod;
+
+            //    Podcast selectedPod = query.First();
+            //    List<Item> itemList = selectedPod.items;
+            //    LoadEpListView(itemList);
+            //}
+        }
     }
 }
