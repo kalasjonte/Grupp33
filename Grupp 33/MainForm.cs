@@ -39,6 +39,8 @@ namespace Grupp_33
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
             RssController controller = new RssController();
             controller.PodcastRss(podcast);
+            //PodcastController podcontroll = new PodcastController();
+            //podcontroll.FetchNewPodcastAsync(podcast);
             podcastList.Add(podcast);
 
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);

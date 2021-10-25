@@ -24,7 +24,6 @@ namespace BLL
             SerializePodcasts(podList);
             podList = DeserializePodcast();  //en lista av poddar 
 
-            //lägger in i listview --> metod
         }
 
         public void SerializePodcasts(List<Podcast> podList)
