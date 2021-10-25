@@ -14,14 +14,14 @@ namespace Grupp_33
 {
     public partial class CatCreateForm : Form
     {
+
         public CatCreateForm()
         {
 
             InitializeComponent();
         }
 
-        
-
+       
         private Category category;
 
         private void btnCatCreate_Click(object sender, EventArgs e)

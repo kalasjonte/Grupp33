@@ -52,6 +52,7 @@ namespace Grupp_33
             CatCreateForm catCreateForm = new CatCreateForm();
             Category category = catCreateForm.GetNewCategory();
             categories.Add(category);
+            //denna blir null när man kryssar catCreate förnstret utan att skriva något
             listViewCat.Items.Add(category.Name);
             
         }
