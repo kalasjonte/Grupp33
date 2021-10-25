@@ -266,6 +266,7 @@ namespace Grupp_33
             this.listViewEp.Size = new System.Drawing.Size(1328, 376);
             this.listViewEp.TabIndex = 20;
             this.listViewEp.UseCompatibleStateImageBehavior = false;
+            this.listViewEp.SelectedIndexChanged += new System.EventHandler(this.listViewEp_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
