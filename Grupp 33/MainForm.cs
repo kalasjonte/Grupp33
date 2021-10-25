@@ -18,7 +18,7 @@ namespace Grupp_33
         {
             InitializeComponent();
             CategoryController ccontroller = new CategoryController();
-            ccontroller.DeSerializeCat();
+             ccontroller.DeSerializeCat();
             PodcastController podcontroll = new PodcastController();
             podcontroll.DeserializePodcast();
         }
