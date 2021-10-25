@@ -34,6 +34,7 @@ namespace Grupp_33
              ccontroller.DeSerializeCat();
             PodcastController podcontroll = new PodcastController();
             podcontroll.DeserializePodcast();
+ 
         }
 
         public List<Category> categories = new List<Category>();
@@ -77,6 +78,25 @@ namespace Grupp_33
         {
             PodcastController controller = new PodcastController();
             controller.SerializePodcasts(podcastList);
+        }
+
+        public void fillPodListview(List<Podcast> PodList)
+        {
+            foreach (Podcast pod in PodList)
+            {
+                ListViewItem item1 = new ListViewItem(pod.Name, 0);
+                item1.SubItems.Add(pod.NumberOfItems.ToString());
+                item1.SubItems.Add(pod.UpdateFrequency.ToString());
+                item1.SubItems.Add(pod.Category.Name);
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            PodcastController podcontroll = new PodcastController();
+            List<Podcast> podcast = podcontroll.DeserializePodcast(); 
+
+            fillPodListview(podcast);
         }
     }
 }
