@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -58,10 +59,10 @@ namespace DAL
 
         public async Task<Podcast> FetchRssAsync(Podcast pod)
         {
-
+            
             string url = pod.URL;
             XmlReader xmlReader = XmlReader.Create(url);
-            Task<SyndicationFeed> taskAvsnitt = Task.Run(()=>SyndicationFeed.Load(xmlReader));
+            Task<SyndicationFeed> taskAvsnitt =Task.Run(()=>SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
             pod.NumberOfItems = feed.Items.Count();
