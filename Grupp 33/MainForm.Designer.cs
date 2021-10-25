@@ -52,8 +52,8 @@ namespace Grupp_33
             this.txtEpDes = new System.Windows.Forms.TextBox();
             this.lblPodEp = new System.Windows.Forms.Label();
             this.listViewEp = new System.Windows.Forms.ListView();
-            this.listViewCat = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewCat = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // listViewPod
@@ -64,12 +64,13 @@ namespace Grupp_33
             this.Frekvens,
             this.Kategori});
             this.listViewPod.HideSelection = false;
-            this.listViewPod.Location = new System.Drawing.Point(21, 33);
-            this.listViewPod.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewPod.Location = new System.Drawing.Point(37, 51);
+            this.listViewPod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listViewPod.Name = "listViewPod";
-            this.listViewPod.Size = new System.Drawing.Size(749, 285);
+            this.listViewPod.Size = new System.Drawing.Size(1328, 440);
             this.listViewPod.TabIndex = 0;
             this.listViewPod.UseCompatibleStateImageBehavior = false;
+            this.listViewPod.SelectedIndexChanged += new System.EventHandler(this.listViewPod_SelectedIndexChanged);
             // 
             // Title
             // 
@@ -89,66 +90,66 @@ namespace Grupp_33
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(21, 370);
-            this.txtUrl.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUrl.Location = new System.Drawing.Point(37, 573);
+            this.txtUrl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(322, 26);
+            this.txtUrl.Size = new System.Drawing.Size(569, 38);
             this.txtUrl.TabIndex = 2;
             // 
             // coBoxFreq
             // 
             this.coBoxFreq.FormattingEnabled = true;
-            this.coBoxFreq.Location = new System.Drawing.Point(372, 370);
-            this.coBoxFreq.Margin = new System.Windows.Forms.Padding(2);
+            this.coBoxFreq.Location = new System.Drawing.Point(661, 573);
+            this.coBoxFreq.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.coBoxFreq.Name = "coBoxFreq";
-            this.coBoxFreq.Size = new System.Drawing.Size(187, 28);
+            this.coBoxFreq.Size = new System.Drawing.Size(329, 39);
             this.coBoxFreq.TabIndex = 3;
             // 
             // coBoxCat
             // 
             this.coBoxCat.FormattingEnabled = true;
-            this.coBoxCat.Location = new System.Drawing.Point(582, 370);
-            this.coBoxCat.Margin = new System.Windows.Forms.Padding(2);
+            this.coBoxCat.Location = new System.Drawing.Point(1035, 573);
+            this.coBoxCat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.coBoxCat.Name = "coBoxCat";
-            this.coBoxCat.Size = new System.Drawing.Size(187, 28);
+            this.coBoxCat.Size = new System.Drawing.Size(329, 39);
             this.coBoxCat.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 337);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(32, 522);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.Size = new System.Drawing.Size(79, 32);
             this.label1.TabIndex = 5;
             this.label1.Text = "URL:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(368, 337);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(654, 522);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 20);
+            this.label2.Size = new System.Drawing.Size(300, 32);
             this.label2.TabIndex = 6;
             this.label2.Text = "Uppdateringsfrekvens:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(579, 337);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(1029, 522);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 20);
+            this.label3.Size = new System.Drawing.Size(130, 32);
             this.label3.TabIndex = 7;
             this.label3.Text = "Kategori:";
             // 
             // btnPodCreate
             // 
-            this.btnPodCreate.Location = new System.Drawing.Point(267, 422);
-            this.btnPodCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPodCreate.Location = new System.Drawing.Point(475, 654);
+            this.btnPodCreate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPodCreate.Name = "btnPodCreate";
-            this.btnPodCreate.Size = new System.Drawing.Size(158, 40);
+            this.btnPodCreate.Size = new System.Drawing.Size(281, 62);
             this.btnPodCreate.TabIndex = 8;
             this.btnPodCreate.Text = "Skapa Podcast";
             this.btnPodCreate.UseVisualStyleBackColor = true;
@@ -156,10 +157,10 @@ namespace Grupp_33
             // 
             // btnPodSave
             // 
-            this.btnPodSave.Location = new System.Drawing.Point(439, 422);
-            this.btnPodSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPodSave.Location = new System.Drawing.Point(780, 654);
+            this.btnPodSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPodSave.Name = "btnPodSave";
-            this.btnPodSave.Size = new System.Drawing.Size(158, 40);
+            this.btnPodSave.Size = new System.Drawing.Size(281, 62);
             this.btnPodSave.TabIndex = 9;
             this.btnPodSave.Text = "Spara Ändringar";
             this.btnPodSave.UseVisualStyleBackColor = true;
@@ -167,10 +168,10 @@ namespace Grupp_33
             // 
             // btnPodDelete
             // 
-            this.btnPodDelete.Location = new System.Drawing.Point(609, 422);
-            this.btnPodDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPodDelete.Location = new System.Drawing.Point(1083, 654);
+            this.btnPodDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPodDelete.Name = "btnPodDelete";
-            this.btnPodDelete.Size = new System.Drawing.Size(158, 40);
+            this.btnPodDelete.Size = new System.Drawing.Size(281, 62);
             this.btnPodDelete.TabIndex = 10;
             this.btnPodDelete.Text = "Ta Bort";
             this.btnPodDelete.UseVisualStyleBackColor = true;
@@ -178,37 +179,37 @@ namespace Grupp_33
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 488);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(32, 756);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(220, 20);
+            this.label4.Size = new System.Drawing.Size(394, 32);
             this.label4.TabIndex = 12;
             this.label4.Text = "Selected Podcast: Episodes...";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(833, 33);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(1481, 51);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.Size = new System.Drawing.Size(155, 32);
             this.label5.TabIndex = 13;
             this.label5.Text = "Kategorier:";
             // 
             // txtCat
             // 
-            this.txtCat.Location = new System.Drawing.Point(836, 335);
-            this.txtCat.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCat.Location = new System.Drawing.Point(1486, 519);
+            this.txtCat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCat.Name = "txtCat";
-            this.txtCat.Size = new System.Drawing.Size(458, 26);
+            this.txtCat.Size = new System.Drawing.Size(811, 38);
             this.txtCat.TabIndex = 14;
             // 
             // btnCatCreate
             // 
-            this.btnCatCreate.Location = new System.Drawing.Point(836, 383);
-            this.btnCatCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCatCreate.Location = new System.Drawing.Point(1486, 594);
+            this.btnCatCreate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCatCreate.Name = "btnCatCreate";
-            this.btnCatCreate.Size = new System.Drawing.Size(140, 39);
+            this.btnCatCreate.Size = new System.Drawing.Size(249, 60);
             this.btnCatCreate.TabIndex = 15;
             this.btnCatCreate.Text = "Skapa Kategori";
             this.btnCatCreate.UseVisualStyleBackColor = true;
@@ -216,10 +217,10 @@ namespace Grupp_33
             // 
             // btnCatSave
             // 
-            this.btnCatSave.Location = new System.Drawing.Point(1001, 383);
-            this.btnCatSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCatSave.Location = new System.Drawing.Point(1780, 594);
+            this.btnCatSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCatSave.Name = "btnCatSave";
-            this.btnCatSave.Size = new System.Drawing.Size(140, 39);
+            this.btnCatSave.Size = new System.Drawing.Size(249, 60);
             this.btnCatSave.TabIndex = 16;
             this.btnCatSave.Text = "Spara Ändringar";
             this.btnCatSave.UseVisualStyleBackColor = true;
@@ -227,30 +228,30 @@ namespace Grupp_33
             // 
             // btnCatDelete
             // 
-            this.btnCatDelete.Location = new System.Drawing.Point(1163, 383);
-            this.btnCatDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCatDelete.Location = new System.Drawing.Point(2068, 594);
+            this.btnCatDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCatDelete.Name = "btnCatDelete";
-            this.btnCatDelete.Size = new System.Drawing.Size(130, 39);
+            this.btnCatDelete.Size = new System.Drawing.Size(231, 60);
             this.btnCatDelete.TabIndex = 17;
             this.btnCatDelete.Text = "Ta Bort";
             this.btnCatDelete.UseVisualStyleBackColor = true;
             // 
             // txtEpDes
             // 
-            this.txtEpDes.Location = new System.Drawing.Point(836, 523);
-            this.txtEpDes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEpDes.Location = new System.Drawing.Point(1486, 811);
+            this.txtEpDes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEpDes.Multiline = true;
             this.txtEpDes.Name = "txtEpDes";
-            this.txtEpDes.Size = new System.Drawing.Size(458, 244);
+            this.txtEpDes.Size = new System.Drawing.Size(811, 376);
             this.txtEpDes.TabIndex = 18;
             // 
             // lblPodEp
             // 
             this.lblPodEp.AutoSize = true;
-            this.lblPodEp.Location = new System.Drawing.Point(833, 488);
-            this.lblPodEp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPodEp.Location = new System.Drawing.Point(1481, 756);
+            this.lblPodEp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPodEp.Name = "lblPodEp";
-            this.lblPodEp.Size = new System.Drawing.Size(217, 20);
+            this.lblPodEp.Size = new System.Drawing.Size(389, 32);
             this.lblPodEp.TabIndex = 19;
             this.lblPodEp.Text = "Namn på Podcast : Episode...";
             // 
@@ -259,32 +260,32 @@ namespace Grupp_33
             this.listViewEp.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listViewEp.HideSelection = false;
-            this.listViewEp.Location = new System.Drawing.Point(21, 523);
-            this.listViewEp.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewEp.Location = new System.Drawing.Point(37, 811);
+            this.listViewEp.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listViewEp.Name = "listViewEp";
-            this.listViewEp.Size = new System.Drawing.Size(749, 244);
+            this.listViewEp.Size = new System.Drawing.Size(1328, 376);
             this.listViewEp.TabIndex = 20;
             this.listViewEp.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewCat
-            // 
-            this.listViewCat.HideSelection = false;
-            this.listViewCat.Location = new System.Drawing.Point(836, 69);
-            this.listViewCat.Margin = new System.Windows.Forms.Padding(2);
-            this.listViewCat.Name = "listViewCat";
-            this.listViewCat.Size = new System.Drawing.Size(458, 249);
-            this.listViewCat.TabIndex = 21;
-            this.listViewCat.UseCompatibleStateImageBehavior = false;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Avsnitt:";
             // 
+            // listViewCat
+            // 
+            this.listViewCat.HideSelection = false;
+            this.listViewCat.Location = new System.Drawing.Point(1486, 107);
+            this.listViewCat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.listViewCat.Name = "listViewCat";
+            this.listViewCat.Size = new System.Drawing.Size(811, 384);
+            this.listViewCat.TabIndex = 21;
+            this.listViewCat.UseCompatibleStateImageBehavior = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 677);
+            this.ClientSize = new System.Drawing.Size(1924, 1230);
             this.Controls.Add(this.listViewCat);
             this.Controls.Add(this.listViewEp);
             this.Controls.Add(this.lblPodEp);
@@ -305,7 +306,7 @@ namespace Grupp_33
             this.Controls.Add(this.coBoxFreq);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.listViewPod);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);

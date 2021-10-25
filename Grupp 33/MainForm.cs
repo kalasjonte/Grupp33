@@ -23,11 +23,11 @@ namespace Grupp_33
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             CategoryController ccontroller = new CategoryController();
-             ccontroller.DeSerializeCat();
+            ccontroller.DeSerializeCat();
             PodcastController podcontroll = new PodcastController();
             podcontroll.DeserializePodcast();
 
-            loadPodListView();
+            LoadPodListView();
         }
 
         public List<Category> categories = new List<Category>();
@@ -45,8 +45,9 @@ namespace Grupp_33
             item1.SubItems.Add(podcast.NumberOfItems.ToString());
             item1.SubItems.Add(podcast.UpdateFrequency.ToString());
             item1.SubItems.Add(podcast.Category.Name);
-            
-             listViewPod.Items.Add(item1);
+
+            listViewPod.Items.Add(item1);
+            listViewPod.Items.Add(item1);
         }
 
         private void btnCatCreate_Click(object sender, EventArgs e)
@@ -76,11 +77,11 @@ namespace Grupp_33
         {
         }
 
-        private void loadPodListView()
+        private void LoadPodListView()
         {
             PodcastController podcontroll = new PodcastController();
-            List<Podcast> podcast = podcontroll.DeserializePodcast();
-            fillPodListview(podcast);
+            podcastList = podcontroll.DeserializePodcast();
+            fillPodListview(podcastList);
         }
 
         public void fillPodListview(List<Podcast> PodList)
@@ -91,7 +92,6 @@ namespace Grupp_33
 
             foreach (var pod in PodList)
             {
-
                 ListViewItem item1 = new ListViewItem(pod.Name, 0);
                 item1.SubItems.Add(pod.NumberOfItems.ToString());
                 item1.SubItems.Add(pod.UpdateFrequency.ToString());
@@ -99,6 +99,37 @@ namespace Grupp_33
 
                 listViewPod.Items.Add(item1);
             }
+        }
+
+        private void listViewPod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listViewEp.Items.Clear();
+            if (listViewPod.SelectedItems.Count > 0){
+
+                var podrad = listViewPod.SelectedItems[0];
+                string name = podrad.Text; // == namnet på podden
+                var query = from pod in podcastList
+                            where pod.Name == name
+                            select pod;
+                
+                Podcast selectedPod = query.First();
+                List<Item> itemList = selectedPod.items;
+                LoadEpListView(itemList);
+            }
+
+        }
+        private void LoadEpListView(List<Item> itemList)
+        {
+            listViewEp.View = View.Details;
+            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            foreach (var ep in itemList)
+            {
+                ListViewItem item = new ListViewItem(ep.Name, 0);
+                listViewEp.Items.Add(item);
+            }
+
         }
     }
 }
