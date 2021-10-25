@@ -16,6 +16,7 @@ namespace BLL
             bool correctURL = 
             Uri.TryCreate(url, UriKind.Absolute, out uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
 
+
             if (!correctURL)
             {
                 throw new UserException("FEL: Den angedda URL-adressen är inte korrekt.");
@@ -25,6 +26,7 @@ namespace BLL
         public  bool CheckEmptyTxt(string text)
         {
             bool isEmpty = String.IsNullOrEmpty(text);
+
 
             if (isEmpty)
             {
