@@ -22,8 +22,8 @@ namespace BLL
             RssFetcher rssFetcher = new RssFetcher();
             Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
             podList.Add(podcastFull);
-            SerializePodcasts(podList); //ha kvar eller inte?
-            podList = DeserializePodcast();  //en lista av poddar 
+            SerializePodcasts(podList); 
+            podList = DeserializePodcast();  //en lista av poddar , ha kvar eller inte
             returnvalue = true;
             return returnvalue;
 

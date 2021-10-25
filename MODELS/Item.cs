@@ -15,10 +15,11 @@ namespace MODELS
         {
 
         }
-        public Item(string name, string desc)
+        public Item(string name, string desc, string guid)
         {
             this.Name = name;
             this.Description = desc;
+            this.Guid = guid;
         }
     }
 }

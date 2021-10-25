@@ -35,7 +35,7 @@ namespace DAL
                 // kanske ändra till validering?
                 
 
-                    Item ep = new Item(item.Title.Text, item.Summary.Text);
+                    Item ep = new Item(item.Title.Text, item.Summary.Text, item.Id);
 
                     pod.items.Add(ep);
                     //Console.WriteLine(item.Title.Text);
@@ -74,7 +74,8 @@ namespace DAL
                     
 
 
-                    Item ep = new Item(item.Title.Text, item.Summary.Text);
+                    Item ep = new Item(item.Title.Text, item.Summary.Text,item.Id);
+                    
 
                     pod.items.Add(ep);
                     
