@@ -22,7 +22,7 @@ namespace BLL
             bool correctURL = false;
             if (!correctURL)
             {
-                throw new UserException("");
+                throw new UserException("FEL");
             }
             return correctURL;
         }
