@@ -21,6 +21,7 @@ namespace Grupp_33
             listViewCat.View = View.Details;
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewPod.FullRowSelect = true;
 
             CategoryController ccontroller = new CategoryController();
             ccontroller.DeSerializeCat();
@@ -91,6 +92,7 @@ namespace Grupp_33
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            //listViewPod.FullRowSelect = true;
 
             foreach (var pod in PodList)
             {
