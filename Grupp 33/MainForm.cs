@@ -17,6 +17,19 @@ namespace Grupp_33
         public MainForm()
         {
             InitializeComponent();
+
+            listViewPod.View = View.Details;
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            listViewEp.View = View.Details;
+            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewEp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            listViewCat.View = View.Details;
+            listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
             CategoryController ccontroller = new CategoryController();
              ccontroller.DeSerializeCat();
             PodcastController podcontroll = new PodcastController();
@@ -33,10 +46,6 @@ namespace Grupp_33
             RssController controller = new RssController();
             controller.PodcastRss(podcast);
             podcastList.Add(podcast);
-
-            listViewPod.View = View.Details;
-            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);
             item1.SubItems.Add(podcast.NumberOfItems.ToString());
