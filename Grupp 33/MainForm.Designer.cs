@@ -242,6 +242,8 @@ namespace Grupp_33
             this.txtEpDes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEpDes.Multiline = true;
             this.txtEpDes.Name = "txtEpDes";
+            this.txtEpDes.ReadOnly = true;
+            this.txtEpDes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtEpDes.Size = new System.Drawing.Size(811, 376);
             this.txtEpDes.TabIndex = 18;
             // 
