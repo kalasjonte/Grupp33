@@ -47,13 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryController.cs" />
-    <Compile Include="EpisodeController.cs" />
-    <Compile Include="PodcastController.cs" />
-    <Compile Include="RssController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EpisodeController.cs" />
+    <Compile Include="Controllers\PodcastController.cs" />
+    <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserException.cs" />
-    <Compile Include="Validation.cs" />
+    <Compile Include="Exception-Validation\UserException.cs" />
+    <Compile Include="Exception-Validation\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

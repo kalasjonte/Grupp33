@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="IRepositories\IItemRepository.cs" />
     <Compile Include="SerializerXml.cs" />
-    <Compile Include="Repositories\IMediaRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="IRepositories\IMediaRepository.cs" />
+    <Compile Include="IRepositories\IRepository.cs" />
     <Compile Include="Repositories\MediaRepository.cs" />
     <Compile Include="RssFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
