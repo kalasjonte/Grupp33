@@ -42,8 +42,7 @@ namespace Grupp_33
         {
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
-           // RssController controller = new RssController();
-           // controller.PodcastRss(podcast);
+            //if catlist have adda podcast till specifika categoryns lista
             PodcastController podcontroll = new PodcastController();
             var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
             podcastList.Add(podcast);
@@ -63,6 +62,7 @@ namespace Grupp_33
             CatCreateForm catCreateForm = new CatCreateForm();
             Category category = catCreateForm.GetNewCategory();
             categories.Add(category);
+
             //denna blir null när man kryssar catCreate förnstret utan att skriva något
             listViewCat.Items.Add(category.Name);
             

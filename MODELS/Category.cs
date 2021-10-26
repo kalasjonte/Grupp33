@@ -15,10 +15,8 @@ namespace MODELS
 
         public Category (string name)
         {
-            Console.WriteLine("skapad sånhär");
             this.Name = name;
             this.podcastsList = new List<Media>();
-            Console.WriteLine(Name);
         }
 
         public Category()
