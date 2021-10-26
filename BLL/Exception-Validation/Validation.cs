@@ -16,7 +16,6 @@ namespace BLL
             Uri uri;
             bool correctURL = 
             Uri.TryCreate(url, UriKind.Absolute, out uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
-
             try
             {
                 if (!correctURL)
