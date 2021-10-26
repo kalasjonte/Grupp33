@@ -18,16 +18,39 @@ namespace BLL
 
         public async Task<bool> FetchNewPodcastAsync(Podcast pod)
         {
+
+                bool returnvalue = false;
+                RssFetcher rssFetcher = new RssFetcher();
+                Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+                podList.Add(podcastFull);
+                SerializePodcasts(podList);
+                podList = DeserializePodcast();  //en lista av poddar , ha kvar eller inte
+                returnvalue = true;
+                return returnvalue;
+            
+
+        }
+
+        public async Task<bool> FetchPodcastIntervalAsync(Podcast pod)
+        {
             bool returnvalue = false;
             RssFetcher rssFetcher = new RssFetcher();
             Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+            var podQuery = from podis in podList
+                           where podis.Name != pod.Name
+                           select podis;
+
+            podList = podQuery.ToList();
             podList.Add(podcastFull);
-            SerializePodcasts(podList); 
+            SerializePodcasts(podList);
             podList = DeserializePodcast();  //en lista av poddar , ha kvar eller inte
             returnvalue = true;
             return returnvalue;
 
+
         }
+
+
 
         public void SerializePodcasts(List<Podcast> podList)
         {

@@ -59,7 +59,7 @@ namespace DAL
 
         public async Task<Podcast> FetchRssAsync(Podcast pod)
         {
-            
+            //måste handla execptions, server fel och xml fel
             string url = pod.URL;
             XmlReader xmlReader = XmlReader.Create(url);
             Task<SyndicationFeed> taskAvsnitt =Task.Run(()=>SyndicationFeed.Load(xmlReader));

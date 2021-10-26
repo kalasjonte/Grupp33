@@ -14,8 +14,9 @@ namespace Grupp_33
 {
     public partial class MainForm : Form
     {
-
-        Podcast selectedPodcastLV;
+        PodcastController podcastController = new PodcastController();
+        private  Podcast selectedPodcastLV;
+        private Timer timer = new Timer();
 
         public MainForm()
         {
@@ -27,7 +28,9 @@ namespace Grupp_33
             listViewPod.FullRowSelect = true;
             listViewEp.FullRowSelect = true;
 
-            
+            timer.Interval = 1000;
+            timer.Tick += TimerEvent;
+            timer.Start();
 
             LoadPodListView();
             LoadCategoryListView();
@@ -38,6 +41,7 @@ namespace Grupp_33
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
         {
+            //Pausa timern? Sparar liksom inte samtidigt som det andra eventet haha :D
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
             //if catlist have adda podcast till specifika categoryns lista
@@ -87,6 +91,10 @@ namespace Grupp_33
         {
             PodcastController podcontroll = new PodcastController();
             podcastList = podcontroll.DeserializePodcast();
+            foreach (var item in podcastList)
+            {
+                item.UpdateTheInterval();
+            }
             fillPodListview(podcastList);
         }
 
@@ -190,6 +198,20 @@ namespace Grupp_33
             }
 
 
+        }
+        private async void TimerEvent(object sender, EventArgs e)
+        {
+            foreach (var item in podcastList)
+            {
+                bool check = item.CheckIfUpdate();
+                if (check == true)
+                {
+                    
+                    var bulle = await Task.FromResult(podcastController.FetchPodcastIntervalAsync(item));
+                    item.UpdateTheInterval();
+                    //MessageBox.Show("Nu har uppdaterat" + item.Name);
+                }
+            }
         }
     }
 }
