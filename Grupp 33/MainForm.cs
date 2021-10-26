@@ -14,6 +14,9 @@ namespace Grupp_33
 {
     public partial class MainForm : Form
     {
+
+        Podcast selectedPodcastLV;
+
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace Grupp_33
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             listViewPod.FullRowSelect = true;
+            listViewEp.FullRowSelect = true;
 
             CategoryController ccontroller = new CategoryController();
             ccontroller.DeSerializeCat();
@@ -109,6 +113,7 @@ namespace Grupp_33
         private void listViewPod_SelectedIndexChanged(object sender, EventArgs e)
         {
             listViewEp.Items.Clear();
+
             if (listViewPod.SelectedItems.Count > 0){
 
                 var podrad = listViewPod.SelectedItems[0];
@@ -116,10 +121,13 @@ namespace Grupp_33
                 var query = from pod in podcastList
                             where pod.Name == name
                             select pod;
+
                 
                 Podcast selectedPod = query.First();
+                selectedPodcastLV = selectedPod;
                 List<Item> itemList = selectedPod.items;
                 LoadEpListView(itemList);
+
             }
 
         }
@@ -139,20 +147,29 @@ namespace Grupp_33
 
         private void listViewEp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //txtEpDes.Text = "";
-            //if (listViewEp.SelectedItems.Count > 0)
-            //{
+            txtEpDes.Text = "";
+            
+            if (listViewEp.SelectedItems.Count > 0)
+            {
 
-            //    var eprad = listViewEp.SelectedItems[0];
-            //    string name = eprad.Text; // == namnet på avsnittet
-            //    var query = from pod in podcastList
-            //                where pod.Name == name
-            //                select pod;
+                var eprad = listViewEp.SelectedItems[0];
+                string name = eprad.Text; // == namnet på avsnittet
+                List<Item> items = selectedPodcastLV.items;
+                var query = from item in items
+                            where item.Name == name
+                            select item.Guid;
 
-            //    Podcast selectedPod = query.First();
-            //    List<Item> itemList = selectedPod.items;
-            //    LoadEpListView(itemList);
-            //}
+
+                string guid = query.First();
+                var query2 = from item2 in items
+                             where item2.Guid == guid
+                             select item2.Description;
+
+                string description = query2.First();
+                txtEpDes.Text = description;
+            }
+
+
         }
     }
 }
