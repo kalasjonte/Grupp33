@@ -11,12 +11,12 @@ namespace MODELS
     {
         public string Name { get; set; }
 
-        public List<Media> podcastsList;
+        public List<string> podcastsList;
 
         public Category (string name)
         {
             this.Name = name;
-            this.podcastsList = new List<Media>();
+            this.podcastsList = new List<string>();
         }
 
         public Category()
@@ -24,13 +24,13 @@ namespace MODELS
 
         }
 
-        public Category (string name, List<Media> podLista)
+        public Category (string name, List<string> podLista)
         {
             this.Name = name;
             this.podcastsList = podLista;
         }
 
-        public void addPodcastToList(Media podcast)
+        public void addPodcastToList(string podcast)
         {
             podcastsList.Add(podcast);
         }

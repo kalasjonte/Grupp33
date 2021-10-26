@@ -37,10 +37,11 @@ namespace Grupp_33
             var query = from cat in categoryList
                         where cat.Name == selectedCategory
                         select cat;
+
             Category category = query.First();
 
             pod = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", Int32.Parse(coBoxUpdFreq.SelectedItem.ToString()),  category);
-            category.podcastsList.Add(pod);
+            category.podcastsList.Add(pod.Name);
             catControll.SerializeCat(categoryList);
             this.Close();
         }

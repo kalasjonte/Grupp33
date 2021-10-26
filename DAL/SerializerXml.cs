@@ -26,14 +26,12 @@ namespace DAL
         public void SerializeCategory(List<Category> listOfCategorys)
         {
 
-            
             XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
            
             using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(fs, listOfCategorys);
             }
-
 
         }
 
@@ -46,10 +44,6 @@ namespace DAL
                 categories = (List<Category>)xmlSerializer.Deserialize(fs);
             }
 
-            foreach (var item in categories)
-            {
-                Console.WriteLine(item.Name);
-            }
 
             return categories;
         }

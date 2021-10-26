@@ -27,12 +27,10 @@ namespace Grupp_33
             listViewPod.FullRowSelect = true;
             listViewEp.FullRowSelect = true;
 
-            CategoryController ccontroller = new CategoryController();
-            ccontroller.DeSerializeCat();
-            PodcastController podcontroll = new PodcastController();
-            podcontroll.DeserializePodcast();
+            
 
             LoadPodListView();
+            LoadCategoryListView();
         }
 
         public List<Category> categories = new List<Category>();
@@ -92,6 +90,14 @@ namespace Grupp_33
             fillPodListview(podcastList);
         }
 
+        private void LoadCategoryListView()
+        {
+            CategoryController controller = new CategoryController();
+            categories = controller.DeSerializeCat();
+            fillCatListview(categories);
+
+        }
+
         public void fillPodListview(List<Podcast> PodList)
         {
             listViewPod.View = View.Details;
@@ -107,6 +113,20 @@ namespace Grupp_33
                 item1.SubItems.Add(pod.Category.Name);
 
                 listViewPod.Items.Add(item1);
+            }
+        }
+
+        public void fillCatListview(List<Category> catList)
+        {
+            listViewCat.View = View.Details;
+            listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            
+
+            foreach (var cat in catList)
+            {
+                ListViewItem item1 = new ListViewItem(cat.Name, 0);
+                listViewCat.Items.Add(item1);
             }
         }
 
