@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SerializerXml.cs" />
-    <Compile Include="IMediaRepository.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="MediaRepository.cs" />
+    <Compile Include="Repositories\IMediaRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\MediaRepository.cs" />
     <Compile Include="RssFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
