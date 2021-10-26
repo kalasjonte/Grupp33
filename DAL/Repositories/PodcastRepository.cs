@@ -153,6 +153,23 @@ namespace DAL
             return podQuery.ToList();
         }
 
-        
+        public string GetItemGuidFromItenName(Podcast pod, string name)
+        {
+            var itemQuery = from item in pod.items
+                        where item.Name == name
+                        select item.Guid;
+
+
+            return itemQuery.First();
+        }
+
+        public string GetItemDescriptionFromGuid(Podcast pod, string guid)
+        {
+            var itemQuery = from item in pod.items
+                        where item.Guid == guid
+                        select item.Description;
+
+            return itemQuery.First();
+        }
     }
 }

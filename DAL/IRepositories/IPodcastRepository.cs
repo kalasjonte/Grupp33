@@ -18,6 +18,8 @@ namespace DAL
         Category GetCatByPodName(string name);
         int GetNumberOfItemsByPodName(string name);
         List<Item> GetItemListByPodName(string name);
+        string GetItemGuidFromItenName(Podcast pod,string name);// dessa 2, vart ska d vara?
+        string GetItemDescriptionFromGuid(Podcast pod, string guid);
 
     }
 }
