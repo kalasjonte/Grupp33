@@ -9,9 +9,9 @@ namespace DAL
 {
     interface IPodcastRepository<T> : IMediaRepository<T> where T : Podcast
     {
-        Podcast GetByUpdateFrequency(int uFreq);
-        Podcast GetByCategory(Category category);
-        Podcast GetByTypeNumberOfItems(int number);
+        List<T> GetByUpdateFrequency(int uFreq);
+        List<T> GetByCategory(Category category);
+        List<T> GetByTypeNumberOfItems(int number);
         Podcast GetByListOfItems(List<Item> itemList);
 
         int GetUpFreqByPodName(string name);

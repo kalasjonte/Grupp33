@@ -16,31 +16,45 @@ namespace DAL
         {
             serializerXml = new SerializerXml();
             listOfPodcasts = new List<Podcast>();
-            //listOfPodcast = GetAll()
+            listOfPodcasts = GetAll();
         }
         public void Create(Podcast entity)
         {
-            throw new NotImplementedException();
+            listOfPodcasts.Add(entity);
+            SaveChanges();
         }
 
         public void Delete(int index)
         {
-            throw new NotImplementedException();
+            listOfPodcasts.RemoveAt(index);
+            SaveChanges();
+        }
+
+        public void DeleteFromName(string name)
+        {
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name != name
+                           select pod;
+
+            listOfPodcasts = podQuery.ToList();
+            SaveChanges();
         }
 
         public List<Podcast> GetAll()
         {
-            throw new NotImplementedException();
+             return serializerXml.DeserializePodcast();
+
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            serializerXml.SerializePodcast(listOfPodcasts);
         }
 
         public void Update(int index, Podcast entity)
         {
-            throw new NotImplementedException();
+            listOfPodcasts[index] = entity;
+            SaveChanges();
         }
 
 
@@ -48,63 +62,97 @@ namespace DAL
 
         public Podcast GetByName(string name)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod;
+            return podQuery.First();
+            
         }
 
-        public Podcast GetByType(string type)
+        public Podcast GetByType(string type)  // Returnerar en pod men ska returnera en list, ta bort?
         {
             throw new NotImplementedException();
         }
         public Podcast GetByUrl(string url)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.URL == url
+                           select pod;
+            return podQuery.First();
         }
 
 
 
         //_________________________
-        public Podcast GetByCategory(Category category)
-        {
-            throw new NotImplementedException();
-        }
 
+        
         public Podcast GetByListOfItems(List<Item> itemList)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.items == itemList
+                           select pod;
+            return podQuery.First();
         }
 
 
-        public Podcast GetByTypeNumberOfItems(int number)
+        public List<Podcast> GetByTypeNumberOfItems(int number)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.NumberOfItems == number 
+                           select pod;
+            return podQuery.ToList();
         }
 
-        public Podcast GetByUpdateFrequency(int uFreq)
+        public List<Podcast> GetByUpdateFrequency(int uFreq)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.UpdateFrequency == uFreq
+                           select pod;
+            return podQuery.ToList();
         }
 
 
 
-        public Category GetCatByPodName(string name)
+        public Category GetCatByPodName(string name) //cast eller first? -- .equals eller ==?
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod.Category;
+            return podQuery.First();
         }
 
         public List<Item> GetItemListByPodName(string name)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod.items;
+            return (List<Item>)podQuery;
         }
 
         public int GetNumberOfItemsByPodName(string name)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod.NumberOfItems;
+            return podQuery.First();
         }
 
         public int GetUpFreqByPodName(string name)
         {
-            throw new NotImplementedException();
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod.UpdateFrequency;
+            return podQuery.First();
         }
 
+        public List<Podcast> GetByCategory(Category category)  // kan fucka kanske, ger han rätt lista tbx?
+        {
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Category.Name == category.Name
+                           select pod;
+            return podQuery.ToList();
+        }
+
+        
     }
 }

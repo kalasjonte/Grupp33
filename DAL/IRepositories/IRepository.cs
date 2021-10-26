@@ -10,6 +10,7 @@ namespace DAL
     {
         void Create(T entity);
         void Delete(int index);
+        void DeleteFromName(string name);
         void Update(int index, T entity);
         void SaveChanges();
         List<T> GetAll();

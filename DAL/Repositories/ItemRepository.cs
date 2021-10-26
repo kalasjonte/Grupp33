@@ -50,5 +50,10 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteFromName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
