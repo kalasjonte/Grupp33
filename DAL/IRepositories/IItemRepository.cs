@@ -7,7 +7,7 @@ using MODELS;
 
 namespace DAL
 {
-    interface IItemRepository<T> : IRepository<T> where T : Item
+    public interface IItemRepository<T> : IRepository<T> where T : Item
     {
         T GetByName(string name);
         T GetByDescription(string desc);

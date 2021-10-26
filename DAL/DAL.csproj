@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="IRepositories\IPodcastRepository.cs" />
     <Compile Include="Repositories\PodcastRepository.cs" />
     <Compile Include="Repositories\ItemRepository.cs" />
