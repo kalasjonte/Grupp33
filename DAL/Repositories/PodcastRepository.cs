@@ -7,9 +7,17 @@ using MODELS;
 
 namespace DAL
 {
-    class PodcastRepository : IPodcastRepository<Podcast>
+    public class PodcastRepository : IPodcastRepository<Podcast>
     {
+        SerializerXml serializerXml;
+        List<Podcast> listOfPodcasts;
         //CRUDO
+        public PodcastRepository()
+        {
+            serializerXml = new SerializerXml();
+            listOfPodcasts = new List<Podcast>();
+            //listOfPodcast = GetAll()
+        }
         public void Create(Podcast entity)
         {
             throw new NotImplementedException();
@@ -54,7 +62,7 @@ namespace DAL
 
 
 
-
+        //_________________________
         public Podcast GetByCategory(Category category)
         {
             throw new NotImplementedException();
