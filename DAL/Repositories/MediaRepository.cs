@@ -8,12 +8,12 @@ using MODELS;
 
 namespace DAL
 {
-    class MediaRepository : IMediaRepository<Media>
+    public class MediaRepository : IMediaRepository<Media>
     {
         SerializerXml serializerXml;
         List<Media> mediaList;
 
-        //Generella metoder för repositorie patterns:
+        //Generella CRUDO metoder för repositorie patterns:
         public void Create(Media entity)
         {
             throw new NotImplementedException();

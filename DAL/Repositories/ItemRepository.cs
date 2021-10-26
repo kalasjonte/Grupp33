@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class ItemRepository : IItemRepository<Item>
+    public class ItemRepository : IItemRepository<Item>
     {
         //Generella metoder för repositorie patterns:
         public void Create(Item entity)
