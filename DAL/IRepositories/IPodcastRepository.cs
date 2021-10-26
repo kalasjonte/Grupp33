@@ -7,7 +7,7 @@ using MODELS;
 
 namespace DAL
 {
-    interface IPodcastRepository<T> : IMediaRepository<T> where T : Podcast
+    public interface IPodcastRepository<T> : IMediaRepository<T> where T : Podcast
     {
         List<T> GetByUpdateFrequency(int uFreq);
         List<T> GetByCategory(Category category);
