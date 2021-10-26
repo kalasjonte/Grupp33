@@ -9,6 +9,7 @@ namespace DAL
 {
     class PodcastRepository : IPodcastRepository<Podcast>
     {
+        //CRUDO
         public void Create(Podcast entity)
         {
             throw new NotImplementedException();
@@ -24,15 +25,18 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Podcast GetByCategory(Category category)
+        public void SaveChanges()
         {
             throw new NotImplementedException();
         }
 
-        public Podcast GetByListOfItems(List<Item> itemList)
+        public void Update(int index, Podcast entity)
         {
             throw new NotImplementedException();
         }
+
+
+        //_____________________
 
         public Podcast GetByName(string name)
         {
@@ -43,6 +47,24 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+        public Podcast GetByUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        public Podcast GetByCategory(Category category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Podcast GetByListOfItems(List<Item> itemList)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public Podcast GetByTypeNumberOfItems(int number)
         {
@@ -54,10 +76,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Podcast GetByUrl(string url)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Category GetCatByPodName(string name)
         {
@@ -79,14 +98,5 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, Podcast entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
