@@ -55,5 +55,10 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public List<Item> SortDesending()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

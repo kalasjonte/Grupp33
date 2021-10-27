@@ -34,6 +34,11 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public List<Category> SortDesending()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(int index, Category entity)
         {
             throw new NotImplementedException();

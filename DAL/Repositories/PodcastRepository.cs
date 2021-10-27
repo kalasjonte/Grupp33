@@ -171,5 +171,14 @@ namespace DAL
 
             return itemQuery.First();
         }
+
+        public List<Podcast> SortDesending()
+        {
+            var podQuery = from pod in listOfPodcasts
+                           orderby pod.Name
+                           select pod;
+             listOfPodcasts = podQuery.ToList();
+            return listOfPodcasts;
+        }
     }
 }

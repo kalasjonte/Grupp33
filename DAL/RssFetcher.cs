@@ -66,7 +66,7 @@ namespace DAL
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
             pod.NumberOfItems = feed.Items.Count();
-            
+
 
             try
             {

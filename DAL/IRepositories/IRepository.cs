@@ -14,6 +14,8 @@ namespace DAL
         void Update(int index, T entity);
         void SaveChanges();
         List<T> GetAll();
+        List<T> SortDesending();
+        
 
     }
 }

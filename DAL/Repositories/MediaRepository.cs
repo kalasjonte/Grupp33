@@ -58,5 +58,10 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public List<Media> SortDesending()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -41,13 +41,14 @@ namespace Grupp_33
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
         {
-            //Pausa timern? Sparar liksom inte samtidigt som det andra eventet haha :D
+            timer.Stop();
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
             //if catlist have adda podcast till specifika categoryns lista
             PodcastController podcontroll = new PodcastController();
             var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
             podcastList.Add(podcast);
+            timer.Start();
             
 
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);
@@ -91,6 +92,10 @@ namespace Grupp_33
         {
             PodcastController podcontroll = new PodcastController();
             podcastList = podcontroll.DeserializePodcast();
+            var queryDescend = from pod in podcastList
+                               orderby pod.Name
+                               select pod;
+            podcastList = queryDescend.ToList();
             foreach (var item in podcastList)
             {
                 item.UpdateTheInterval();
@@ -108,6 +113,7 @@ namespace Grupp_33
 
         public void fillPodListview(List<Podcast> PodList)
         {
+            listViewPod.Items.Clear();
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -201,15 +207,31 @@ namespace Grupp_33
         }
         private async void TimerEvent(object sender, EventArgs e)
         {
+            
             foreach (var item in podcastList)
             {
+                int countedepisodes = item.NumberOfItems;
+                
                 bool check = item.CheckIfUpdate();
                 if (check == true)
                 {
+                   
                     
                     var bulle = await Task.FromResult(podcastController.FetchPodcastIntervalAsync(item));
+                    podcastList = podcastController.DeserializePodcast();
                     item.UpdateTheInterval();
-                    //MessageBox.Show("Nu har uppdaterat" + item.Name);
+
+                    var podQuery = from pod in podcastList
+                                   where pod.Name == item.Name
+                                   select pod.NumberOfItems;
+                    int  numberofitems = podQuery.First();
+
+                    if(countedepisodes != numberofitems)
+                    {
+                        fillPodListview(podcastList);
+                    }
+
+
                 }
             }
         }
