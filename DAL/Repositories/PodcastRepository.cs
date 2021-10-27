@@ -145,7 +145,7 @@ namespace DAL
             return podQuery.First();
         }
 
-        public List<Podcast> GetByCategory(Category category)  // kan fucka kanske, ger han rätt lista tbx?
+        public List<Podcast> GetByCategory(Category category)  // ska vi ha fler respos?
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Category.Name == category.Name

@@ -39,6 +39,11 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public List<Podcast> SortedPodcastOnCategory(Category cat)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(int index, Category entity)
         {
             throw new NotImplementedException();

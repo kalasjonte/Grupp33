@@ -66,7 +66,7 @@ namespace Grupp_33
             this.Kategori});
             this.listViewPod.HideSelection = false;
             this.listViewPod.Location = new System.Drawing.Point(21, 33);
-            this.listViewPod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewPod.Margin = new System.Windows.Forms.Padding(2);
             this.listViewPod.Name = "listViewPod";
             this.listViewPod.Size = new System.Drawing.Size(749, 285);
             this.listViewPod.TabIndex = 0;
@@ -92,7 +92,7 @@ namespace Grupp_33
             // txtUrl
             // 
             this.txtUrl.Location = new System.Drawing.Point(21, 370);
-            this.txtUrl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUrl.Margin = new System.Windows.Forms.Padding(2);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(322, 26);
             this.txtUrl.TabIndex = 2;
@@ -101,7 +101,7 @@ namespace Grupp_33
             // 
             this.coBoxFreq.FormattingEnabled = true;
             this.coBoxFreq.Location = new System.Drawing.Point(372, 370);
-            this.coBoxFreq.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.coBoxFreq.Margin = new System.Windows.Forms.Padding(2);
             this.coBoxFreq.Name = "coBoxFreq";
             this.coBoxFreq.Size = new System.Drawing.Size(187, 28);
             this.coBoxFreq.TabIndex = 3;
@@ -110,7 +110,7 @@ namespace Grupp_33
             // 
             this.coBoxCat.FormattingEnabled = true;
             this.coBoxCat.Location = new System.Drawing.Point(582, 370);
-            this.coBoxCat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.coBoxCat.Margin = new System.Windows.Forms.Padding(2);
             this.coBoxCat.Name = "coBoxCat";
             this.coBoxCat.Size = new System.Drawing.Size(187, 28);
             this.coBoxCat.TabIndex = 4;
@@ -148,7 +148,7 @@ namespace Grupp_33
             // btnPodCreate
             // 
             this.btnPodCreate.Location = new System.Drawing.Point(267, 422);
-            this.btnPodCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPodCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnPodCreate.Name = "btnPodCreate";
             this.btnPodCreate.Size = new System.Drawing.Size(158, 40);
             this.btnPodCreate.TabIndex = 8;
@@ -159,7 +159,7 @@ namespace Grupp_33
             // btnPodSave
             // 
             this.btnPodSave.Location = new System.Drawing.Point(439, 422);
-            this.btnPodSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPodSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnPodSave.Name = "btnPodSave";
             this.btnPodSave.Size = new System.Drawing.Size(158, 40);
             this.btnPodSave.TabIndex = 9;
@@ -170,7 +170,7 @@ namespace Grupp_33
             // btnPodDelete
             // 
             this.btnPodDelete.Location = new System.Drawing.Point(609, 422);
-            this.btnPodDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPodDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnPodDelete.Name = "btnPodDelete";
             this.btnPodDelete.Size = new System.Drawing.Size(158, 40);
             this.btnPodDelete.TabIndex = 10;
@@ -200,7 +200,7 @@ namespace Grupp_33
             // txtCat
             // 
             this.txtCat.Location = new System.Drawing.Point(836, 335);
-            this.txtCat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCat.Margin = new System.Windows.Forms.Padding(2);
             this.txtCat.Name = "txtCat";
             this.txtCat.Size = new System.Drawing.Size(458, 26);
             this.txtCat.TabIndex = 14;
@@ -208,7 +208,7 @@ namespace Grupp_33
             // btnCatCreate
             // 
             this.btnCatCreate.Location = new System.Drawing.Point(836, 383);
-            this.btnCatCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCatCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCatCreate.Name = "btnCatCreate";
             this.btnCatCreate.Size = new System.Drawing.Size(140, 39);
             this.btnCatCreate.TabIndex = 15;
@@ -219,7 +219,7 @@ namespace Grupp_33
             // btnCatSave
             // 
             this.btnCatSave.Location = new System.Drawing.Point(1001, 383);
-            this.btnCatSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCatSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnCatSave.Name = "btnCatSave";
             this.btnCatSave.Size = new System.Drawing.Size(140, 39);
             this.btnCatSave.TabIndex = 16;
@@ -230,7 +230,7 @@ namespace Grupp_33
             // btnCatDelete
             // 
             this.btnCatDelete.Location = new System.Drawing.Point(1163, 383);
-            this.btnCatDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCatDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnCatDelete.Name = "btnCatDelete";
             this.btnCatDelete.Size = new System.Drawing.Size(130, 39);
             this.btnCatDelete.TabIndex = 17;
@@ -240,7 +240,7 @@ namespace Grupp_33
             // txtEpDes
             // 
             this.txtEpDes.Location = new System.Drawing.Point(836, 523);
-            this.txtEpDes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEpDes.Margin = new System.Windows.Forms.Padding(2);
             this.txtEpDes.Multiline = true;
             this.txtEpDes.Name = "txtEpDes";
             this.txtEpDes.ReadOnly = true;
@@ -264,7 +264,7 @@ namespace Grupp_33
             this.columnHeader1});
             this.listViewEp.HideSelection = false;
             this.listViewEp.Location = new System.Drawing.Point(21, 523);
-            this.listViewEp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewEp.Margin = new System.Windows.Forms.Padding(2);
             this.listViewEp.Name = "listViewEp";
             this.listViewEp.Size = new System.Drawing.Size(749, 244);
             this.listViewEp.TabIndex = 20;
@@ -281,11 +281,12 @@ namespace Grupp_33
             this.KategoriNamn});
             this.listViewCat.HideSelection = false;
             this.listViewCat.Location = new System.Drawing.Point(836, 69);
-            this.listViewCat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewCat.Margin = new System.Windows.Forms.Padding(2);
             this.listViewCat.Name = "listViewCat";
             this.listViewCat.Size = new System.Drawing.Size(458, 249);
             this.listViewCat.TabIndex = 21;
             this.listViewCat.UseCompatibleStateImageBehavior = false;
+            this.listViewCat.SelectedIndexChanged += new System.EventHandler(this.listViewCat_SelectedIndexChanged);
             // 
             // KategoriNamn
             // 
@@ -316,7 +317,7 @@ namespace Grupp_33
             this.Controls.Add(this.coBoxFreq);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.listViewPod);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);

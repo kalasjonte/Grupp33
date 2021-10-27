@@ -9,6 +9,6 @@ namespace DAL
 {
     public interface ICategoryRepository<T> : IRepository<T> where T : Category
     {
-
+        List<Podcast> SortedPodcastOnCategory(Category cat);
     }
 }

@@ -92,15 +92,20 @@ namespace Grupp_33
         {
             PodcastController podcontroll = new PodcastController();
             podcastList = podcontroll.DeserializePodcast();
-            var queryDescend = from pod in podcastList
-                               orderby pod.Name
-                               select pod;
-            podcastList = queryDescend.ToList();
             foreach (var item in podcastList)
             {
                 item.UpdateTheInterval();
             }
             fillPodListview(podcastList);
+        }
+
+        private void LoadPodListViewSortedByCategory(List<Podcast> podlist)
+        {
+            var queryDescend = from pod in podlist
+                               orderby pod.Name
+                               select pod;
+            podlist = queryDescend.ToList();
+            fillPodListview(podlist);
         }
 
         private void LoadCategoryListView()
@@ -113,6 +118,10 @@ namespace Grupp_33
 
         public void fillPodListview(List<Podcast> PodList)
         {
+            var queryDescend = from pod in podcastList
+                               orderby pod.Name
+                               select pod;
+            podcastList = queryDescend.ToList();
             listViewPod.Items.Clear();
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -233,6 +242,24 @@ namespace Grupp_33
 
 
                 }
+            }
+        }
+
+        private void listViewCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listViewCat.SelectedItems.Count > 0)
+            {
+                string catName = listViewCat.SelectedItems[0].Text;
+
+                var podQuery = from pod in podcastList
+                               where pod.Category.Name == catName
+                               select pod;
+
+                LoadPodListViewSortedByCategory(podQuery.ToList());
+            }
+            else
+            {
+                fillPodListview(podcastList);
             }
         }
     }
