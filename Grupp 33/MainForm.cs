@@ -14,9 +14,10 @@ namespace Grupp_33
 {
     public partial class MainForm : Form
     {
-        PodcastController podcastController = new PodcastController();
         private  Podcast selectedPodcastLV;
         private Timer timer = new Timer();
+        public PodcastController podcontroll = new PodcastController();
+        public List<Category> categories = new List<Category>();
 
         public MainForm()
         {
@@ -36,8 +37,7 @@ namespace Grupp_33
             LoadCategoryListView();
         }
 
-        public List<Category> categories = new List<Category>();
-        public List<Podcast> podcastList = new List<Podcast>();
+        
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
         {
@@ -45,19 +45,15 @@ namespace Grupp_33
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
             //if catlist have adda podcast till specifika categoryns lista
-            PodcastController podcontroll = new PodcastController();
             var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
-            podcastList.Add(podcast);
-            timer.Start();
-            
-
+            podcontroll.SerializePodcasts(podcontroll.podList);
             ListViewItem item1 = new ListViewItem(podcast.Name, 0);
             item1.SubItems.Add(podcast.NumberOfItems.ToString());
             item1.SubItems.Add(podcast.UpdateFrequency.ToString());
             item1.SubItems.Add(podcast.Category.Name);
 
             listViewPod.Items.Add(item1);
-            
+            timer.Start();
         }
 
         private void btnCatCreate_Click(object sender, EventArgs e)
@@ -80,8 +76,8 @@ namespace Grupp_33
 
         private void btnPodSave_Click(object sender, EventArgs e)
         {
-            PodcastController controller = new PodcastController();
-            controller.SerializePodcasts(podcastList);
+            
+            podcontroll.SerializePodcasts(podcontroll.podList);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -90,13 +86,12 @@ namespace Grupp_33
 
         private void LoadPodListView()
         {
-            PodcastController podcontroll = new PodcastController();
-            podcastList = podcontroll.DeserializePodcast();
-            foreach (var item in podcastList)
+           
+            foreach (var item in podcontroll.podList)
             {
                 item.UpdateTheInterval();
             }
-            fillPodListview(podcastList);
+            fillPodListview(podcontroll.podList);
         }
 
         private void LoadPodListViewSortedByCategory(List<Podcast> podlist)
@@ -118,10 +113,10 @@ namespace Grupp_33
 
         public void fillPodListview(List<Podcast> PodList)
         {
-            var queryDescend = from pod in podcastList
+            var queryDescend = from pod in podcontroll.podList
                                orderby pod.Name
                                select pod;
-            podcastList = queryDescend.ToList();
+            podcontroll.podList = queryDescend.ToList();
             listViewPod.Items.Clear();
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -161,7 +156,7 @@ namespace Grupp_33
 
                 var podrad = listViewPod.SelectedItems[0];
                 string name = podrad.Text; // == namnet på podden
-                var query = from pod in podcastList
+                var query = from pod in podcontroll.podList
                             where pod.Name == name
                             select pod;
 
@@ -216,28 +211,26 @@ namespace Grupp_33
         }
         private async void TimerEvent(object sender, EventArgs e)
         {
-            
-            foreach (var item in podcastList)
+            Console.WriteLine("tick");   
+            foreach (var item in podcontroll.podList)
             {
                 int countedepisodes = item.NumberOfItems;
                 
                 bool check = item.CheckIfUpdate();
                 if (check == true)
                 {
-                   
                     
-                    var bulle = await Task.FromResult(podcastController.FetchPodcastIntervalAsync(item));
-                    podcastList = podcastController.DeserializePodcast();
+                    var bulle = await Task.FromResult(podcontroll.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
 
-                    var podQuery = from pod in podcastList
+                    var podQuery = from pod in podcontroll.podList
                                    where pod.Name == item.Name
                                    select pod.NumberOfItems;
                     int  numberofitems = podQuery.First();
 
                     if(countedepisodes != numberofitems)
                     {
-                        fillPodListview(podcastList);
+                        fillPodListview(podcontroll.podList);
                     }
 
 
@@ -251,7 +244,7 @@ namespace Grupp_33
             {
                 string catName = listViewCat.SelectedItems[0].Text;
 
-                var podQuery = from pod in podcastList
+                var podQuery = from pod in podcontroll.podList
                                where pod.Category.Name == catName
                                select pod;
 
@@ -259,7 +252,7 @@ namespace Grupp_33
             }
             else
             {
-                fillPodListview(podcastList);
+                fillPodListview(podcontroll.podList);
             }
         }
     }

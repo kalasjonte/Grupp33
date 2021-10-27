@@ -10,7 +10,7 @@ namespace BLL
 {
     public class PodcastController
     {
-        List<Podcast> podList = new List<Podcast>();
+        public List<Podcast> podList = new List<Podcast>();
         public PodcastController()
         {
             podList = DeserializePodcast();
@@ -22,9 +22,10 @@ namespace BLL
                 bool returnvalue = false;
                 RssFetcher rssFetcher = new RssFetcher();
                 Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+                podList = DeserializePodcast();
                 podList.Add(podcastFull);
-                SerializePodcasts(podList);
-                podList = DeserializePodcast();  //en lista av poddar , ha kvar eller inte
+               //SerializePodcasts(podList); //behövs inte för vi serialiserar på frekvens
+                //en lista av poddar , ha kvar eller inte
                 returnvalue = true;
                 return returnvalue;
             
@@ -36,6 +37,8 @@ namespace BLL
             bool returnvalue = false;
             RssFetcher rssFetcher = new RssFetcher();
             Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+
+
             var podQuery = from podis in podList
                            where podis.Name != pod.Name
                            select podis;
