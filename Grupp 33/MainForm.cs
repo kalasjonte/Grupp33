@@ -15,6 +15,7 @@ namespace Grupp_33
     public partial class MainForm : Form
     {
         private Podcast selectedPodcastLV;
+        private Category selectedCategoryLV;
         private Timer timer = new Timer();
         public PodcastController podcontroll = new PodcastController();
         public List<Category> categories = new List<Category>();
@@ -70,6 +71,7 @@ namespace Grupp_33
         private void btnCatSave_Click(object sender, EventArgs e)
         {
             CategoryController controller = new CategoryController();
+           // selectedCategoryLV.Name = txtCat.Text;
             controller.SerializeCat(categories);
 
         }
@@ -86,7 +88,7 @@ namespace Grupp_33
 
                 selectedPodcastLV.Category = category;
                 selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
-                selectedPodcastLV.URL = txtUrl.Text;
+                selectedPodcastLV.Name = txtName.Text;
                 podcontroll.SerializePodcasts(podcontroll.podList);
                 fillPodListview(podcontroll.podList);
                 timer.Start();
@@ -166,7 +168,7 @@ namespace Grupp_33
         private void listViewPod_SelectedIndexChanged(object sender, EventArgs e)
         {
             listViewEp.Items.Clear();
-            txtUrl.Text = " ";
+            txtName.Text = " ";
 
             if (listViewPod.SelectedItems.Count > 0)
             {
@@ -183,7 +185,7 @@ namespace Grupp_33
                 List<Item> itemList = selectedPod.items;
                 LoadEpListView(itemList);
 
-                txtUrl.Text = selectedPod.URL;
+                txtName.Text = selectedPod.Name;
                 switch (selectedPod.UpdateFrequency)
                 {
                     case 15000:
@@ -292,6 +294,12 @@ namespace Grupp_33
                                select pod;
 
                 LoadPodListViewSortedByCategory(podQuery.ToList());
+
+                var catQuery = from cat in categories
+                               where cat.Name == catName
+                               select cat;
+
+                selectedCategoryLV = catQuery.First();
             }
             else
             {

@@ -34,7 +34,7 @@ namespace Grupp_33
             this.Avsnitt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Frekvens = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Kategori = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.coBoxFreq = new System.Windows.Forms.ComboBox();
             this.coBoxCat = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -89,13 +89,13 @@ namespace Grupp_33
             // 
             this.Kategori.Text = "Kategori";
             // 
-            // txtUrl
+            // txtName
             // 
-            this.txtUrl.Location = new System.Drawing.Point(21, 370);
-            this.txtUrl.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(322, 26);
-            this.txtUrl.TabIndex = 2;
+            this.txtName.Location = new System.Drawing.Point(21, 370);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(322, 26);
+            this.txtName.TabIndex = 2;
             // 
             // coBoxFreq
             // 
@@ -125,9 +125,9 @@ namespace Grupp_33
             this.label1.Location = new System.Drawing.Point(18, 337);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 5;
-            this.label1.Text = "URL:";
+            this.label1.Text = "Namn:";
             // 
             // label2
             // 
@@ -321,7 +321,7 @@ namespace Grupp_33
             this.Controls.Add(this.label1);
             this.Controls.Add(this.coBoxCat);
             this.Controls.Add(this.coBoxFreq);
-            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.listViewPod);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -335,7 +335,7 @@ namespace Grupp_33
         #endregion
 
         private System.Windows.Forms.ListView listViewPod;
-        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox coBoxFreq;
         private System.Windows.Forms.ComboBox coBoxCat;
         private System.Windows.Forms.Label label1;
