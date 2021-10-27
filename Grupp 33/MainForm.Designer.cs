@@ -176,6 +176,7 @@ namespace Grupp_33
             this.btnPodDelete.TabIndex = 10;
             this.btnPodDelete.Text = "Ta Bort";
             this.btnPodDelete.UseVisualStyleBackColor = true;
+            this.btnPodDelete.Click += new System.EventHandler(this.btnPodDelete_Click);
             // 
             // label4
             // 

@@ -283,12 +283,32 @@ namespace Grupp_33
                 podcontroll.podList = podInCat.ToList();
 
                 CategoryController categoryController = new CategoryController();
-                PodcastController podcastController = new PodcastController();
 
                 categoryController.SerializeCat(categories);
-                podcastController.SerializePodcasts(podcontroll.podList);
+                podcontroll.SerializePodcasts(podcontroll.podList);
 
                 fillCatListview(categories);
+                fillPodListview(podcontroll.podList);
+
+                timer.Start();
+
+            }
+        }
+
+        private void btnPodDelete_Click(object sender, EventArgs e)
+        {
+            if(listViewPod.SelectedItems.Count > 0)
+            {
+                timer.Stop();
+
+                string podName = listViewPod.SelectedItems[0].Text;
+                var podQuery = from pod in podcontroll.podList
+                               where pod.Name != podName
+                               select pod;
+
+                podcontroll.podList = podQuery.ToList();
+                podcontroll.SerializePodcasts(podcontroll.podList);
+
                 fillPodListview(podcontroll.podList);
 
                 timer.Start();
