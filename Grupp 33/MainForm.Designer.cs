@@ -236,6 +236,7 @@ namespace Grupp_33
             this.btnCatDelete.TabIndex = 17;
             this.btnCatDelete.Text = "Ta Bort";
             this.btnCatDelete.UseVisualStyleBackColor = true;
+            this.btnCatDelete.Click += new System.EventHandler(this.btnCatDelete_Click);
             // 
             // txtEpDes
             // 
