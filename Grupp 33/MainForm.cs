@@ -76,8 +76,22 @@ namespace Grupp_33
 
         private void btnPodSave_Click(object sender, EventArgs e)
         {
+            if (listViewPod.SelectedItems.Count > 0)
+            {
+                timer.Stop();
+                var catQuery = from cat in categories
+                               where cat.Name == coBoxCat.Text
+                               select cat;
+                Category category = catQuery.First();
 
-            podcontroll.SerializePodcasts(podcontroll.podList);
+                selectedPodcastLV.Category = category;
+                selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
+                selectedPodcastLV.URL = txtUrl.Text;
+                podcontroll.SerializePodcasts(podcontroll.podList);
+                fillPodListview(podcontroll.podList);
+                timer.Start();
+            }
+                
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -152,6 +166,7 @@ namespace Grupp_33
         private void listViewPod_SelectedIndexChanged(object sender, EventArgs e)
         {
             listViewEp.Items.Clear();
+            txtUrl.Text = " ";
 
             if (listViewPod.SelectedItems.Count > 0)
             {
@@ -168,6 +183,32 @@ namespace Grupp_33
                 List<Item> itemList = selectedPod.items;
                 LoadEpListView(itemList);
 
+                txtUrl.Text = selectedPod.URL;
+                switch (selectedPod.UpdateFrequency)
+                {
+                    case 15000:
+                        coBoxFreq.SelectedIndex = 0;
+                        break;
+
+                    case 30000:
+                        coBoxFreq.SelectedIndex = 1;
+                        break;
+
+                    case 60000:
+                        coBoxFreq.SelectedIndex = 2;
+                        break;
+
+                    default:
+                        coBoxFreq.SelectedIndex = 0;
+                        break;
+                }
+
+                coBoxCat.Items.Clear();
+                foreach (var item in categories)
+                {
+                    coBoxCat.Items.Add(item.Name);
+                }
+                coBoxCat.SelectedIndex = coBoxCat.FindStringExact(selectedPod.Category.Name);
             }
 
         }

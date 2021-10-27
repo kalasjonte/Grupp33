@@ -100,6 +100,10 @@ namespace Grupp_33
             // coBoxFreq
             // 
             this.coBoxFreq.FormattingEnabled = true;
+            this.coBoxFreq.Items.AddRange(new object[] {
+            "15",
+            "30",
+            "60"});
             this.coBoxFreq.Location = new System.Drawing.Point(372, 370);
             this.coBoxFreq.Margin = new System.Windows.Forms.Padding(2);
             this.coBoxFreq.Name = "coBoxFreq";
