@@ -33,20 +33,20 @@ namespace Grupp_33
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            string selectedCategory = coBoxCat.SelectedItem.ToString();
-            var query = from cat in categoryList
-                        where cat.Name == selectedCategory
-                        select cat;
+            if (Validation.CheckURL(txtURL.Text) == true)
+            {
+                string selectedCategory = coBoxCat.SelectedItem.ToString();
 
-            Category category = query.First();
+                Category category = catControll.GetCategoryByName(selectedCategory);
 
-            int updatefreq = Int32.Parse(coBoxUpdFreq.SelectedItem.ToString() + "000");
+                int updatefreq = Int32.Parse(coBoxUpdFreq.SelectedItem.ToString() + "000");
 
+                pod = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
+                category.podcastsList.Add(pod.Name);
+                catControll.SerializeCat(categoryList);
+                this.Close();
+            }
 
-            pod = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq,  category);
-            category.podcastsList.Add(pod.Name);
-            catControll.SerializeCat(categoryList);
-            this.Close();
         }
 
         public Media GetNewPodcast()

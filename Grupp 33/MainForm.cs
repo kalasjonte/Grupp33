@@ -84,6 +84,9 @@ namespace Grupp_33
 
                 fillPodListview(podcontroll.GetAllPodcasts());
                 fillCatListview(categoryController.GetAllCategories());
+                txtEpDes.Text = "";
+                listViewEp.Items.Clear();
+
             }
 
         }
@@ -103,7 +106,9 @@ namespace Grupp_33
 
 
                 fillPodListview(podcontroll.GetAllPodcasts());
-                
+                txtEpDes.Text = "";
+                listViewEp.Items.Clear();
+
                 timer.Start();
             }
                 
@@ -219,6 +224,11 @@ namespace Grupp_33
                 }
                 coBoxCat.SelectedIndex = coBoxCat.FindStringExact(selectedPod.Category.Name);
             }
+            else
+            {
+                fillPodListview(podcontroll.GetAllPodcasts());
+                txtEpDes.Text = "";
+            }
 
         }
         private void LoadEpListView(List<Item> itemList)
@@ -263,7 +273,7 @@ namespace Grupp_33
         }
         private async void TimerEvent(object sender, EventArgs e)
         {
-            Console.WriteLine("tick");
+            
             foreach (var item in podcontroll.GetAllPodcasts())
             {
                 
@@ -290,6 +300,8 @@ namespace Grupp_33
         {
             if (listViewCat.SelectedItems.Count > 0)
             {
+                listViewEp.Items.Clear();
+                txtEpDes.Text = "";
                 string catName = listViewCat.SelectedItems[0].Text;
 
 
@@ -321,6 +333,8 @@ namespace Grupp_33
 
                 fillCatListview(categoryController.GetAllCategories());
                 fillPodListview(podcontroll.GetAllPodcasts());
+                txtEpDes.Text = "";
+                listViewEp.Items.Clear();
 
                 timer.Start();
 
@@ -338,7 +352,8 @@ namespace Grupp_33
                 podcontroll.DeletePodOnName(podName);
 
                 fillPodListview(podcontroll.GetAllPodcasts());
-
+                txtEpDes.Text = "";
+                listViewEp.Items.Clear();
                 timer.Start();
 
             }

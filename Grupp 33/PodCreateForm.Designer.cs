@@ -45,56 +45,60 @@ namespace Grupp_33
             // lblHeadtitle
             // 
             this.lblHeadtitle.AutoSize = true;
-            this.lblHeadtitle.Location = new System.Drawing.Point(262, 39);
+            this.lblHeadtitle.Location = new System.Drawing.Point(466, 60);
+            this.lblHeadtitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblHeadtitle.Name = "lblHeadtitle";
-            this.lblHeadtitle.Size = new System.Drawing.Size(290, 20);
+            this.lblHeadtitle.Size = new System.Drawing.Size(521, 32);
             this.lblHeadtitle.TabIndex = 0;
             this.lblHeadtitle.Text = "Här kan du lägga till en podd till ditt feed";
             // 
             // lblURL
             // 
             this.lblURL.AutoSize = true;
-            this.lblURL.Location = new System.Drawing.Point(160, 100);
+            this.lblURL.Location = new System.Drawing.Point(284, 155);
+            this.lblURL.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(46, 20);
+            this.lblURL.Size = new System.Drawing.Size(79, 32);
             this.lblURL.TabIndex = 1;
             this.lblURL.Text = "URL:";
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(164, 182);
+            this.lblTitle.Location = new System.Drawing.Point(292, 282);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(42, 20);
+            this.lblTitle.Size = new System.Drawing.Size(78, 32);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Titel:";
             // 
             // lblUpdFreq
             // 
             this.lblUpdFreq.AutoSize = true;
-            this.lblUpdFreq.Location = new System.Drawing.Point(458, 236);
+            this.lblUpdFreq.Location = new System.Drawing.Point(814, 366);
+            this.lblUpdFreq.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUpdFreq.Name = "lblUpdFreq";
-            this.lblUpdFreq.Size = new System.Drawing.Size(246, 20);
+            this.lblUpdFreq.Size = new System.Drawing.Size(438, 32);
             this.lblUpdFreq.TabIndex = 3;
             this.lblUpdFreq.Text = "Uppdateringsfrekvens i sekunder:";
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(223, 236);
+            this.lblCategory.Location = new System.Drawing.Point(396, 366);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(72, 20);
+            this.lblCategory.Size = new System.Drawing.Size(130, 32);
             this.lblCategory.TabIndex = 4;
             this.lblCategory.Text = "Kategori:";
             // 
             // coBoxCat
             // 
             this.coBoxCat.FormattingEnabled = true;
-            this.coBoxCat.Items.AddRange(new object[] {
-            "PLACEHOLDER"});
-            this.coBoxCat.Location = new System.Drawing.Point(227, 270);
+            this.coBoxCat.Location = new System.Drawing.Point(404, 418);
+            this.coBoxCat.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.coBoxCat.Name = "coBoxCat";
-            this.coBoxCat.Size = new System.Drawing.Size(137, 28);
+            this.coBoxCat.Size = new System.Drawing.Size(240, 39);
             this.coBoxCat.TabIndex = 5;
             // 
             // coBoxUpdFreq
@@ -104,30 +108,34 @@ namespace Grupp_33
             "15",
             "30",
             "60"});
-            this.coBoxUpdFreq.Location = new System.Drawing.Point(462, 270);
+            this.coBoxUpdFreq.Location = new System.Drawing.Point(821, 418);
+            this.coBoxUpdFreq.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.coBoxUpdFreq.Name = "coBoxUpdFreq";
-            this.coBoxUpdFreq.Size = new System.Drawing.Size(165, 28);
+            this.coBoxUpdFreq.Size = new System.Drawing.Size(290, 39);
             this.coBoxUpdFreq.TabIndex = 6;
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(227, 94);
+            this.txtURL.Location = new System.Drawing.Point(404, 146);
+            this.txtURL.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(400, 26);
+            this.txtURL.Size = new System.Drawing.Size(708, 38);
             this.txtURL.TabIndex = 7;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(227, 176);
+            this.txtTitle.Location = new System.Drawing.Point(404, 273);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(400, 26);
+            this.txtTitle.Size = new System.Drawing.Size(708, 38);
             this.txtTitle.TabIndex = 8;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(625, 386);
+            this.btnCreate.Location = new System.Drawing.Point(1111, 598);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(130, 33);
+            this.btnCreate.Size = new System.Drawing.Size(231, 51);
             this.btnCreate.TabIndex = 9;
             this.btnCreate.Text = "Lägg till";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -135,18 +143,19 @@ namespace Grupp_33
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(44, 386);
+            this.btnCancel.Location = new System.Drawing.Point(78, 598);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(130, 33);
+            this.btnCancel.Size = new System.Drawing.Size(231, 51);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Tillbaka";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // PodCreateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1422, 697);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.txtTitle);
@@ -158,6 +167,7 @@ namespace Grupp_33
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblURL);
             this.Controls.Add(this.lblHeadtitle);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "PodCreateForm";
             this.Text = "PodCreateForm";
             this.ResumeLayout(false);

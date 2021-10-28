@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace BLL
 {
-    public class Validation : UserException
+    public static class Validation 
     {
-        public Validation() { }
+        private static UserException exception = new UserException();
 
-        public override bool CheckURL(string url)
+        public static bool CheckURL(string url) //lägg till så mellanslag etc inte är OK -- ny metod
         {
             Uri uri;
             bool correctURL = 
@@ -20,16 +20,16 @@ namespace BLL
             {
                 if (!correctURL)
                 {
-                    throw new UserException("FEL");
+                    throw new UserException("Den angedda URL-adressen är inte korrekt.");
                 }
             }
             catch (UserException ex)
             {
-                MessageBox.Show(ex.Message, "Den angedda URL-adressen är inte korrekt.");
+                MessageBox.Show(ex.Message, "FEL!");
             }
             return correctURL;
         }
-        public  bool CheckEmptyTxt(string text)
+        public static  bool CheckEmptyTxt(string text)
         {
             bool isEmpty = String.IsNullOrEmpty(text);
             try
