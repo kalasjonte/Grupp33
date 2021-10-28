@@ -9,24 +9,35 @@ namespace DAL
 {
     public class CategoryRepository : ICategoryRepository<Category>
     {
-        List<Category> listOfCategories;
         SerializerXml xml = new SerializerXml();
+        List<Category> listOfCategories;
 
         public CategoryRepository()
         {
             listOfCategories = new List<Category>();
-            listOfCategories = xml.DeserializeCategory();
+            listOfCategories = GetAll();
         }
 
         public void Create(Category entity)
         {
             listOfCategories.Add(entity);
             SaveChanges();
+            GetAll();
         }
 
         public void Delete(int index)
         {
             throw new NotImplementedException();
+        }
+
+        public void DeleteCategoryOnName(string name)
+        {
+            var catQueryList = from cat in listOfCategories
+                               where cat.Name != name
+                               select cat;
+            listOfCategories = catQueryList.ToList();
+            SaveChanges();
+            GetAll();
         }
 
         public void DeleteFromName(string name)

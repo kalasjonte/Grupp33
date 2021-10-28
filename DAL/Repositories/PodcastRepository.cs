@@ -9,12 +9,11 @@ namespace DAL
 {
     public class PodcastRepository : IPodcastRepository<Podcast>
     {
-        SerializerXml serializerXml;
+        SerializerXml serializerXml = new SerializerXml();
         List<Podcast> listOfPodcasts;
         //CRUDO
         public PodcastRepository()
         {
-            serializerXml = new SerializerXml();
             listOfPodcasts = new List<Podcast>();
             listOfPodcasts = GetAll();
         }
@@ -38,6 +37,7 @@ namespace DAL
 
             listOfPodcasts = podQuery.ToList();
             SaveChanges();
+            GetAll();
         }
 
         public List<Podcast> GetAll()
@@ -145,10 +145,10 @@ namespace DAL
             return podQuery.First();
         }
 
-        public List<Podcast> GetByCategory(Category category)  // ska vi ha fler respos?
+        public List<Podcast> GetByCategory(string name)  // ska vi ha fler respos?
         {
             var podQuery = from pod in listOfPodcasts
-                           where pod.Category.Name == category.Name
+                           where pod.Category.Name == name
                            select pod;
             return podQuery.ToList();
         }
@@ -177,8 +177,93 @@ namespace DAL
             var podQuery = from pod in listOfPodcasts
                            orderby pod.Name
                            select pod;
+
              listOfPodcasts = podQuery.ToList();
             return listOfPodcasts;
+        }
+
+        public async Task UpdatePodcastFromRss(Podcast podcast)
+        {
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name != podcast.Name
+                           select pod;
+            
+            listOfPodcasts = podQuery.ToList();
+            Create(podcast);
+            GetAll();
+
+            
+
+        }
+
+        public void UpdatePodcastCat(string oldName, string newName)
+        {
+
+            List<Podcast> oldList = GetByCategory(oldName);
+
+            var podquery = from pod in listOfPodcasts
+                            where pod.Category.Name != oldName
+                            select pod;
+            listOfPodcasts = podquery.ToList();
+
+
+
+            
+
+            foreach (var item in oldList)
+            {
+                item.Category.Name = newName;
+                listOfPodcasts.Add(item);
+            }
+            SaveChanges();
+            GetAll();
+        }
+
+        public void UpdatePodcastByName(Category cat, int freq, string oldName, string newName)
+        {
+            Podcast podcast = GetByName(oldName);   
+            var podquery = from pod in listOfPodcasts
+                           where pod.Name != oldName
+                           select pod;
+            listOfPodcasts = podquery.ToList();
+
+            
+                podcast.Category = cat;
+                podcast.UpdateFrequency = freq;
+                podcast.Name = newName;
+                listOfPodcasts.Add(podcast);
+            
+            SaveChanges();
+            GetAll();
+        }
+
+        public Podcast GetPodByName(string name)
+        {
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod;
+            return podQuery.First();
+        }
+
+        public List<Podcast> DescendOrder()
+        {
+            var queryDescend = from pod in listOfPodcasts
+                               orderby pod.Name
+                               select pod;
+            listOfPodcasts = queryDescend.ToList();
+            SaveChanges();
+            return GetAll();
+        }
+
+        public void DeletePodcastOnCategory(Category cat)
+        {
+            var podInCat = from pod in listOfPodcasts
+                           where pod.Category.Name != cat.Name
+                           select pod;
+
+            listOfPodcasts = podInCat.ToList();
+            SaveChanges();
+            GetAll();
         }
     }
 }

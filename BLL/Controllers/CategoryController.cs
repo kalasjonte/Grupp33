@@ -61,6 +61,11 @@ namespace BLL
         {
             categoryRepo.UpdateCategoryFromName(name, newName);
         }
+
+        public void DeleteCategoryOnName(string name)
+        {
+            categoryRepo.DeleteCategoryOnName(name);
+        }
     }
 
     

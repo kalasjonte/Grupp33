@@ -13,5 +13,7 @@ namespace DAL
         Category GetCategoryFromName(string name);
         void UpdateCategoryList(List<T> categorylist);
         void UpdateCategoryFromName(string name, string newName);
+
+        void DeleteCategoryOnName(string name);
     }
 }
