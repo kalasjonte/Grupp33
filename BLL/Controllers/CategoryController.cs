@@ -11,9 +11,17 @@ namespace BLL
 
     public class CategoryController
     {
+        public ICategoryRepository<Category> categoryRepo;
+
         public CategoryController()
         {
+            categoryRepo = new CategoryRepository();
+        }
 
+        public void createCategory(string name)
+        {
+            Category category = new Category(name);
+            categoryRepo.Create(category);
         }
 
         public void SerializeCat(List<Category> categorys)
@@ -26,6 +34,32 @@ namespace BLL
         {
             SerializerXml xml = new SerializerXml();
             return xml.DeserializeCategory();
+        }
+
+        public Category GetCategoryByName(string name)
+        {
+             return categoryRepo.GetCategoryFromName(name);
+
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            return categoryRepo.GetAll();
+        }
+
+        public void newCategoryList(List<Category> list)
+        {
+            categoryRepo.UpdateCategoryList(list);
+        }
+
+        public void Save()
+        {
+            categoryRepo.SaveChanges();
+        }
+
+        public void UpdateCategoryName(string name, string newName)
+        {
+            categoryRepo.UpdateCategoryFromName(name, newName);
         }
     }
 

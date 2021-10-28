@@ -9,9 +9,19 @@ namespace DAL
 {
     public class CategoryRepository : ICategoryRepository<Category>
     {
+        List<Category> listOfCategories;
+        SerializerXml xml = new SerializerXml();
+
+        public CategoryRepository()
+        {
+            listOfCategories = new List<Category>();
+            listOfCategories = xml.DeserializeCategory();
+        }
+
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            listOfCategories.Add(entity);
+            SaveChanges();
         }
 
         public void Delete(int index)
@@ -26,12 +36,20 @@ namespace DAL
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return listOfCategories = xml.DeserializeCategory();
+        }
+
+        public Category GetCategoryFromName(string name)
+        {
+            var catQuery = from cat in listOfCategories
+                           where cat.Name == name
+                           select cat;
+            return catQuery.First();
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            xml.SerializeCategory(listOfCategories);
         }
 
         public List<Category> SortDesending()
@@ -47,6 +65,28 @@ namespace DAL
         public void Update(int index, Category entity)
         {
             throw new NotImplementedException();
+        }
+
+        public void UpdateCategoryFromName(string name, string newName)
+        {
+            var query = from cat in listOfCategories
+                        where cat.Name == name
+                        select cat;
+
+            var query2 = from cat in listOfCategories
+                        where cat.Name != name
+                        select cat;
+
+            listOfCategories = query2.ToList();
+            Category category = query.First();
+            category.Name = newName;
+            Create(category);
+        }
+
+        public void UpdateCategoryList(List<Category> categorylist)
+        {
+            listOfCategories = categorylist;
+            SaveChanges();
         }
     }
 }

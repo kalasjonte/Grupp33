@@ -22,12 +22,13 @@ namespace Grupp_33
         }
 
        
-        private Category category;
+        private string name;
 
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
-            category = new Category(txtCatName.Text);
-            
+            name = txtCatName.Text;
+            CategoryController controll = new CategoryController();
+            controll.createCategory(name);
             this.Close();
         }
 
@@ -37,10 +38,10 @@ namespace Grupp_33
             this.Close();
         }
 
-        public Category GetNewCategory()
+        public string GetNewCategory()
         {
             this.ShowDialog();
-            return category;
+            return name;
             
         }
     }
