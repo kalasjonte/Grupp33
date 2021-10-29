@@ -55,7 +55,11 @@ namespace DAL
             var catQuery = from cat in listOfCategories
                            where cat.Name == name
                            select cat;
-            return catQuery.First();
+            if (catQuery.Count() > 0)
+            {
+                return catQuery.First();
+            }
+            else return null;
         }
 
         public void SaveChanges()

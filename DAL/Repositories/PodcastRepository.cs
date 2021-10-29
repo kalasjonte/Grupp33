@@ -65,8 +65,12 @@ namespace DAL
             var podQuery = from pod in listOfPodcasts
                            where pod.Name == name
                            select pod;
-            return podQuery.First();
-            
+            if (podQuery.Count() > 0)
+            {
+                return podQuery.First();
+            }
+            else return null;
+
         }
 
         public Podcast GetByType(string type)  // Returnerar en pod men ska returnera en list, ta bort?
@@ -233,7 +237,12 @@ namespace DAL
             var podQuery = from pod in listOfPodcasts
                            where pod.Name == name
                            select pod;
-            return podQuery.First();
+           
+            if (podQuery.Count() > 0)
+            {
+                return podQuery.First();
+            }
+            else return null;
         }
 
         public List<Podcast> DescendOrder()
