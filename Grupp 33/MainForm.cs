@@ -208,6 +208,10 @@ namespace Grupp_33
             {
                 fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
+                txtName.Text = "";
+                coBoxFreq.SelectedIndex = 0;
+                coBoxCat.SelectedIndex = 0;
+
             }
         }
 
