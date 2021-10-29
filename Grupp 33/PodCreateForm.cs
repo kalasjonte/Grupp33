@@ -21,13 +21,14 @@ namespace Grupp_33
         public PodCreateForm()
         {
             InitializeComponent();
-            //hämta category xml --> lista cmbbox
+            coBoxUpdFreq.SelectedIndex = 0;
              categoryList = catControll.DeSerializeCat();
             foreach (var item in categoryList)
             {
                 coBoxCat.Items.Add(item.Name);
             }
-            
+            coBoxCat.SelectedIndex = 0;
+           
         }
 
 

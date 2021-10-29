@@ -99,6 +99,7 @@ namespace Grupp_33
             // 
             // coBoxFreq
             // 
+            this.coBoxFreq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.coBoxFreq.FormattingEnabled = true;
             this.coBoxFreq.Items.AddRange(new object[] {
             "15",
@@ -112,6 +113,7 @@ namespace Grupp_33
             // 
             // coBoxCat
             // 
+            this.coBoxCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.coBoxCat.FormattingEnabled = true;
             this.coBoxCat.Location = new System.Drawing.Point(582, 370);
             this.coBoxCat.Margin = new System.Windows.Forms.Padding(2);
