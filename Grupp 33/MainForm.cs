@@ -89,18 +89,19 @@ namespace Grupp_33
             if (listViewPod.SelectedItems.Count > 0)
             {
                 timer.Stop();
-                
-                Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
-               
-                selectedPodcastLV.Category = category;
-                selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
-                selectedPodcastLV.Name = txtName.Text;
+                if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text))
+                {
+                    Category category = categoryController.GetCategoryByName(coBoxCat.Text);
+                    podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
-                fillPodListview(podcontroll.GetAllPodcasts());
-                txtEpDes.Text = "";
-                listViewEp.Items.Clear();
+                    selectedPodcastLV.Category = category;
+                    selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
+                    selectedPodcastLV.Name = txtName.Text;
 
+                    fillPodListview(podcontroll.GetAllPodcasts());
+                    txtEpDes.Text = "";
+                    listViewEp.Items.Clear();
+                }
                 timer.Start();
             }    
         }
