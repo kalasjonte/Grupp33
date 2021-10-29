@@ -287,6 +287,7 @@ namespace Grupp_33
             // 
             this.listViewCat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.KategoriNamn});
+            this.listViewCat.FullRowSelect = true;
             this.listViewCat.HideSelection = false;
             this.listViewCat.Location = new System.Drawing.Point(836, 69);
             this.listViewCat.Margin = new System.Windows.Forms.Padding(2);

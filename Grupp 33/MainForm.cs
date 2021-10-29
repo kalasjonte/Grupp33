@@ -303,33 +303,43 @@ namespace Grupp_33
             if (listViewCat.SelectedItems.Count > 0)
             {
                 timer.Stop();
-                string catName = listViewCat.SelectedItems[0].Text;
+                List<Category> fullList = categoryController.GetAllCategories();
 
-                Category deletethis = categoryController.GetCategoryByName(catName);
-                List<Podcast> deletepodlist = new List<Podcast>();
-                deletepodlist = podcontroll.GetAllPodcastByCat(deletethis.Name);
-                string deletenames = "\n";
-                foreach (Podcast item in deletepodlist)
+                if (fullList.Count() > 1)
                 {
-                    deletenames += item.Name + "\n";
-                }
-                DialogResult dr = MessageBox.Show("Är du säker att du vill ta bort följande podcasts?" + deletenames, "Ta bort", MessageBoxButtons.YesNo);
-                switch(dr)
-                {
-                    case DialogResult.Yes:
-                podcontroll.DeleteOnCategory(deletethis);
-                categoryController.DeleteCategoryOnName(deletethis.Name);
 
-                fillCatListview(categoryController.GetAllCategories());
-                fillPodListview(podcontroll.GetAllPodcasts());
-                txtEpDes.Text = "";
-                listViewEp.Items.Clear();
-                        break;
+                    string catName = listViewCat.SelectedItems[0].Text;
 
-                    case DialogResult.No:
-                        break;
+                    Category deletethis = categoryController.GetCategoryByName(catName);
+                    List<Podcast> deletepodlist = new List<Podcast>();
+                    deletepodlist = podcontroll.GetAllPodcastByCat(deletethis.Name);
+                    string deletenames = "\n";
+
+                    foreach (Podcast item in deletepodlist)
+                    {
+                        deletenames += item.Name + "\n";
+                    }
+                    DialogResult dr = MessageBox.Show("Är du säker att du vill ta bort följande podcasts?" + deletenames, "Ta bort", MessageBoxButtons.YesNo);
+                    switch (dr)
+                    {
+                        case DialogResult.Yes:
+                            podcontroll.DeleteOnCategory(deletethis);
+                            categoryController.DeleteCategoryOnName(deletethis.Name);
+
+                            fillCatListview(categoryController.GetAllCategories());
+                            fillPodListview(podcontroll.GetAllPodcasts());
+                            txtEpDes.Text = "";
+                            listViewEp.Items.Clear();
+                            break;
+
+                        case DialogResult.No:
+                            break;
+                    }
+                    timer.Start();
                 }
-                timer.Start();
+                else {
+                    MessageBox.Show("Du försöker ta bort den sista kategorin! Skapa en ny och ta sedan bort denna.");
+                }
             }
         }
 
