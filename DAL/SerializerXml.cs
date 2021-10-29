@@ -27,6 +27,15 @@ namespace DAL
         {
 
             XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
+            
+            string path = Directory.GetCurrentDirectory();
+            path += @"\Categorys.xml";
+
+            Console.WriteLine(path);
+
+            Directory.Exists(path);
+
+            //if (path)
            
             using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
             {
