@@ -35,6 +35,7 @@ namespace Grupp_33
             timer.Interval = 1000;
             timer.Tick += TimerEvent;
             timer.Start();
+
         }
         private void MainForm_Load(object sender, EventArgs e)
         {

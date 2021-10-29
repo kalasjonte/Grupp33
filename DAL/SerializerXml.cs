@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -27,77 +28,69 @@ namespace DAL
         {
 
             XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
-           
-            using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
-            {
-                xmlSerializer.Serialize(fs, listOfCategorys);
-            }
+            
+                using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
+                {
+                    xmlSerializer.Serialize(fs, listOfCategorys);
+                }
 
         }
 
         public List<Category> DeserializeCategory()
         {
+
             List<Category> categories;
+            List<Category> categoriesEmpty = new List<Category>();
+
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
-            using (FileStream fs = new FileStream("Categorys.xml", FileMode.Open, FileAccess.Read))
+
+            if (File.Exists(Environment.CurrentDirectory + @"\Categorys.xml"))
             {
-                categories = (List<Category>)xmlSerializer.Deserialize(fs);
+                using (FileStream fs = new FileStream("Categorys.xml", FileMode.Open, FileAccess.Read))
+                {
+                    categories = (List<Category>)xmlSerializer.Deserialize(fs);
+                    return categories;
+                }
+            }
+            else
+            {
+                return categoriesEmpty;
             }
 
-
-            return categories;
         }
 
         public void SerializePodcast(List<Podcast> listOfPodcast)
         {
-            //Behövs kanske en egen generic list klass för att lösa detta
             
             XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
 
-            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
-            {
-                xmlSerializer.Serialize(fs, listOfPodcast);
-            }
-
-
-        }
-
-        public async void SerializePodcastAsync(List<Podcast> listOfPodcast)
-        {
-            //Behövs kanske en egen generic list klass för att lösa detta
-
-            XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
-
-            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
-            {
-                xmlSerializer.Serialize(fs, listOfPodcast);
-            }
-
+                using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
+                {
+                    xmlSerializer.Serialize(fs, listOfPodcast);
+                }         
 
         }
 
         public List<Podcast> DeserializePodcast()
         {
             List<Podcast> podcastList;
+            List<Podcast> podcastListEmpty = new List<Podcast>();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-            using (FileStream fs = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
+            
+            if (File.Exists(Environment.CurrentDirectory + @"\Podcast.xml"))
             {
-                podcastList = (List<Podcast>)xmlSerializer.Deserialize(fs);
-            }
-
-            foreach (var item in podcastList)
-            {
-                //Console.WriteLine(item.Name);
-                //Console.WriteLine(item.URL);
-                //Console.WriteLine(item.NumberOfItems);
-                foreach (var episode in item.items)
+                using (FileStream fs = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
                 {
-                    //Console.WriteLine(episode.Name);
-                    //Console.WriteLine(episode.Description);
+                    podcastList = (List<Podcast>)xmlSerializer.Deserialize(fs);
+                    return podcastList;
                 }
+          
+            }
+            else
+            {
+                return podcastListEmpty;
             }
 
-            return podcastList;
         }
 
 
