@@ -34,7 +34,7 @@ namespace Grupp_33
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (Validation.CheckURL(txtURL.Text) && !Validation.ContainsWhiteSpace(txtURL.Text) && !Validation.CheckEmptyTxt(txtTitle.Text) && !Validation.CheckEmptyTxt(txtURL.Text) && !Validation.isPodcastNameTaken(txtTitle.Text))
+            if (Validation.CheckURL(txtURL.Text) && !Validation.ContainsWhiteSpace(txtURL.Text) && !Validation.ContainsWhiteSpace(txtTitle.Text) && !Validation.CheckEmptyTxt(txtTitle.Text) && !Validation.CheckEmptyTxt(txtURL.Text) && !Validation.isPodcastNameTaken(txtTitle.Text))
             {
                 string selectedCategory = coBoxCat.SelectedItem.ToString();
 

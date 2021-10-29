@@ -56,7 +56,7 @@ namespace BLL
             {
                 if (hasWhiteSpace)
                 {
-                    throw new UserException("Du får inte ha mellanslag i URL:en");
+                    throw new UserException("Du får inte ha mellanslag i fälten");
 
                 }
 
