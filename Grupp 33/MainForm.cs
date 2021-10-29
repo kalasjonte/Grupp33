@@ -70,17 +70,21 @@ namespace Grupp_33
 
         private void btnCatSave_Click(object sender, EventArgs e)
         {
-            if (listViewCat.SelectedItems.Count > 0)
+            if (listViewCat.SelectedItems.Count > 0) 
             {
-                string oldName = listViewCat.SelectedItems[0].Text;
+                if (!Validation.CheckEmptyTxt(txtCat.Text) && !Validation.ContainsWhiteSpace(txtCat.Text))
+                {
 
-                categoryController.UpdateCategoryName(oldName, txtCat.Text);
-                podcontroll.UpdatePodcastCat(oldName, txtCat.Text);
+                    string oldName = listViewCat.SelectedItems[0].Text;
 
-                fillPodListview(podcontroll.GetAllPodcasts());
-                fillCatListview(categoryController.GetAllCategories());
-                txtEpDes.Text = "";
-                listViewEp.Items.Clear();
+                    categoryController.UpdateCategoryName(oldName, txtCat.Text);
+                    podcontroll.UpdatePodcastCat(oldName, txtCat.Text);
+
+                    fillPodListview(podcontroll.GetAllPodcasts());
+                    fillCatListview(categoryController.GetAllCategories());
+                    txtEpDes.Text = "";
+                    listViewEp.Items.Clear();
+                }
             }
         }
 
