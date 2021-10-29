@@ -50,7 +50,6 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\EpisodeController.cs" />
     <Compile Include="Controllers\PodcastController.cs" />
-    <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exception-Validation\UserException.cs" />
     <Compile Include="Exception-Validation\Validation.cs" />

@@ -51,8 +51,6 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="IRepositories\IPodcastRepository.cs" />
     <Compile Include="Repositories\PodcastRepository.cs" />
-    <Compile Include="Repositories\ItemRepository.cs" />
-    <Compile Include="IRepositories\IItemRepository.cs" />
     <Compile Include="SerializerXml.cs" />
     <Compile Include="IRepositories\IMediaRepository.cs" />
     <Compile Include="IRepositories\IRepository.cs" />
