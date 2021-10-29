@@ -302,16 +302,30 @@ namespace Grupp_33
                 string catName = listViewCat.SelectedItems[0].Text;
 
                 Category deletethis = categoryController.GetCategoryByName(catName);
+                List<Podcast> deletepodlist = new List<Podcast>();
+                deletepodlist = podcontroll.GetAllPodcastByCat(deletethis.Name);
+                string deletenames = "\n";
+                foreach (Podcast item in deletepodlist)
+                {
+                    deletenames += item.Name + "\n";
+                }
+                DialogResult dr = MessageBox.Show("Är du säker att du vill ta bort följande podcasts?" + deletenames, "Ta bort", MessageBoxButtons.YesNo);
+                switch(dr)
+                {
+                    case DialogResult.Yes:
                 podcontroll.DeleteOnCategory(deletethis);
                 categoryController.DeleteCategoryOnName(deletethis.Name);
-                
+
                 fillCatListview(categoryController.GetAllCategories());
                 fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
                 listViewEp.Items.Clear();
+                        break;
 
+                    case DialogResult.No:
+                        break;
+                }
                 timer.Start();
-
             }
         }
 
