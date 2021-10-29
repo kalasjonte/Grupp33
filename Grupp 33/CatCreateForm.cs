@@ -26,10 +26,15 @@ namespace Grupp_33
 
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
+            
             name = txtCatName.Text;
-            CategoryController controll = new CategoryController();
-            controll.createCategory(name);
-            this.Close();
+            if (!Validation.CheckEmptyTxt(name) && !Validation.isCategoryNameTaken(name))
+            {
+                CategoryController controll = new CategoryController();
+                controll.createCategory(name);
+                this.Close();
+            }
+
         }
 
         private void btnCatCancel_Click(object sender, EventArgs e)
