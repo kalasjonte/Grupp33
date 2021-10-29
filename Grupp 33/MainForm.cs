@@ -45,28 +45,27 @@ namespace Grupp_33
             timer.Stop();
             PodCreateForm podCreateForm = new PodCreateForm();
             Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
-            //if catlist have adda podcast till specifika categoryns lista
-           
-            var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
 
-            //ListViewItem item1 = new ListViewItem(podcast.Name, 0);
-            //item1.SubItems.Add(podcast.NumberOfItems.ToString());
-            //item1.SubItems.Add(podcast.UpdateFrequency.ToString());
-            //item1.SubItems.Add(podcast.Category.Name);
+            if (!Validation.isNull(podcast))
+            {
+                var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
 
-            //listViewPod.Items.Add(item1);
+                fillPodListview(podcontroll.GetAllPodcasts());
+            }
             
-            fillPodListview(podcontroll.GetAllPodcasts());
             timer.Start();
         }
 
         private void btnCatCreate_Click(object sender, EventArgs e)
         {
+
             CatCreateForm catCreateForm = new CatCreateForm();
             string catname = catCreateForm.GetNewCategory();
+            if (!Validation.isNull(catname))
+            {
+                fillCatListview(categoryController.GetAllCategories());
+            }
             
-            //denna blir null när man kryssar catCreate förnstret utan att skriva något
-            listViewCat.Items.Add(catname);
         }
 
         private void btnCatSave_Click(object sender, EventArgs e)

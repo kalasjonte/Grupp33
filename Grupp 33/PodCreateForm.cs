@@ -33,7 +33,7 @@ namespace Grupp_33
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (Validation.CheckURL(txtURL.Text) == true)
+            if (Validation.CheckURL(txtURL.Text) && !Validation.ContainsWhiteSpace(txtURL.Text) && !Validation.isPodcastNameTaken(txtTitle.Text))
             {
                 string selectedCategory = coBoxCat.SelectedItem.ToString();
 
@@ -54,6 +54,11 @@ namespace Grupp_33
             this.ShowDialog();
             return pod;
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
