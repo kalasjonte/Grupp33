@@ -95,12 +95,6 @@ namespace BLL
         {
             podcastRepo.DeleteFromName(name);
         }
-        //public List<Podcast> DeserializePodcast()
-        //{
-        //    SerializerXml serializer = new SerializerXml();
-        //    return serializer.DeserializePodcast();
-        //}
-
     }
 
 

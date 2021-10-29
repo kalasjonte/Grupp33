@@ -35,11 +35,10 @@ namespace Grupp_33
             timer.Interval = 1000;
             timer.Tick += TimerEvent;
             timer.Start();
-
-            
         }
-
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
         {
@@ -49,7 +48,6 @@ namespace Grupp_33
             //if catlist have adda podcast till specifika categoryns lista
            
             var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
-
 
             //ListViewItem item1 = new ListViewItem(podcast.Name, 0);
             //item1.SubItems.Add(podcast.NumberOfItems.ToString());
@@ -67,10 +65,8 @@ namespace Grupp_33
             CatCreateForm catCreateForm = new CatCreateForm();
             string catname = catCreateForm.GetNewCategory();
             
-
             //denna blir null när man kryssar catCreate förnstret utan att skriva något
             listViewCat.Items.Add(catname);
-
         }
 
         private void btnCatSave_Click(object sender, EventArgs e)
@@ -86,9 +82,7 @@ namespace Grupp_33
                 fillCatListview(categoryController.GetAllCategories());
                 txtEpDes.Text = "";
                 listViewEp.Items.Clear();
-
             }
-
         }
 
         private void btnPodSave_Click(object sender, EventArgs e)
@@ -104,23 +98,15 @@ namespace Grupp_33
                 selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                 selectedPodcastLV.Name = txtName.Text;
 
-
                 fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
                 listViewEp.Items.Clear();
 
                 timer.Start();
-            }
-                
+            }    
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
         private void LoadPodListView()
         {
-
             foreach (var item in podcontroll.GetAllPodcasts())
             {
                 item.UpdateTheInterval();
@@ -140,14 +126,11 @@ namespace Grupp_33
 
         private void LoadCategoryListView()
         {
-            
             fillCatListview(categoryController.GetAllCategories());
-
         }
 
         public void fillPodListview(List<Podcast> PodList)
         {
-            
             listViewPod.Items.Clear();
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -172,7 +155,6 @@ namespace Grupp_33
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-
             foreach (var cat in catList)
             {
                 ListViewItem item1 = new ListViewItem(cat.Name, 0);
@@ -187,10 +169,8 @@ namespace Grupp_33
 
             if (listViewPod.SelectedItems.Count > 0)
             {
-
                 var podrad = listViewPod.SelectedItems[0];
                 string name = podrad.Text; // == namnet på podden
-
 
                 Podcast selectedPod = podcontroll.GetPodByName(name);
                 selectedPodcastLV = selectedPod;
@@ -222,6 +202,7 @@ namespace Grupp_33
                 {
                     coBoxCat.Items.Add(item.Name);
                 }
+                
                 coBoxCat.SelectedIndex = coBoxCat.FindStringExact(selectedPod.Category.Name);
             }
             else
@@ -229,8 +210,8 @@ namespace Grupp_33
                 fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
             }
-
         }
+
         private void LoadEpListView(List<Item> itemList)
         {
             listViewEp.View = View.Details;
@@ -242,7 +223,6 @@ namespace Grupp_33
                 ListViewItem item = new ListViewItem(ep.Name, 0);
                 listViewEp.Items.Add(item);
             }
-
         }
 
         private void listViewEp_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,14 +231,13 @@ namespace Grupp_33
 
             if (listViewEp.SelectedItems.Count > 0)
             {
-
                 var eprad = listViewEp.SelectedItems[0];
                 string name = eprad.Text; // == namnet på avsnittet
                 List<Item> items = selectedPodcastLV.items;
+
                 var query = from item in items
                             where item.Name == name
                             select item.Guid;
-
 
                 string guid = query.First();
                 var query2 = from item2 in items
@@ -268,21 +247,16 @@ namespace Grupp_33
                 string description = query2.First();
                 txtEpDes.Text = description;
             }
-
-
         }
+
         private async void TimerEvent(object sender, EventArgs e)
         {
-            
             foreach (var item in podcontroll.GetAllPodcasts())
             {
-                
-
                 bool check = item.CheckIfUpdate();
+               
                 if (check == true)
                 {
-                    
-                    
                     var bulle = await Task.FromResult(podcontroll.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
 
@@ -290,8 +264,6 @@ namespace Grupp_33
                     {
                         fillPodListview(podcontroll.OrderByDescending());
                     }
-
-
                 }
             }
         }
@@ -303,7 +275,6 @@ namespace Grupp_33
                 listViewEp.Items.Clear();
                 txtEpDes.Text = "";
                 string catName = listViewCat.SelectedItems[0].Text;
-
 
                 LoadPodListViewSortedByCategory(podcontroll.GetAllPodcastByCat(catName));
 
@@ -330,7 +301,6 @@ namespace Grupp_33
                 podcontroll.DeleteOnCategory(deletethis);
                 categoryController.DeleteCategoryOnName(deletethis.Name);
                 
-
                 fillCatListview(categoryController.GetAllCategories());
                 fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";

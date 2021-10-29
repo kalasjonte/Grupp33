@@ -82,7 +82,6 @@ namespace DAL
         }
 
 
-
         //_________________________
 
         
@@ -191,9 +190,6 @@ namespace DAL
             listOfPodcasts = podQuery.ToList();
             Create(podcast);
             GetAll();
-
-            
-
         }
 
         public void UpdatePodcastCat(string oldName, string newName)
@@ -204,11 +200,7 @@ namespace DAL
             var podquery = from pod in listOfPodcasts
                             where pod.Category.Name != oldName
                             select pod;
-            listOfPodcasts = podquery.ToList();
-
-
-
-            
+            listOfPodcasts = podquery.ToList();   
 
             foreach (var item in oldList)
             {
@@ -227,11 +219,10 @@ namespace DAL
                            select pod;
             listOfPodcasts = podquery.ToList();
 
-            
-                podcast.Category = cat;
-                podcast.UpdateFrequency = freq;
-                podcast.Name = newName;
-                listOfPodcasts.Add(podcast);
+            podcast.Category = cat;
+            podcast.UpdateFrequency = freq;
+            podcast.Name = newName;
+            listOfPodcasts.Add(podcast);
             
             SaveChanges();
             GetAll();
