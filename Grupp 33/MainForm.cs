@@ -89,7 +89,7 @@ namespace Grupp_33
             if (listViewPod.SelectedItems.Count > 0)
             {
                 timer.Stop();
-                if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text))
+                if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
                 {
                     Category category = categoryController.GetCategoryByName(coBoxCat.Text);
                     podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
