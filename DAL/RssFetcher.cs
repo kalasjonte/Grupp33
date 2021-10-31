@@ -22,7 +22,10 @@ namespace DAL
             //måste handla execptions, server fel och xml fel
             string url = pod.URL;
             XmlReader xmlReader = XmlReader.Create(url);
-            Task<SyndicationFeed> taskAvsnitt =Task.Run(()=>SyndicationFeed.Load(xmlReader));
+            //felet uppstår på en extern tråd vilket gör att vi inte kan catcha felet.
+            //XmlDocument.Validate();: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument.validate?view=net-5.0
+
+            Task<SyndicationFeed> taskAvsnitt = Task.Run(()=>SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
             pod.NumberOfItems = feed.Items.Count();
