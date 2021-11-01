@@ -49,12 +49,10 @@
   <ItemGroup>
     <Compile Include="IRepositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
-    <Compile Include="IRepositories\IPodcastRepository.cs" />
-    <Compile Include="Repositories\PodcastRepository.cs" />
-    <Compile Include="SerializerXml.cs" />
     <Compile Include="IRepositories\IMediaRepository.cs" />
-    <Compile Include="IRepositories\IRepository.cs" />
     <Compile Include="Repositories\MediaRepository.cs" />
+    <Compile Include="SerializerXml.cs" />
+    <Compile Include="IRepositories\IRepository.cs" />
     <Compile Include="RssFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

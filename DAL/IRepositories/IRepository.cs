@@ -15,7 +15,8 @@ namespace DAL
         void SaveChanges();
         List<T> GetAll();
         List<T> SortDesending();
-        
+
+
 
     }
 }

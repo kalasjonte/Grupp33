@@ -11,7 +11,7 @@ namespace BLL
     public static class Validation
     {
         private static UserException exception = new UserException();
-        private static PodcastController podcontroll = new PodcastController();
+        private static MediaController podcontroll = new MediaController();
         private static CategoryController catontroll = new CategoryController();
 
         public static bool CheckURL(string url) 

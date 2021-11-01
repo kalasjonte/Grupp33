@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class PodcastController
+    public class MediaController
     {
-        public IPodcastRepository<Media> podcastRepo;
-        public PodcastController()
+        public IMediaRepository<Media> podcastRepo;
+        public MediaController()
         {
-           podcastRepo = new PodcastRepository();
+           podcastRepo = new MediaRepository();
         }
 
         public async Task<bool> FetchNewPodcastAsync(Media pod)

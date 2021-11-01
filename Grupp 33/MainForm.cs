@@ -17,7 +17,7 @@ namespace Grupp_33
         private Media selectedPodcastLV;
         private Category selectedCategoryLV;
         private Timer timer = new Timer();
-        public PodcastController podController = new PodcastController();
+        public MediaController mediaController = new MediaController();
         public CategoryController categoryController = new CategoryController();
 
         public MainForm()
@@ -53,9 +53,9 @@ namespace Grupp_33
 
             if (!Validation.isNull(podcast))
             {
-                var boolResult = await podController.FetchNewPodcastAsync(podcast);
+                var boolResult = await mediaController.FetchNewPodcastAsync(podcast);
 
-                fillPodListview(podController.GetAllPodcasts());
+                fillPodListview(mediaController.GetAllPodcasts());
             }
 
             timer.Start();
@@ -83,9 +83,9 @@ namespace Grupp_33
                     string oldName = listViewCat.SelectedItems[0].Text;
 
                     categoryController.UpdateCategoryName(oldName, txtCat.Text);
-                    podController.UpdatePodcastCat(oldName, txtCat.Text);
+                    mediaController.UpdatePodcastCat(oldName, txtCat.Text);
 
-                    fillPodListview(podController.GetAllPodcasts());
+                    fillPodListview(mediaController.GetAllPodcasts());
                     fillCatListview(categoryController.GetAllCategories());
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
@@ -97,18 +97,18 @@ namespace Grupp_33
         {
             if (listViewPod.SelectedItems.Count > 0)
             {
-                podController.GetAllPodcasts();
+                mediaController.GetAllPodcasts();
                 timer.Stop();
                 if(selectedPodcastLV.Name == txtName.Text) 
                 {
                     Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                    podController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+                    mediaController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
                     selectedPodcastLV.Category = category;
                     selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                     selectedPodcastLV.Name = txtName.Text;
 
-                    fillPodListview(podController.GetAllPodcasts());
+                    fillPodListview(mediaController.GetAllPodcasts());
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
                 }
@@ -117,13 +117,13 @@ namespace Grupp_33
                     if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
                     {
                         Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                        podController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+                        mediaController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
                         selectedPodcastLV.Category = category;
                         selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                         selectedPodcastLV.Name = txtName.Text;
 
-                        fillPodListview(podController.GetAllPodcasts());
+                        fillPodListview(mediaController.GetAllPodcasts());
                         txtEpDes.Text = "";
                         listViewEp.Items.Clear();
                     }
@@ -134,7 +134,7 @@ namespace Grupp_33
         }
         private void LoadPodListView()
         {
-            List<Media> list = podController.GetAllPodcasts();
+            List<Media> list = mediaController.GetAllPodcasts();
             foreach (var item in list)
             {
                 item.UpdateTheInterval();
@@ -202,7 +202,7 @@ namespace Grupp_33
                 var podRow = listViewPod.SelectedItems[0];
                 string name = podRow.Text;
 
-                Media selectedPod = podController.GetPodByName(name);
+                Media selectedPod = mediaController.GetPodByName(name);
                 List<Item> itemList = selectedPod.items;
                 selectedPodcastLV =  selectedPod;
                 
@@ -285,7 +285,7 @@ namespace Grupp_33
 
         private async void TimerEvent(object sender, EventArgs e)
         {
-            foreach (var item in podController.GetAllPodcasts())
+            foreach (var item in mediaController.GetAllPodcasts())
             {
                 bool checkUpdate = item.CheckIfUpdate();
                 
@@ -293,13 +293,14 @@ namespace Grupp_33
                
                 if (checkUpdate == true)
                 {
-                    var awaitTask = await Task.FromResult(podController.FetchPodcastIntervalAsync(item));
+                    var awaitTask = await Task.FromResult(mediaController.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
                     Console.WriteLine("nu upd");
 
-                    
-                    fillPodListview(podController.GetAllPodcasts());
-                    
+                    if (listViewPod.SelectedItems.Count <= 0)
+                    {
+                        fillPodListview(mediaController.GetAllPodcasts());
+                    }
 
                 }
             }
@@ -314,7 +315,7 @@ namespace Grupp_33
                 txtEpDes.Text = "";
                 string catName = listViewCat.SelectedItems[0].Text;
 
-                LoadPodListViewSortedByCategory(podController.GetAllPodcastByCat(catName));
+                LoadPodListViewSortedByCategory(mediaController.GetAllPodcastByCat(catName));
 
                 var catQuery = from cat in categoryController.GetAllCategories()
                                where cat.Name == catName
@@ -324,7 +325,7 @@ namespace Grupp_33
             }
             else
             {
-                fillPodListview(podController.GetAllPodcasts());
+                fillPodListview(mediaController.GetAllPodcasts());
             }
         }
 
@@ -342,7 +343,7 @@ namespace Grupp_33
 
                     Category deleteThis = categoryController.GetCategoryByName(catName);
                     List<Media> deletePodList = new List<Media>();
-                    deletePodList = podController.GetAllPodcastByCat(deleteThis.Name);
+                    deletePodList = mediaController.GetAllPodcastByCat(deleteThis.Name);
                     string deleteNames = "\n";
 
                     foreach (Media item in deletePodList)
@@ -353,11 +354,11 @@ namespace Grupp_33
                     switch (dr)
                     {
                         case DialogResult.Yes:
-                            podController.DeleteOnCategory(deleteThis);
+                            mediaController.DeleteOnCategory(deleteThis);
                             categoryController.DeleteCategoryOnName(deleteThis.Name);
 
                             fillCatListview(categoryController.GetAllCategories());
-                            fillPodListview(podController.GetAllPodcasts());
+                            fillPodListview(mediaController.GetAllPodcasts());
                             txtEpDes.Text = "";
                             listViewEp.Items.Clear();
                             break;
@@ -381,9 +382,9 @@ namespace Grupp_33
 
                 string podName = listViewPod.SelectedItems[0].Text;
 
-                podController.DeletePodOnName(podName);
+                mediaController.DeletePodOnName(podName);
 
-                fillPodListview(podController.GetAllPodcasts());
+                fillPodListview(mediaController.GetAllPodcasts());
                 txtEpDes.Text = "";
                 listViewEp.Items.Clear();
                 timer.Start();
