@@ -30,6 +30,7 @@ namespace Grupp_33
             listViewPod.FullRowSelect = true;
             listViewEp.FullRowSelect = true;
 
+           
             LoadPodListView();
             LoadCategoryListView();
 
@@ -37,10 +38,11 @@ namespace Grupp_33
             timer.Tick += TimerEvent;
             timer.Start();
 
+
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace Grupp_33
 
                 fillPodListview(podController.GetAllPodcasts());
             }
-            
+
             timer.Start();
         }
 
@@ -132,11 +134,12 @@ namespace Grupp_33
         }
         private void LoadPodListView()
         {
-            foreach (var item in podController.GetAllPodcasts())
+            List<Media> list = podController.GetAllPodcasts();
+            foreach (var item in list)
             {
                 item.UpdateTheInterval();
             }
-            fillPodListview(podController.OrderByDescending());
+            fillPodListview(list);
         }
 
         private void LoadPodListViewSortedByCategory(List<Media> podlist)
@@ -162,7 +165,7 @@ namespace Grupp_33
 
             foreach (var pod in PodList)
             {
-                pod.UpdateTheInterval();
+                
                 ListViewItem item1 = new ListViewItem(pod.Name, 0);
                 item1.SubItems.Add(pod.NumberOfItems.ToString());
                 item1.SubItems.Add(pod.UpdateFrequency.ToString());
@@ -170,6 +173,9 @@ namespace Grupp_33
 
                 listViewPod.Items.Add(item1);
             }
+
+            
+
         }
 
         public void fillCatListview(List<Category> catList)
@@ -287,9 +293,9 @@ namespace Grupp_33
                
                 if (checkUpdate == true)
                 {
-                    var awaitTask = Task.FromResult(podController.FetchPodcastIntervalAsync(item));
-                    await awaitTask;
+                    var awaitTask = await Task.FromResult(podController.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
+                    Console.WriteLine("nu upd");
 
                     
                     fillPodListview(podController.GetAllPodcasts());
