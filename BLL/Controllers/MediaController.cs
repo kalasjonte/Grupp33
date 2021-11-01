@@ -45,11 +45,6 @@ namespace BLL
            
         }
 
-        public void SerializePodcasts(List<Media> podList)
-        {
-            SerializerXml serializer = new SerializerXml();
-            serializer.SerializePodcast(podList);
-        }
 
         public List<Media> GetAllPodcasts()
         {
@@ -71,20 +66,10 @@ namespace BLL
             podcastRepo.UpdatePodcastByName(cat, freq, oldName, newName);
         }
 
-        public List<Media> OrderByDescending()
-        {
-            return podcastRepo.DescendOrder();
-        }
 
         public Media GetPodByName(string name)
         {
             return podcastRepo.GetPodByName(name);
-        }
-
-
-        public int getNumberOfEpisodes(string name)
-        {
-            return podcastRepo.GetNumberOfItemsByPodName(name);
         }
 
         public void DeleteOnCategory(Category cat)

@@ -78,11 +78,5 @@ namespace DAL
             category.Name = newName;
             Create(category);
         }
-
-        public void UpdateCategoryList(List<Category> categorylist)
-        {
-            listOfCategories = categorylist;
-            SaveChanges();
-        }
     }
 }

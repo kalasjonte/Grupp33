@@ -24,18 +24,6 @@ namespace BLL
             categoryRepo.Create(category);
         }
 
-        public void SerializeCat(List<Category> categorys)
-        {
-            SerializerXml xml = new SerializerXml();
-            xml.SerializeCategory(categorys);
-        }
-
-        public List<Category> DeSerializeCat()
-        {
-            SerializerXml xml = new SerializerXml();
-            return xml.DeserializeCategory();
-        }
-
         public Category GetCategoryByName(string name)
         {
              return categoryRepo.GetCategoryFromName(name);
@@ -45,16 +33,6 @@ namespace BLL
         public List<Category> GetAllCategories()
         {
             return categoryRepo.GetAll();
-        }
-
-        public void newCategoryList(List<Category> list)
-        {
-            categoryRepo.UpdateCategoryList(list);
-        }
-
-        public void Save()
-        {
-            categoryRepo.SaveChanges();
         }
 
         public void UpdateCategoryName(string name, string newName)
