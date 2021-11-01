@@ -16,7 +16,7 @@ namespace MODELS
 
         public override string DisplayInfo()
         {
-            return "Det här är en pocast med förljande info:\n" + base.DisplayInfo();
+            return "Det här podden kommer läggas till i ditt flöde:\n" + base.DisplayInfo();
         }
     }
 }

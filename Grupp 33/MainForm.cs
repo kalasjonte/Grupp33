@@ -17,7 +17,7 @@ namespace Grupp_33
         private Media selectedPodcastLV;
         private Category selectedCategoryLV;
         private Timer timer = new Timer();
-        public PodcastController podcontroll = new PodcastController();
+        public PodcastController podController = new PodcastController();
         public CategoryController categoryController = new CategoryController();
 
         public MainForm()
@@ -32,6 +32,7 @@ namespace Grupp_33
 
             LoadPodListView();
             LoadCategoryListView();
+
             timer.Interval = 1000;
             timer.Tick += TimerEvent;
             timer.Start();
@@ -50,9 +51,9 @@ namespace Grupp_33
 
             if (!Validation.isNull(podcast))
             {
-                var boolresultat = await podcontroll.FetchNewPodcastAsync(podcast);
+                var boolResult = await podController.FetchNewPodcastAsync(podcast);
 
-                fillPodListview(podcontroll.GetAllPodcasts());
+                fillPodListview(podController.GetAllPodcasts());
             }
             
             timer.Start();
@@ -62,8 +63,8 @@ namespace Grupp_33
         {
 
             CatCreateForm catCreateForm = new CatCreateForm();
-            string catname = catCreateForm.GetNewCategory();
-            if (!Validation.isNull(catname))
+            string catName = catCreateForm.GetNewCategory();
+            if (!Validation.isNull(catName))
             {
                 fillCatListview(categoryController.GetAllCategories());
             }
@@ -80,9 +81,9 @@ namespace Grupp_33
                     string oldName = listViewCat.SelectedItems[0].Text;
 
                     categoryController.UpdateCategoryName(oldName, txtCat.Text);
-                    podcontroll.UpdatePodcastCat(oldName, txtCat.Text);
+                    podController.UpdatePodcastCat(oldName, txtCat.Text);
 
-                    fillPodListview(podcontroll.GetAllPodcasts());
+                    fillPodListview(podController.GetAllPodcasts());
                     fillCatListview(categoryController.GetAllCategories());
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
@@ -98,13 +99,13 @@ namespace Grupp_33
                 if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
                 {
                     Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                    podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+                    podController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
                     selectedPodcastLV.Category = category;
                     selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                     selectedPodcastLV.Name = txtName.Text;
 
-                    fillPodListview(podcontroll.GetAllPodcasts());
+                    fillPodListview(podController.GetAllPodcasts());
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
                 }
@@ -113,12 +114,11 @@ namespace Grupp_33
         }
         private void LoadPodListView()
         {
-            foreach (var item in podcontroll.GetAllPodcasts())
+            foreach (var item in podController.GetAllPodcasts())
             {
                 item.UpdateTheInterval();
-                Console.WriteLine(item.Update);
             }
-            fillPodListview(podcontroll.OrderByDescending());
+            fillPodListview(podController.OrderByDescending());
         }
 
         private void LoadPodListViewSortedByCategory(List<Media> podlist)
@@ -174,10 +174,10 @@ namespace Grupp_33
 
             if (listViewPod.SelectedItems.Count > 0)
             {
-                var podrad = listViewPod.SelectedItems[0];
-                string name = podrad.Text; // == namnet på podden
+                var podRow = listViewPod.SelectedItems[0];
+                string name = podRow.Text;
 
-                Media selectedPod = podcontroll.GetPodByName(name);
+                Media selectedPod = podController.GetPodByName(name);
                 List<Item> itemList = selectedPod.items;
                 selectedPodcastLV =  selectedPod;
                 
@@ -240,8 +240,8 @@ namespace Grupp_33
 
             if (listViewEp.SelectedItems.Count > 0)
             {
-                var eprad = listViewEp.SelectedItems[0];
-                string name = eprad.Text; // == namnet på avsnittet
+                var epRow = listViewEp.SelectedItems[0];
+                string name = epRow.Text;
                 List<Item> items = selectedPodcastLV.items;
 
                 var query = from item in items
@@ -260,18 +260,18 @@ namespace Grupp_33
 
         private async void TimerEvent(object sender, EventArgs e)
         {
-            foreach (var item in podcontroll.GetAllPodcasts())
+            foreach (var item in podController.GetAllPodcasts())
             {
-                bool check = item.CheckIfUpdate();
+                bool checkItemUpd = item.CheckIfUpdate();
                
-                if (check == true)
+                if (checkItemUpd == true)
                 {
-                    var bulle = await Task.FromResult(podcontroll.FetchPodcastIntervalAsync(item));
+                    var awaitTask = await Task.FromResult(podController.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
 
                     if (listViewPod.SelectedItems.Count <= 0)
                     {
-                        fillPodListview(podcontroll.OrderByDescending());
+                        fillPodListview(podController.OrderByDescending());
                     }
                 }
             }
@@ -285,7 +285,7 @@ namespace Grupp_33
                 txtEpDes.Text = "";
                 string catName = listViewCat.SelectedItems[0].Text;
 
-                LoadPodListViewSortedByCategory(podcontroll.GetAllPodcastByCat(catName));
+                LoadPodListViewSortedByCategory(podController.GetAllPodcastByCat(catName));
 
                 var catQuery = from cat in categoryController.GetAllCategories()
                                where cat.Name == catName
@@ -295,7 +295,7 @@ namespace Grupp_33
             }
             else
             {
-                fillPodListview(podcontroll.GetAllPodcasts());
+                fillPodListview(podController.GetAllPodcasts());
             }
         }
 
@@ -311,24 +311,24 @@ namespace Grupp_33
 
                     string catName = listViewCat.SelectedItems[0].Text;
 
-                    Category deletethis = categoryController.GetCategoryByName(catName);
-                    List<Media> deletepodlist = new List<Media>();
-                    deletepodlist = podcontroll.GetAllPodcastByCat(deletethis.Name);
-                    string deletenames = "\n";
+                    Category deleteThis = categoryController.GetCategoryByName(catName);
+                    List<Media> deletePodList = new List<Media>();
+                    deletePodList = podController.GetAllPodcastByCat(deleteThis.Name);
+                    string deleteNames = "\n";
 
-                    foreach (Media item in deletepodlist)
+                    foreach (Media item in deletePodList)
                     {
-                        deletenames += item.Name + "\n";
+                        deleteNames += item.Name + "\n";
                     }
-                    DialogResult dr = MessageBox.Show("Är du säker att du vill ta bort följande podcasts?" + deletenames, "Ta bort", MessageBoxButtons.YesNo);
+                    DialogResult dr = MessageBox.Show("Är du säker att du vill ta bort följande podcasts?" + deleteNames, "Ta bort", MessageBoxButtons.YesNo);
                     switch (dr)
                     {
                         case DialogResult.Yes:
-                            podcontroll.DeleteOnCategory(deletethis);
-                            categoryController.DeleteCategoryOnName(deletethis.Name);
+                            podController.DeleteOnCategory(deleteThis);
+                            categoryController.DeleteCategoryOnName(deleteThis.Name);
 
                             fillCatListview(categoryController.GetAllCategories());
-                            fillPodListview(podcontroll.GetAllPodcasts());
+                            fillPodListview(podController.GetAllPodcasts());
                             txtEpDes.Text = "";
                             listViewEp.Items.Clear();
                             break;
@@ -352,9 +352,9 @@ namespace Grupp_33
 
                 string podName = listViewPod.SelectedItems[0].Text;
 
-                podcontroll.DeletePodOnName(podName);
+                podController.DeletePodOnName(podName);
 
-                fillPodListview(podcontroll.GetAllPodcasts());
+                fillPodListview(podController.GetAllPodcasts());
                 txtEpDes.Text = "";
                 listViewEp.Items.Clear();
                 timer.Start();
