@@ -37,10 +37,7 @@ namespace Grupp_33
 
 
         }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
         {
@@ -141,10 +138,7 @@ namespace Grupp_33
 
         private void LoadPodListViewSortedByCategory(List<Media> podlist)
         {
-            var queryDescend = from pod in podlist
-                               orderby pod.Name
-                               select pod;
-            podlist = queryDescend.ToList();
+            
             fillPodListview(podlist);
         }
 
@@ -286,8 +280,6 @@ namespace Grupp_33
             {
                 bool checkUpdate = item.CheckIfUpdate();
                 
-
-
                 if (checkUpdate == true)
                 {
                     var awaitTask = await Task.FromResult(mediaController.FetchPodcastIntervalAsync(item));
@@ -314,11 +306,8 @@ namespace Grupp_33
 
                 LoadPodListViewSortedByCategory(mediaController.GetAllPodcastByCat(catName));
 
-                var catQuery = from cat in categoryController.GetAllCategories()
-                               where cat.Name == catName
-                               select cat;
 
-                selectedCategoryLV = catQuery.First();
+                selectedCategoryLV = categoryController.GetCategoryByName(catName);
             }
             else
             {
@@ -389,9 +378,6 @@ namespace Grupp_33
             }
         }
 
-        private void btnInfo_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
     }
 }
