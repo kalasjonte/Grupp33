@@ -19,15 +19,15 @@ namespace BLL
         public async Task<bool> FetchNewPodcastAsync(Media pod)
         {
 
-            bool returnvalue = false;
+            bool returnValue = false;
 
             RssFetcher rssFetcher = new RssFetcher();
             Media podcastFull = await rssFetcher.FetchRssAsync(pod);
             podcastRepo.Create(podcastFull);
             podcastRepo.GetAll();
 
-            returnvalue = true;
-            return returnvalue;
+            returnValue = true;
+            return returnValue;
         }
 
         public async Task<bool> FetchPodcastIntervalAsync(Media pod)
