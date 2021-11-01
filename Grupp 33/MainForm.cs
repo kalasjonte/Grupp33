@@ -2,11 +2,8 @@
 using MODELS;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -289,12 +286,13 @@ namespace Grupp_33
             {
                 bool checkUpdate = item.CheckIfUpdate();
                 
-                
-               
+
+
                 if (checkUpdate == true)
                 {
                     var awaitTask = await Task.FromResult(mediaController.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
+
 
                     if (listViewPod.SelectedItems.Count <= 0)
                     {
