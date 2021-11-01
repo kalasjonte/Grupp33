@@ -32,6 +32,7 @@ namespace BLL
             }
             return correctURL;
         }
+
         public static bool CheckEmptyTxt(string text)
         {
             bool isEmpty = String.IsNullOrEmpty(text);
@@ -59,7 +60,6 @@ namespace BLL
                     throw new UserException("Du får inte ha mellanslag i fälten");
 
                 }
-
             }
             catch (UserException ex)
             {
@@ -83,14 +83,11 @@ namespace BLL
                     isNull = false;
                     return isNull;
                 }
-
             }
             catch (UserException ex)
             {
                 
-
             }
-
             return isNull;
         }
 
@@ -110,17 +107,14 @@ namespace BLL
                     isTaken = false;
                     return isTaken;
                 }
-
             }
             catch (UserException ex)
             {
-
                 MessageBox.Show(ex.Message, "Fel!");
             }
-
             return isTaken;
+        }
 
-    }
         public static bool isCategoryNameTaken(string name)
         {
             bool isTaken = true;
@@ -137,18 +131,13 @@ namespace BLL
                     isTaken = false;
                     return isTaken;
                 }
-
             }
             catch (UserException ex)
             {
 
                 MessageBox.Show(ex.Message, "Fel!");
             }
-
             return isTaken;
-
-
-
         }
     }
 }
