@@ -34,11 +34,9 @@ namespace MODELS
             UpdateTheInterval();
 
         }
+
         public Media()
         {
-            this.Name = "test";
-            this.URL = "test";
-            this.UpdateFrequency = 15;
         }
 
         public bool CheckIfUpdate()

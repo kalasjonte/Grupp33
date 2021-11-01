@@ -9,16 +9,10 @@ namespace MODELS
     public class Podcast : Media
     {
 
-        //SKA BORT SEN E BARA FÖR ATT TESTA
         public Podcast(string name, string url, string type, int freq, Category cate) :base(name, url, type, freq, cate)
         {
             
         }
-
-        public Podcast() 
-        { 
-        } 
-
 
         public override string DisplayInfo()
         {

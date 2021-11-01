@@ -24,16 +24,5 @@ namespace MODELS
 
         }
 
-        public Category (string name, List<string> podLista)
-        {
-            this.Name = name;
-            this.podcastsList = podLista;
-        }
-
-        public void addPodcastToList(string podcast)
-        {
-            podcastsList.Add(podcast);
-        }
-
     }
 }

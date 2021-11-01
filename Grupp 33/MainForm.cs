@@ -39,6 +39,7 @@ namespace Grupp_33
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+
         }
 
         private async void btnPodCreate_Click(object sender, EventArgs e)
@@ -140,7 +141,6 @@ namespace Grupp_33
             listViewPod.View = View.Details;
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            //listViewPod.FullRowSelect = true;
 
             foreach (var pod in PodList)
             {
@@ -213,7 +213,6 @@ namespace Grupp_33
             }
             else
             {
-                //fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
                 txtName.Text = "";
                 coBoxFreq.SelectedIndex = 0;
@@ -365,7 +364,6 @@ namespace Grupp_33
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            
            
         }
     }

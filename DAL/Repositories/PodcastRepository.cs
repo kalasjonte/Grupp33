@@ -58,8 +58,6 @@ namespace DAL
         }
 
 
-        //_____________________
-
         public Media GetByName(string name)
         {
             var podQuery = from pod in listOfPodcasts
@@ -84,9 +82,6 @@ namespace DAL
                            select pod;
             return podQuery.First();
         }
-
-
-        //_________________________
 
         
         public Media GetByListOfItems(List<Item> itemList)
@@ -113,7 +108,6 @@ namespace DAL
                            select pod;
             return podQuery.ToList();
         }
-
 
 
         public Category GetCatByPodName(string name) //cast eller first? -- .equals eller ==?
@@ -266,6 +260,5 @@ namespace DAL
             GetAll();
         }
 
-       
     }
 }

@@ -26,7 +26,6 @@ namespace DAL
 
         public void SerializeCategory(List<Category> listOfCategorys)
         {
-
             XmlSerializer xmlSerializer = new XmlSerializer(listOfCategorys.GetType());
             
                 using (FileStream fs = new FileStream("Categorys.xml", FileMode.Create, FileAccess.Write))
@@ -38,7 +37,6 @@ namespace DAL
 
         public List<Category> DeserializeCategory()
         {
-
             List<Category> categories;
             List<Category> categoriesEmpty = new List<Category>();
 
@@ -61,7 +59,6 @@ namespace DAL
 
         public void SerializePodcast(List<Media> listOfPodcast)
         {
-            
             XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
 
                 using (FileStream fs = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
@@ -93,9 +90,6 @@ namespace DAL
 
         }
 
-
-
     }
-
 
 }
