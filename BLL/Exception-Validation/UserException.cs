@@ -17,12 +17,5 @@ namespace BLL
         { 
         }
 
-        //virtual för att kunna override:a i Validation, vi kan behöva kolla olika url:er i framtiden
-        public virtual bool CheckURL(string urlAdress) 
-        {
-            bool correctURL = false;
-            return correctURL;
-        }
-
     }
 }

@@ -34,33 +34,28 @@ namespace MODELS
             UpdateTheInterval();
 
         }
+
         public Media()
         {
-            this.Name = "test";
-            this.URL = "test";
-            this.UpdateFrequency = 15;
         }
 
         public bool CheckIfUpdate()
         {
-            Boolean returvalue = false;
+            Boolean returValue = false;
             if (Update <= DateTime.Now)
             {
-
                 return true;
             }
             else
             {
-
-                returvalue = false;
+                returValue = false;
             }
-            return returvalue;
+            return returValue;
         }
 
         public void UpdateTheInterval()
         {
             this.Update = DateTime.Now.AddMilliseconds(UpdateFrequency);
-
         }
 
         public virtual string DisplayInfo()
