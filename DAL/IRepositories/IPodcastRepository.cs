@@ -12,7 +12,6 @@ namespace DAL
         List<T> GetByUpdateFrequency(int uFreq);
         List<T> GetByCategory(string name);
         List<T> GetByTypeNumberOfItems(int number);
-        List<T> GetMediaListOnName(string name);
         T GetPodByName(string name);
         T GetByListOfItems(List<Item> itemList);
         

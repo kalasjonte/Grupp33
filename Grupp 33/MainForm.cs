@@ -95,18 +95,18 @@ namespace Grupp_33
         {
             if (listViewPod.SelectedItems.Count > 0)
             {
-                podcontroll.GetAllPodcasts();
+                podController.GetAllPodcasts();
                 timer.Stop();
                 if(selectedPodcastLV.Name == txtName.Text) 
                 {
                     Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                    podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+                    podController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
                     selectedPodcastLV.Category = category;
                     selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                     selectedPodcastLV.Name = txtName.Text;
 
-                    fillPodListview(podcontroll.GetAllPodcasts());
+                    fillPodListview(podController.GetAllPodcasts());
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
                 }
@@ -115,13 +115,13 @@ namespace Grupp_33
                     if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
                     {
                         Category category = categoryController.GetCategoryByName(coBoxCat.Text);
-                        podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+                        podController.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
 
                         selectedPodcastLV.Category = category;
                         selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
                         selectedPodcastLV.Name = txtName.Text;
 
-                        fillPodListview(podcontroll.GetAllPodcasts());
+                        fillPodListview(podController.GetAllPodcasts());
                         txtEpDes.Text = "";
                         listViewEp.Items.Clear();
                     }
@@ -162,6 +162,7 @@ namespace Grupp_33
 
             foreach (var pod in PodList)
             {
+                pod.UpdateTheInterval();
                 ListViewItem item1 = new ListViewItem(pod.Name, 0);
                 item1.SubItems.Add(pod.NumberOfItems.ToString());
                 item1.SubItems.Add(pod.UpdateFrequency.ToString());
@@ -280,21 +281,23 @@ namespace Grupp_33
         {
             foreach (var item in podController.GetAllPodcasts())
             {
-                bool check = item.CheckIfUpdate();
-                int noi = item.NumberOfItems;
+                bool checkUpdate = item.CheckIfUpdate();
+                
+                
                
-                if (checkItemUpd == true)
+                if (checkUpdate == true)
                 {
-                    var awaitTask = await Task.FromResult(podController.FetchPodcastIntervalAsync(item));
+                    var awaitTask = Task.FromResult(podController.FetchPodcastIntervalAsync(item));
+                    await awaitTask;
                     item.UpdateTheInterval();
-                    int noi2 = item.NumberOfItems;
 
-                    if (listViewPod.SelectedItems.Count <= 0 && noi2 > noi)
-                    {
-                        fillPodListview(podController.OrderByDescending());
-                    }
+                    
+                    fillPodListview(podController.GetAllPodcasts());
+                    
+
                 }
             }
+            
         }
 
         private void listViewCat_SelectedIndexChanged(object sender, EventArgs e)
