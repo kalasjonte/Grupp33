@@ -14,7 +14,7 @@ namespace Grupp_33
 {
     public partial class MainForm : Form
     {
-        private Podcast selectedPodcastLV;
+        private Media selectedPodcastLV;
         private Category selectedCategoryLV;
         private Timer timer = new Timer();
         public PodcastController podcontroll = new PodcastController();
@@ -45,7 +45,7 @@ namespace Grupp_33
         {
             timer.Stop();
             PodCreateForm podCreateForm = new PodCreateForm();
-            Podcast podcast = (Podcast)podCreateForm.GetNewPodcast();
+            Media podcast = podCreateForm.GetNewPodcast();
 
             if (!Validation.isNull(podcast))
             {
@@ -120,7 +120,7 @@ namespace Grupp_33
             fillPodListview(podcontroll.OrderByDescending());
         }
 
-        private void LoadPodListViewSortedByCategory(List<Podcast> podlist)
+        private void LoadPodListViewSortedByCategory(List<Media> podlist)
         {
             var queryDescend = from pod in podlist
                                orderby pod.Name
@@ -134,7 +134,7 @@ namespace Grupp_33
             fillCatListview(categoryController.GetAllCategories());
         }
 
-        public void fillPodListview(List<Podcast> PodList)
+        public void fillPodListview(List<Media> PodList)
         {
             listViewPod.Items.Clear();
             listViewPod.View = View.Details;
@@ -177,9 +177,10 @@ namespace Grupp_33
                 var podrad = listViewPod.SelectedItems[0];
                 string name = podrad.Text; // == namnet på podden
 
-                Podcast selectedPod = podcontroll.GetPodByName(name);
-                selectedPodcastLV = selectedPod;
+                Media selectedPod = podcontroll.GetPodByName(name);
                 List<Item> itemList = selectedPod.items;
+                selectedPodcastLV =  selectedPod;
+                
                 LoadEpListView(itemList);
 
                 txtName.Text = selectedPod.Name;
@@ -212,7 +213,7 @@ namespace Grupp_33
             }
             else
             {
-                fillPodListview(podcontroll.GetAllPodcasts());
+                //fillPodListview(podcontroll.GetAllPodcasts());
                 txtEpDes.Text = "";
                 txtName.Text = "";
                 coBoxFreq.SelectedIndex = 0;
@@ -269,7 +270,7 @@ namespace Grupp_33
                     var bulle = await Task.FromResult(podcontroll.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
 
-                    if (listViewPod.SelectedItems.Count < 0)
+                    if (listViewPod.SelectedItems.Count <= 0)
                     {
                         fillPodListview(podcontroll.OrderByDescending());
                     }
@@ -312,11 +313,11 @@ namespace Grupp_33
                     string catName = listViewCat.SelectedItems[0].Text;
 
                     Category deletethis = categoryController.GetCategoryByName(catName);
-                    List<Podcast> deletepodlist = new List<Podcast>();
+                    List<Media> deletepodlist = new List<Media>();
                     deletepodlist = podcontroll.GetAllPodcastByCat(deletethis.Name);
                     string deletenames = "\n";
 
-                    foreach (Podcast item in deletepodlist)
+                    foreach (Media item in deletepodlist)
                     {
                         deletenames += item.Name + "\n";
                     }
@@ -360,6 +361,12 @@ namespace Grupp_33
                 timer.Start();
 
             }
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            
+           
         }
     }
 }

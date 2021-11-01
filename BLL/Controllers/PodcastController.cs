@@ -10,19 +10,19 @@ namespace BLL
 {
     public class PodcastController
     {
-        public IPodcastRepository<Podcast> podcastRepo;
+        public IPodcastRepository<Media> podcastRepo;
         public PodcastController()
         {
            podcastRepo = new PodcastRepository();
         }
 
-        public async Task<bool> FetchNewPodcastAsync(Podcast pod)
+        public async Task<bool> FetchNewPodcastAsync(Media pod)
         {
 
             bool returnvalue = false;
 
             RssFetcher rssFetcher = new RssFetcher();
-            Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+            Media podcastFull = await rssFetcher.FetchRssAsync(pod);
             podcastRepo.Create(podcastFull);
             podcastRepo.GetAll();
 
@@ -30,12 +30,12 @@ namespace BLL
             return returnvalue;
         }
 
-        public async Task<bool> FetchPodcastIntervalAsync(Podcast pod)
+        public async Task<bool> FetchPodcastIntervalAsync(Media pod)
         {
             bool returnvalue = false;
 
             RssFetcher rssFetcher = new RssFetcher();
-            Podcast podcastFull = await rssFetcher.FetchRssAsync(pod);
+            Media podcastFull = await rssFetcher.FetchRssAsync(pod);
 
             Task go = podcastRepo.UpdatePodcastFromRss(podcastFull);
             await go;
@@ -44,18 +44,18 @@ namespace BLL
             return returnvalue;
         }
 
-        public void SerializePodcasts(List<Podcast> podList)
+        public void SerializePodcasts(List<Media> podList)
         {
             SerializerXml serializer = new SerializerXml();
             serializer.SerializePodcast(podList);
         }
 
-        public List<Podcast> GetAllPodcasts()
+        public List<Media> GetAllPodcasts()
         {
             return podcastRepo.GetAll();
         }
 
-        public List<Podcast> GetAllPodcastByCat(string name)
+        public List<Media> GetAllPodcastByCat(string name)
         {
             return podcastRepo.GetByCategory(name);
         }
@@ -70,12 +70,12 @@ namespace BLL
             podcastRepo.UpdatePodcastByName(cat, freq, oldName, newName);
         }
 
-        public List<Podcast> OrderByDescending()
+        public List<Media> OrderByDescending()
         {
             return podcastRepo.DescendOrder();
         }
 
-        public Podcast GetPodByName(string name)
+        public Media GetPodByName(string name)
         {
             return podcastRepo.GetPodByName(name);
         }

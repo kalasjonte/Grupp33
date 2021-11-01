@@ -11,10 +11,10 @@ namespace DAL
     public class MediaRepository : IMediaRepository<Media>
     {
         SerializerXml serializerXml;
-        List<Media> mediaList;
+        List<Podcast> mediaList;
 
         //Generella CRUDO metoder för repositorie patterns:
-        public void Create(Media entity)
+        public void Create(Podcast entity)
         {
             throw new NotImplementedException();
         }
@@ -28,28 +28,28 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void Update(int index, Media entity)
+        public void Update(int index, Podcast entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Media> GetAll()
+        public List<Podcast> GetAll()
         {
             throw new NotImplementedException();
         }
 
         //Specifika för IMediaRepositories:
-        public Media GetByName(string name)
+        public Podcast GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Media GetByType(string type)
+        public Podcast GetByType(string type)
         {
             throw new NotImplementedException();
         }
 
-        public Media GetByUrl(string url)
+        public Podcast GetByUrl(string url)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +59,42 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Media> SortDesending()
+        public List<Podcast> SortDesending()
+        {
+            throw new NotImplementedException();
+        }
+
+        Media IMediaRepository<Media>.GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        Media IMediaRepository<Media>.GetByUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
+
+        Media IMediaRepository<Media>.GetByType(string type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(Media entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(int index, Media entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Media> IRepository<Media>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Media> IRepository<Media>.SortDesending()
         {
             throw new NotImplementedException();
         }

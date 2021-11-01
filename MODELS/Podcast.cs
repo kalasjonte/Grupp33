@@ -9,36 +9,21 @@ namespace MODELS
     public class Podcast : Media
     {
 
-        //eventhandler
-        public int UpdateFrequency { get; set; }
-
-        public Category Category { get; set; }
-
-        public int NumberOfItems { get; set; }
-
-        
-        public List<Item> items;
-
-        public Podcast(string name, string url, string type, int freq, Category cate) : base(name, url, type)
+        //SKA BORT SEN E BARA FÖR ATT TESTA
+        public Podcast(string name, string url, string type, int freq, Category cate) :base(name, url, type, freq, cate)
         {
             
-            this.Category = cate;
-            this.UpdateFrequency = freq;
-            this.NumberOfItems = 0;
-            UpdateTheInterval();
-
-        }
-        public Podcast()
-        {
-            base.Name = "test";
-            base.URL = "test";
-            this.UpdateFrequency = 15;
         }
 
-        public override void UpdateTheInterval()
-        {
-            this.Update = DateTime.Now.AddMilliseconds(UpdateFrequency);
+        public Podcast() 
+        { 
+        } 
 
+
+        public override string DisplayInfo()
+        {
+            return "Det här är en pocast med förljande info:\n" + base.DisplayInfo();
         }
     }
 }
+

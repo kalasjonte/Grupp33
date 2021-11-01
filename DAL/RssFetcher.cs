@@ -17,15 +17,17 @@ namespace DAL
         public RssFetcher()
         {
         }
-        public async Task<Podcast> FetchRssAsync(Podcast pod)
+        public async Task<Media> FetchRssAsync(Media media)
         {
+            Media pod = media;
             //måste handla execptions, server fel och xml fel
             string url = pod.URL;
             XmlReader xmlReader = XmlReader.Create(url);
             //felet uppstår på en extern tråd vilket gör att vi inte kan catcha felet.
             //XmlDocument.Validate();: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument.validate?view=net-5.0
-
-            Task<SyndicationFeed> taskAvsnitt = Task.Run(()=>SyndicationFeed.Load(xmlReader));
+            
+            
+            Task<SyndicationFeed> taskAvsnitt = Task.Run(() => SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
             pod.NumberOfItems = feed.Items.Count();
@@ -44,7 +46,7 @@ namespace DAL
                 MessageBox.Show("Rss hämtaren kunde ej hitta ITEM title eller så kunde den inte hitta item DESCRIPTION, felskriven rss? Kontrollera hemsidan");
             }
             return pod;
-            //upp i listview
+            
         }
 
 

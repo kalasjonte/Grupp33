@@ -7,17 +7,17 @@ using MODELS;
 
 namespace DAL
 {
-    public class PodcastRepository : IPodcastRepository<Podcast>
+    public class PodcastRepository : IPodcastRepository<Media>
     {
         SerializerXml serializerXml = new SerializerXml();
-        List<Podcast> listOfPodcasts;
-        //CRUDO
+        List<Media> listOfPodcasts;
+        
         public PodcastRepository()
         {
-            listOfPodcasts = new List<Podcast>();
+            listOfPodcasts = new List<Media>();
             listOfPodcasts = GetAll();
         }
-        public void Create(Podcast entity)
+        public void Create(Media entity)
         {
             listOfPodcasts.Add(entity);
             SaveChanges();
@@ -40,7 +40,7 @@ namespace DAL
             GetAll();
         }
 
-        public List<Podcast> GetAll()
+        public List<Media> GetAll()
         {
              return serializerXml.DeserializePodcast();
 
@@ -51,7 +51,7 @@ namespace DAL
             serializerXml.SerializePodcast(listOfPodcasts);
         }
 
-        public void Update(int index, Podcast entity)
+        public void Update(int index, Media entity)
         {
             listOfPodcasts[index] = entity;
             SaveChanges();
@@ -60,7 +60,7 @@ namespace DAL
 
         //_____________________
 
-        public Podcast GetByName(string name)
+        public Media GetByName(string name)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Name == name
@@ -73,11 +73,11 @@ namespace DAL
 
         }
 
-        public Podcast GetByType(string type)  // Returnerar en pod men ska returnera en list, ta bort?
+        public Media GetByType(string type)  // Returnerar en pod men ska returnera en list, ta bort?
         {
             throw new NotImplementedException();
         }
-        public Podcast GetByUrl(string url)
+        public Media GetByUrl(string url)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.URL == url
@@ -89,7 +89,7 @@ namespace DAL
         //_________________________
 
         
-        public Podcast GetByListOfItems(List<Item> itemList)
+        public Media GetByListOfItems(List<Item> itemList)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.items == itemList
@@ -98,7 +98,7 @@ namespace DAL
         }
 
 
-        public List<Podcast> GetByTypeNumberOfItems(int number)
+        public List<Media> GetByTypeNumberOfItems(int number)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.NumberOfItems == number 
@@ -106,7 +106,7 @@ namespace DAL
             return podQuery.ToList();
         }
 
-        public List<Podcast> GetByUpdateFrequency(int uFreq)
+        public List<Media> GetByUpdateFrequency(int uFreq)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.UpdateFrequency == uFreq
@@ -148,7 +148,7 @@ namespace DAL
             return podQuery.First();
         }
 
-        public List<Podcast> GetByCategory(string name)  // ska vi ha fler respos?
+        public List<Media> GetByCategory(string name)  // ska vi ha fler respos?
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Category.Name == name
@@ -156,7 +156,7 @@ namespace DAL
             return podQuery.ToList();
         }
 
-        public string GetItemGuidFromItenName(Podcast pod, string name)
+        public string GetItemGuidFromItenName(Media pod, string name)
         {
             var itemQuery = from item in pod.items
                         where item.Name == name
@@ -166,7 +166,7 @@ namespace DAL
             return itemQuery.First();
         }
 
-        public string GetItemDescriptionFromGuid(Podcast pod, string guid)
+        public string GetItemDescriptionFromGuid(Media pod, string guid)
         {
             var itemQuery = from item in pod.items
                         where item.Guid == guid
@@ -175,7 +175,7 @@ namespace DAL
             return itemQuery.First();
         }
 
-        public List<Podcast> SortDesending()
+        public List<Media> SortDesending()
         {
             var podQuery = from pod in listOfPodcasts
                            orderby pod.Name
@@ -185,7 +185,7 @@ namespace DAL
             return listOfPodcasts;
         }
 
-        public async Task UpdatePodcastFromRss(Podcast podcast)
+        public async Task UpdatePodcastFromRss(Media podcast)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Name != podcast.Name
@@ -199,7 +199,7 @@ namespace DAL
         public void UpdatePodcastCat(string oldName, string newName)
         {
 
-            List<Podcast> oldList = GetByCategory(oldName);
+            List<Media> oldList = GetByCategory(oldName);
 
             var podquery = from pod in listOfPodcasts
                             where pod.Category.Name != oldName
@@ -217,7 +217,7 @@ namespace DAL
 
         public void UpdatePodcastByName(Category cat, int freq, string oldName, string newName)
         {
-            Podcast podcast = GetByName(oldName);   
+            Media podcast = GetByName(oldName);   
             var podquery = from pod in listOfPodcasts
                            where pod.Name != oldName
                            select pod;
@@ -232,7 +232,7 @@ namespace DAL
             GetAll();
         }
 
-        public Podcast GetPodByName(string name)
+        public Media GetPodByName(string name)
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Name == name
@@ -245,7 +245,7 @@ namespace DAL
             else return null;
         }
 
-        public List<Podcast> DescendOrder()
+        public List<Media> DescendOrder()
         {
             var queryDescend = from pod in listOfPodcasts
                                orderby pod.Name
@@ -265,5 +265,7 @@ namespace DAL
             SaveChanges();
             GetAll();
         }
+
+       
     }
 }

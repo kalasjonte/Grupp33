@@ -96,7 +96,7 @@ namespace BLL
             bool isTaken = true;
             try
             {
-              Podcast pod = podcontroll.GetPodByName(name);
+              Media pod = podcontroll.GetPodByName(name);
                 if(pod != null)
                 {
                     throw new UserException("Du har redan en podcast med detta namnet");

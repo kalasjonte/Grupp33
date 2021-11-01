@@ -72,7 +72,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Podcast> SortedPodcastOnCategory(Category cat)
+        public List<Media> SortedPodcastOnCategory(Category cat)
         {
             throw new NotImplementedException();
         }

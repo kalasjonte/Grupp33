@@ -42,7 +42,9 @@ namespace Grupp_33
 
                 int updatefreq = Int32.Parse(coBoxUpdFreq.SelectedItem.ToString() + "000");
 
-                pod = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
+                pod = new Media(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
+                Podcast cast = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
+                MessageBox.Show(cast.DisplayInfo(), "Information");
                 category.podcastsList.Add(pod.Name);
                 catControll.SerializeCat(categoryList);
                 this.Close();

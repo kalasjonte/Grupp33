@@ -59,7 +59,7 @@ namespace DAL
 
         }
 
-        public void SerializePodcast(List<Podcast> listOfPodcast)
+        public void SerializePodcast(List<Media> listOfPodcast)
         {
             
             XmlSerializer xmlSerializer = new XmlSerializer(listOfPodcast.GetType());
@@ -71,17 +71,17 @@ namespace DAL
 
         }
 
-        public List<Podcast> DeserializePodcast()
+        public List<Media> DeserializePodcast()
         {
-            List<Podcast> podcastList;
-            List<Podcast> podcastListEmpty = new List<Podcast>();
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+            List<Media> podcastList;
+            List<Media> podcastListEmpty = new List<Media>();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
             
             if (File.Exists(Environment.CurrentDirectory + @"\Podcast.xml"))
             {
                 using (FileStream fs = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
                 {
-                    podcastList = (List<Podcast>)xmlSerializer.Deserialize(fs);
+                    podcastList = (List<Media>)xmlSerializer.Deserialize(fs);
                     return podcastList;
                 }
           

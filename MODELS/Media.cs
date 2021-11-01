@@ -13,22 +13,32 @@ namespace MODELS
         public string Type { get; set; }
         public DateTime Update { get; set; }
 
-        public Media(string name, string url, string type)
+        public int UpdateFrequency { get; set; }
+
+        public Category Category { get; set; }
+
+        public int NumberOfItems { get; set; }
+
+        
+        public List<Item> items;
+
+        public Media(string name, string url, string type, int freq, Category cate)
         {
             this.Name = name;
             this.URL = url;
             this.Type = type;
-        }
+            this.UpdateFrequency = 15;
+            this.Category = cate;
+            this.UpdateFrequency = freq;
+            this.NumberOfItems = 0;
+            UpdateTheInterval();
 
-        //SKA BORT SEN E BARA FÖR ATT TESTA
+        }
         public Media()
         {
-        }
-
-        public virtual string DisplayInfo()
-        {
-            string hej = "";
-            return hej;
+            this.Name = "test";
+            this.URL = "test";
+            this.UpdateFrequency = 15;
         }
 
         public bool CheckIfUpdate()
@@ -36,21 +46,27 @@ namespace MODELS
             Boolean returvalue = false;
             if (Update <= DateTime.Now)
             {
-                
+
                 return true;
             }
             else
             {
-                
+
                 returvalue = false;
             }
             return returvalue;
         }
 
-        public virtual void UpdateTheInterval()
+        public void UpdateTheInterval()
         {
-            this.Update = DateTime.Now.AddMilliseconds(0);
+            this.Update = DateTime.Now.AddMilliseconds(UpdateFrequency);
+
+        }
+
+        public virtual string DisplayInfo()
+        {
+            return "Namn: " + Name + ", URL: " + URL + ", Update Frequency: " + UpdateFrequency
+                + ", Number of episodes: " + NumberOfItems + "\n\n";
         }
     }
 }
-

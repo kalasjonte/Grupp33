@@ -7,22 +7,23 @@ using MODELS;
 
 namespace DAL
 {
-    public interface IPodcastRepository<T> : IMediaRepository<T> where T : Podcast
+    public interface IPodcastRepository<T> : IMediaRepository<T> where T : Media
     {
         List<T> GetByUpdateFrequency(int uFreq);
         List<T> GetByCategory(string name);
         List<T> GetByTypeNumberOfItems(int number);
-        Podcast GetPodByName(string name);
-        Podcast GetByListOfItems(List<Item> itemList);
+        Media GetPodByName(string name);
+        Media GetByListOfItems(List<Item> itemList);
+        
 
         int GetUpFreqByPodName(string name);
         Category GetCatByPodName(string name);
         int GetNumberOfItemsByPodName(string name);
         List<Item> GetItemListByPodName(string name);
-        string GetItemGuidFromItenName(Podcast pod,string name);// dessa 2, vart ska d vara?
-        string GetItemDescriptionFromGuid(Podcast pod, string guid);
+        string GetItemGuidFromItenName(Media pod,string name);
+        string GetItemDescriptionFromGuid(Media pod, string guid);
 
-        Task UpdatePodcastFromRss(Podcast podcast);
+        Task UpdatePodcastFromRss(Media podcast);
         void UpdatePodcastCat(string olddName, string newName);
         void UpdatePodcastByName(Category cat, int freq, string oldName, string newName);
 
