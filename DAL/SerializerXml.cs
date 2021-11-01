@@ -15,10 +15,6 @@ namespace DAL
     public class SerializerXml
     {
 
-        //string path = Directory.GetCurrentDirectory();
-
-       // path += @"..\..\..\..\Dal\XML\Categories.xml";
-
         public SerializerXml()
         {
 
