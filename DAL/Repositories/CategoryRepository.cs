@@ -25,10 +25,6 @@ namespace DAL
             GetAll();
         }
 
-        public void Delete(int index)
-        {
-            throw new NotImplementedException();
-        }
 
         public void DeleteCategoryOnName(string name)
         {
@@ -65,21 +61,6 @@ namespace DAL
         public void SaveChanges()
         {
             xml.SerializeCategory(listOfCategories);
-        }
-
-        public List<Category> SortDesending()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Media> SortedPodcastOnCategory(Category cat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, Category entity)
-        {
-            throw new NotImplementedException();
         }
 
         public void UpdateCategoryFromName(string name, string newName)
