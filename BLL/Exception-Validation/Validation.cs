@@ -75,8 +75,9 @@ namespace BLL
             {
                 if (obj == null)
                 {
-                    throw new UserException("Objektet blev null");
                     isNull = true;
+                    throw new UserException("Objektet blev null");
+                    
                 }
                 else
                 {
@@ -86,7 +87,8 @@ namespace BLL
             }
             catch (UserException ex)
             {
-                
+                string msg = ex.Message;
+                MessageBox.Show(msg);
             }
             return isNull;
         }
@@ -127,8 +129,9 @@ namespace BLL
                 Category cat = catontroll.GetCategoryByName(name);
                 if (cat != null)
                 {
-                    throw new UserException("Du har redan en Kategori med detta namnet");
                     isTaken = true;
+                    throw new UserException("Du har redan en Kategori med detta namnet");
+                    
                 }
                 else
                 {

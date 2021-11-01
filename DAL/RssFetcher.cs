@@ -42,7 +42,8 @@ namespace DAL
             }
             catch (Exception e)
             {
-                MessageBox.Show("Rss hämtaren kunde ej hitta ITEM title eller så kunde den inte hitta item DESCRIPTION, felskriven rss? Kontrollera hemsidan");
+                string msg = e.Message;
+                MessageBox.Show(msg, "Rss hämtaren kunde ej hitta ITEM title eller så kunde den inte hitta item DESCRIPTION, felskriven rss? Kontrollera hemsidan");
             }
             return pod;
             

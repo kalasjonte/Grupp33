@@ -182,8 +182,9 @@ namespace DAL
             return listOfPodcasts;
         }
 
-        public async Task UpdatePodcastFromRss(Media podcast)
+        public  Task UpdatePodcastFromRss(Media podcast)
         {
+            
             var podQuery = from pod in listOfPodcasts
                            where pod.Name != podcast.Name
                            select pod;
@@ -191,6 +192,7 @@ namespace DAL
             listOfPodcasts = podQuery.ToList();
             Create(podcast);
             GetAll();
+            return Task.CompletedTask;
         }
 
         public void UpdatePodcastCat(string oldName, string newName)
