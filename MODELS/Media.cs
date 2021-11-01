@@ -61,7 +61,7 @@ namespace MODELS
         public virtual string DisplayInfo()
         {
             return "Namn: " + Name + ", URL: " + URL + ", Update Frequency: " + UpdateFrequency
-                + ", Number of episodes: " + NumberOfItems + "\n\n";
+                +  "\n\n";
         }
     }
 }

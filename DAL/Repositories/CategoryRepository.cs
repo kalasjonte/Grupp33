@@ -25,10 +25,6 @@ namespace DAL
             GetAll();
         }
 
-        public void Delete(int index)
-        {
-            throw new NotImplementedException();
-        }
 
         public void DeleteCategoryOnName(string name)
         {
@@ -67,21 +63,6 @@ namespace DAL
             xml.SerializeCategory(listOfCategories);
         }
 
-        public List<Category> SortDesending()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Media> SortedPodcastOnCategory(Category cat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, Category entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateCategoryFromName(string name, string newName)
         {
             var query = from cat in listOfCategories
@@ -96,12 +77,6 @@ namespace DAL
             Category category = query.First();
             category.Name = newName;
             Create(category);
-        }
-
-        public void UpdateCategoryList(List<Category> categorylist)
-        {
-            listOfCategories = categorylist;
-            SaveChanges();
         }
     }
 }

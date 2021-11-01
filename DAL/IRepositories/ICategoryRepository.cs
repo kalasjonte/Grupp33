@@ -9,11 +9,8 @@ namespace DAL
 {
     public interface ICategoryRepository<T> : IRepository<T> where T : Category
     {
-        List<Media> SortedPodcastOnCategory(T cat);
         Category GetCategoryFromName(string name);
-        void UpdateCategoryList(List<T> categorylist);
         void UpdateCategoryFromName(string name, string newName);
-
         void DeleteCategoryOnName(string name);
     }
 }

@@ -22,7 +22,7 @@ namespace Grupp_33
         {
             InitializeComponent();
             coBoxUpdFreq.SelectedIndex = 0;
-             categoryList = catControll.DeSerializeCat();
+             categoryList = catControll.GetAllCategories();
             foreach (var item in categoryList)
             {
                 coBoxCat.Items.Add(item.Name);
@@ -46,8 +46,7 @@ namespace Grupp_33
                 pod = new Media(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
                 Podcast infoPodcast =  new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
                 MessageBox.Show(infoPodcast.DisplayInfo(), "Information");
-                category.podcastsList.Add(pod.Name);
-                catControll.SerializeCat(categoryList);
+
                 this.Close();
             }
 

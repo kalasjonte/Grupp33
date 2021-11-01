@@ -11,12 +11,9 @@ namespace MODELS
     {
         public string Name { get; set; }
 
-        public List<string> podcastsList;
-
         public Category (string name)
         {
             this.Name = name;
-            this.podcastsList = new List<string>();
         }
 
         public Category()
