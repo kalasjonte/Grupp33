@@ -76,7 +76,7 @@ namespace BLL
                 if (obj == null)
                 {
                     isNull = true;
-                    throw new UserException("Objektet blev null");
+                    throw new UserException("Objektet skapades inte");
                     
                 }
                 else
