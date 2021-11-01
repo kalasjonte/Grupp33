@@ -295,7 +295,6 @@ namespace Grupp_33
                 {
                     var awaitTask = await Task.FromResult(mediaController.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
-                    Console.WriteLine("nu upd");
 
                     if (listViewPod.SelectedItems.Count <= 0)
                     {
