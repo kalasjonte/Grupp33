@@ -95,6 +95,11 @@ namespace BLL
         {
             podcastRepo.DeleteFromName(name);
         }
+
+        public List<Media> GetMediaListOnName(string name)
+        {
+           return podcastRepo.GetMediaListOnName(name);
+        }
     }
 
 

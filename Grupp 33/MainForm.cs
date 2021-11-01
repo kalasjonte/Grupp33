@@ -93,8 +93,9 @@ namespace Grupp_33
         {
             if (listViewPod.SelectedItems.Count > 0)
             {
+                podcontroll.GetAllPodcasts();
                 timer.Stop();
-                if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
+                if(selectedPodcastLV.Name == txtName.Text) 
                 {
                     Category category = categoryController.GetCategoryByName(coBoxCat.Text);
                     podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
@@ -107,6 +108,23 @@ namespace Grupp_33
                     txtEpDes.Text = "";
                     listViewEp.Items.Clear();
                 }
+                else
+                {
+                    if (!Validation.CheckEmptyTxt(txtName.Text) && !Validation.isPodcastNameTaken(txtName.Text) && !Validation.ContainsWhiteSpace(txtName.Text))
+                    {
+                        Category category = categoryController.GetCategoryByName(coBoxCat.Text);
+                        podcontroll.UpdatePodCastByName(category, Int32.Parse(coBoxFreq.Text + "000"), selectedPodcastLV.Name, txtName.Text);
+
+                        selectedPodcastLV.Category = category;
+                        selectedPodcastLV.UpdateFrequency = Int32.Parse(coBoxFreq.Text + "000");
+                        selectedPodcastLV.Name = txtName.Text;
+
+                        fillPodListview(podcontroll.GetAllPodcasts());
+                        txtEpDes.Text = "";
+                        listViewEp.Items.Clear();
+                    }
+                }
+                
                 timer.Start();
             }    
         }
@@ -264,13 +282,15 @@ namespace Grupp_33
             foreach (var item in podcontroll.GetAllPodcasts())
             {
                 bool check = item.CheckIfUpdate();
+                int noi = item.NumberOfItems;
                
                 if (check == true)
                 {
                     var bulle = await Task.FromResult(podcontroll.FetchPodcastIntervalAsync(item));
                     item.UpdateTheInterval();
+                    int noi2 = item.NumberOfItems;
 
-                    if (listViewPod.SelectedItems.Count <= 0)
+                    if (listViewPod.SelectedItems.Count <= 0 && noi2 > noi)
                     {
                         fillPodListview(podcontroll.OrderByDescending());
                     }

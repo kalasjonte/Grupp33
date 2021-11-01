@@ -93,14 +93,16 @@ namespace BLL
 
         public static bool isPodcastNameTaken(string name)
         {
+            
             bool isTaken = true;
             try
             {
               Media pod = podcontroll.GetPodByName(name);
                 if(pod != null)
                 {
-                    throw new UserException("Du har redan en podcast med detta namnet");
                     isTaken = true;
+                    throw new UserException("Du har redan en podcast med detta namnet");
+                   
                 }
                 else
                 {
@@ -114,6 +116,8 @@ namespace BLL
             }
             return isTaken;
         }
+
+       
 
         public static bool isCategoryNameTaken(string name)
         {

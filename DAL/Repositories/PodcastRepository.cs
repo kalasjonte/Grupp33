@@ -19,8 +19,11 @@ namespace DAL
         }
         public void Create(Media entity)
         {
+            
             listOfPodcasts.Add(entity);
             SaveChanges();
+            GetAll();
+            
         }
 
         public void Delete(int index)
@@ -234,9 +237,12 @@ namespace DAL
 
         public Media GetPodByName(string name)
         {
+            listOfPodcasts = GetAll();
             var podQuery = from pod in listOfPodcasts
                            where pod.Name == name
                            select pod;
+
+           
            
             if (podQuery.Count() > 0)
             {
@@ -266,6 +272,12 @@ namespace DAL
             GetAll();
         }
 
-       
+        public List<Media> GetMediaListOnName(string name)
+        {
+            var podQuery = from pod in listOfPodcasts
+                           where pod.Name == name
+                           select pod;
+            return podQuery.ToList();
+        }
     }
 }
