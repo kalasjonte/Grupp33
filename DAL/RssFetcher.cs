@@ -26,8 +26,8 @@ namespace DAL
             //XmlDocument.Validate();: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument.validate?view=net-5.0
             
             
-            Task<SyndicationFeed> taskEpisode = Task.Run(() => SyndicationFeed.Load(xmlReader));
-            SyndicationFeed feed = await taskEpisode;
+            Task<SyndicationFeed> taskAvsnitt = Task.Run(() => SyndicationFeed.Load(xmlReader));
+            SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>();
             pod.NumberOfItems = feed.Items.Count();
 
