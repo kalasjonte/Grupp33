@@ -26,11 +26,6 @@ namespace DAL
             
         }
 
-        public void Delete(int index)
-        {
-            listOfPodcasts.RemoveAt(index);
-            SaveChanges();
-        }
 
         public void DeleteFromName(string name)
         {
@@ -54,11 +49,6 @@ namespace DAL
             serializerXml.SerializePodcast(listOfPodcasts);
         }
 
-        public void Update(int index, Media entity)
-        {
-            listOfPodcasts[index] = entity;
-            SaveChanges();
-        }
 
 
         public Media GetByName(string name)
@@ -74,60 +64,7 @@ namespace DAL
 
         }
 
-        public Media GetByType(string type)  // Returnerar en pod men ska returnera en list, ta bort?
-        {
-            throw new NotImplementedException();
-        }
-        public Media GetByUrl(string url)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.URL == url
-                           select pod;
-            return podQuery.First();
-        }
 
-        
-        public Media GetByListOfItems(List<Item> itemList)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.items == itemList
-                           select pod;
-            return podQuery.First();
-        }
-
-
-        public List<Media> GetByTypeNumberOfItems(int number)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.NumberOfItems == number 
-                           select pod;
-            return podQuery.ToList();
-        }
-
-        public List<Media> GetByUpdateFrequency(int uFreq)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.UpdateFrequency == uFreq
-                           select pod;
-            return podQuery.ToList();
-        }
-
-
-        public Category GetCatByPodName(string name) //cast eller first? -- .equals eller ==?
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.Name == name
-                           select pod.Category;
-            return podQuery.First();
-        }
-
-        public List<Item> GetItemListByPodName(string name)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.Name == name
-                           select pod.items;
-            return (List<Item>)podQuery;
-        }
 
         public int GetNumberOfItemsByPodName(string name)
         {
@@ -137,15 +74,8 @@ namespace DAL
             return podQuery.First();
         }
 
-        public int GetUpFreqByPodName(string name)
-        {
-            var podQuery = from pod in listOfPodcasts
-                           where pod.Name == name
-                           select pod.UpdateFrequency;
-            return podQuery.First();
-        }
 
-        public List<Media> GetByCategory(string name)  // ska vi ha fler respos?
+        public List<Media> GetByCategory(string name) 
         {
             var podQuery = from pod in listOfPodcasts
                            where pod.Category.Name == name
@@ -153,34 +83,8 @@ namespace DAL
             return podQuery.ToList();
         }
 
-        public string GetItemGuidFromItenName(Media pod, string name)
-        {
-            var itemQuery = from item in pod.items
-                        where item.Name == name
-                        select item.Guid;
 
 
-            return itemQuery.First();
-        }
-
-        public string GetItemDescriptionFromGuid(Media pod, string guid)
-        {
-            var itemQuery = from item in pod.items
-                        where item.Guid == guid
-                        select item.Description;
-
-            return itemQuery.First();
-        }
-
-        public List<Media> SortDesending()
-        {
-            var podQuery = from pod in listOfPodcasts
-                           orderby pod.Name
-                           select pod;
-
-             listOfPodcasts = podQuery.ToList();
-            return listOfPodcasts;
-        }
 
         public  Task UpdatePodcastFromRss(Media podcast)
         {

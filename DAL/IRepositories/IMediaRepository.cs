@@ -9,19 +9,13 @@ namespace DAL
 {
     public interface IMediaRepository<T> : IRepository<T> where T : Media
     {
-        List<T> GetByUpdateFrequency(int uFreq);
+ 
         List<T> GetByCategory(string name);
-        List<T> GetByTypeNumberOfItems(int number);
-        T GetPodByName(string name);
-        T GetByListOfItems(List<Item> itemList);
-        
 
-        int GetUpFreqByPodName(string name);
-        Category GetCatByPodName(string name);
+        T GetPodByName(string name);
+
         int GetNumberOfItemsByPodName(string name);
-        List<Item> GetItemListByPodName(string name);
-        string GetItemGuidFromItenName(Media pod,string name);
-        string GetItemDescriptionFromGuid(Media pod, string guid);
+
 
         Task UpdatePodcastFromRss(Media podcast);
         void UpdatePodcastCat(string olddName, string newName);
@@ -31,8 +25,6 @@ namespace DAL
         List<T> DescendOrder();
 
         T GetByName(string name);
-        T GetByUrl(string url);
-        T GetByType(string type);
 
     }
 }

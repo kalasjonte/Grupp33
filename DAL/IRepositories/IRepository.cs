@@ -9,12 +9,9 @@ namespace DAL
     public interface IRepository<T> where T : class
     {
         void Create(T entity);
-        void Delete(int index);
         void DeleteFromName(string name);
-        void Update(int index, T entity);
         void SaveChanges();
         List<T> GetAll();
-        List<T> SortDesending();
 
 
 
