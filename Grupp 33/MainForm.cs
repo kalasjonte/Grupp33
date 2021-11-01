@@ -24,6 +24,10 @@ namespace Grupp_33
             listViewCat.View = View.Details;
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewCat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewPod.View = View.Details;
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewPod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
             listViewPod.FullRowSelect = true;
             listViewEp.FullRowSelect = true;
 
@@ -34,6 +38,8 @@ namespace Grupp_33
             timer.Interval = 1000;
             timer.Tick += TimerEvent;
             timer.Start();
+
+
 
 
         }

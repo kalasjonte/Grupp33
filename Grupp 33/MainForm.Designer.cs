@@ -75,7 +75,7 @@ namespace Grupp_33
             // 
             // Title
             // 
-            this.Title.Text = "Title";
+            this.Title.Text = "Title                                           ";
             // 
             // Avsnitt
             // 
