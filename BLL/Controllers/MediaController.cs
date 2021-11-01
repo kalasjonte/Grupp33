@@ -32,7 +32,7 @@ namespace BLL
 
         public async Task<bool> FetchPodcastIntervalAsync(Media pod)
         {
-            bool returnvalue = false;
+            bool returnValue = false;
 
             RssFetcher rssFetcher = new RssFetcher();
             Media podcastFull = await rssFetcher.FetchRssAsync(pod);
@@ -40,8 +40,8 @@ namespace BLL
             Task go = podcastRepo.UpdatePodcastFromRss(podcastFull);
             await go;
 
-            returnvalue = true;
-            return returnvalue;
+            returnValue = true;
+            return returnValue;
            
         }
 
