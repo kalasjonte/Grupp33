@@ -9,14 +9,9 @@ namespace BLL
         public UserException(string text) : base(text)
         {
         }
-
         public UserException(string msg, string header) : base(msg)
         {
             this.Header = header;
-        }
-
-        public UserException()
-        { 
         }
 
     }
