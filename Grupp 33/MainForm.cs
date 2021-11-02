@@ -385,7 +385,5 @@ namespace Grupp_33
 
             }
         }
-
-        
     }
 }
