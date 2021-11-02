@@ -10,7 +10,6 @@ namespace BLL
 {
     public static class Validation
     {
-        private static UserException exception = new UserException();
         private static MediaController podcontroll = new MediaController();
         private static CategoryController catontroll = new CategoryController();
 
