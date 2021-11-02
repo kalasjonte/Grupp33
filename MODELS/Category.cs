@@ -1,5 +1,4 @@
-﻿
-namespace MODELS
+﻿namespace MODELS
 {
 
     public class Category

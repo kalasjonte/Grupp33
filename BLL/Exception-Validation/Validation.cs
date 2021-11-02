@@ -1,9 +1,6 @@
 ﻿using MODELS;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BLL
@@ -22,12 +19,12 @@ namespace BLL
             {
                 if (!correctURL)
                 {
-                    throw new UserException("Den angedda URL-adressen är inte korrekt.");
+                    throw new UserException("Den angedda URL-adressen är inte korrekt.", "Fel");
                 }
             }
             catch (UserException ex)
             {
-                MessageBox.Show(ex.Message, "FEL!");
+                MessageBox.Show(ex.Message, ex.Header);
             }
             return correctURL;
         }
@@ -39,12 +36,12 @@ namespace BLL
             {
                 if (isEmpty)
                 {
-                    throw new UserException("Ett obligatoriskt textfält är inte ifyllt.");
+                    throw new UserException("Ett obligatoriskt textfält är inte ifyllt.", "Kolla igenom fälten");
                 }
             }
             catch (UserException ex)
             {
-                MessageBox.Show(ex.Message, "FEL!");
+                MessageBox.Show(ex.Message, ex.Header);
             }
             return isEmpty;
         }
@@ -56,13 +53,13 @@ namespace BLL
             {
                 if (hasWhiteSpace)
                 {
-                    throw new UserException("Du får inte ha mellanslag i fälten");
+                    throw new UserException("Du får inte ha mellanslag i fälten", "Kolla igenom fälten");
 
                 }
             }
             catch (UserException ex)
             {
-                MessageBox.Show(ex.Message, "FEL!");
+                MessageBox.Show(ex.Message, ex.Header);
             }
             return hasWhiteSpace;
         }
