@@ -83,7 +83,7 @@ namespace Grupp_33
             // 
             // Frekvens
             // 
-            this.Frekvens.Text = "Frekvens";
+            this.Frekvens.Text = "Frekvens(ms)";
             // 
             // Kategori
             // 
