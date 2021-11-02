@@ -146,5 +146,27 @@ namespace BLL
             }
             return isTaken;
         }
+
+        public static bool ItemsContainsAny(Media podcast)
+        {
+            bool itemHasAny = false;
+            try
+            {
+                if (!podcast.items.Any())
+                {
+                    throw new UserException("Podden har felskriven eller ingen item summary / titel. Kunde ej prenumerera");
+                }
+                else
+                {
+                    itemHasAny = true;
+                    return itemHasAny;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel!");
+            }
+            return itemHasAny;
+        }
     }
 }

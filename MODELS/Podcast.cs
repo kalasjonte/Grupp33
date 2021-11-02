@@ -14,6 +14,11 @@ namespace MODELS
             
         }
 
+        public Podcast()
+        {
+
+        }
+
         public override string DisplayInfo()
         {
             return "Det här podden kommer läggas till i ditt flöde:\n" + base.DisplayInfo();

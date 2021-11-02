@@ -23,6 +23,10 @@ namespace BLL
 
             RssFetcher rssFetcher = new RssFetcher();
             Media podcastFull = await rssFetcher.FetchRssAsync(pod);
+            if(!Validation.ItemsContainsAny(podcastFull))
+            {
+                return returnValue;
+            }
             podcastRepo.Create(podcastFull);
             podcastRepo.GetAll();
 

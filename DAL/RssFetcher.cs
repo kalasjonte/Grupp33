@@ -13,7 +13,6 @@ namespace DAL
 {
     public class RssFetcher
     {
-        public List<Category> categories;
         public RssFetcher()
         {
         }
@@ -23,30 +22,55 @@ namespace DAL
            
             string url = pod.URL;
             XmlReader xmlReader = XmlReader.Create(url);
-            //XmlDocument.Validate();: https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument.validate?view=net-5.0
+           
             
             
             Task<SyndicationFeed> taskAvsnitt = Task.Run(() => SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
-            pod.items = new List<Item>();
+            pod.items = new List<Item>(); 
             pod.NumberOfItems = feed.Items.Count();
+            bool check = Checkit(url);
+            if (check == true)
+            {
+                    foreach (var item in feed.Items)
+                    {
+                        if (item.Summary != null)
+                        {
+                            Item ep = new Item(item.Title.Text, item.Summary.Text, item.Id);
 
-            try
-            {
-                foreach (var item in feed.Items)
-                {
-                    Item ep = new Item(item.Title.Text, item.Summary.Text,item.Id);
-                   
-                    pod.items.Add(ep);
-                }           
-            }
-            catch (Exception e)
-            {
-                string msg = e.Message;
-                MessageBox.Show(msg, "Rss hämtaren kunde ej hitta ITEM title eller så kunde den inte hitta item DESCRIPTION, felskriven rss? Kontrollera hemsidan");
+                            pod.items.Add(ep);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Denna podcasten " + pod.Name + "har ingen summary / title på avsnittet, så därav har han inte instansierats korrekt");
+                            return pod;
+                        }
+                    }
+                
+                return pod;
             }
             return pod;
-            
+
+
+
+        }
+
+        public bool Checkit(string url)
+        {
+            bool king = false;
+            XmlReader xmlReader = XmlReader.Create(url);
+            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+            foreach (var item in feed.Items)
+            {
+                if(item.Summary == null)
+                {
+                    return false;
+                    
+                }
+                
+            }
+            king = true;
+            return king;
         }
 
     }

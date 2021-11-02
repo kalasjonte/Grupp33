@@ -43,9 +43,8 @@ namespace Grupp_33
 
                 int updatefreq = Int32.Parse(coBoxUpdFreq.SelectedItem.ToString() + "000");
 
-                pod = new Media(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
-                Podcast infoPodcast =  new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
-                MessageBox.Show(infoPodcast.DisplayInfo(), "Information");
+                pod = new Podcast(txtTitle.Text, txtURL.Text, "Podcast", updatefreq, category);
+                MessageBox.Show(pod.DisplayInfo(), "Information");
 
                 this.Close();
             }

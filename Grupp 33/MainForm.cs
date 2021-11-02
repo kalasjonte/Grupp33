@@ -52,10 +52,12 @@ namespace Grupp_33
             Media podcast = podCreateForm.GetNewPodcast();
 
             if (!Validation.isNull(podcast))
-            {
-                var boolResult = await mediaController.FetchNewPodcastAsync(podcast);
-
-                fillPodListview(mediaController.GetAllPodcasts());
+            {   
+                
+                    var boolResult = await mediaController.FetchNewPodcastAsync(podcast);
+                    fillPodListview(mediaController.GetAllPodcasts());
+                
+                
             }
 
             timer.Start();
