@@ -29,9 +29,6 @@ namespace DAL
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>(); 
             pod.NumberOfItems = feed.Items.Count();
-            bool check = Checkit(url);
-            if (check == true)
-            {
                     foreach (var item in feed.Items)
                     {
                         if (item.Summary != null)
@@ -42,36 +39,15 @@ namespace DAL
                         }
                         else
                         {
-                            MessageBox.Show("Denna podcasten " + pod.Name + "har ingen summary / title på avsnittet, så därav har han inte instansierats korrekt");
+                           
                             return pod;
                         }
                     }
                 
                 return pod;
-            }
-            return pod;
-
-
-
         }
 
-        public bool Checkit(string url)
-        {
-            bool king = false;
-            XmlReader xmlReader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-            foreach (var item in feed.Items)
-            {
-                if(item.Summary == null)
-                {
-                    return false;
-                    
-                }
-                
-            }
-            king = true;
-            return king;
-        }
+        
 
     }
 }
