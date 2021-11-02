@@ -23,6 +23,7 @@ namespace BLL
 
             RssFetcher rssFetcher = new RssFetcher();
             Media podcastFull = await rssFetcher.FetchRssAsync(pod);
+            //Om inte itemlistan har fått några episodes, returnera AKA hoppa ur metoden och lägg inte in objekt i XML.
             if(!Validation.ItemsContainsAny(podcastFull))
             {
                 return returnValue;

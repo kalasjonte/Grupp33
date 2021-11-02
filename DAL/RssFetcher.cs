@@ -20,13 +20,14 @@ namespace DAL
             XmlReader xmlReader = XmlReader.Create(url);
            
             
-            
+            //Kör SyndicationFeed.Load() på ny tråd och awaitar den sedan på syndicationFeed feed.
             Task<SyndicationFeed> taskAvsnitt = Task.Run(() => SyndicationFeed.Load(xmlReader));
             SyndicationFeed feed = await taskAvsnitt;
             pod.items = new List<Item>(); 
             pod.NumberOfItems = feed.Items.Count();
                     foreach (var item in feed.Items)
                     {
+                        //Om feedets item inte har sumemry, returneras samma objekt som metoden tog in, uppdaterar inte items-listan på objektet. 
                         if (item.Summary != null)
                         {
                             Item ep = new Item(item.Title.Text, item.Summary.Text, item.Id);
