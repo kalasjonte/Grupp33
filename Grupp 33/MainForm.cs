@@ -79,7 +79,20 @@ namespace Grupp_33
         {
             if (listViewCat.SelectedItems.Count > 0) 
             {
-                if (!Validation.CheckEmptyTxt(txtCat.Text) && !Validation.ContainsWhiteSpace(txtCat.Text))
+                if (selectedCategoryLV.Name == txtName.Text)
+                {
+                    string oldName = listViewCat.SelectedItems[0].Text;
+
+                    categoryController.UpdateCategoryName(oldName, txtCat.Text);
+                    mediaController.UpdatePodcastCat(oldName, txtCat.Text);
+
+                    fillPodListview(mediaController.GetAllPodcasts());
+                    fillCatListview(categoryController.GetAllCategories());
+                    txtEpDes.Text = "";
+                    listViewEp.Items.Clear();
+
+                }
+                    if (!Validation.CheckEmptyTxt(txtCat.Text) && !Validation.ContainsWhiteSpace(txtCat.Text) && !Validation.isCategoryNameTaken(txtCat.Text))
                 {
 
                     string oldName = listViewCat.SelectedItems[0].Text;

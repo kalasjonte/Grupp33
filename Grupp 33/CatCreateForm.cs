@@ -28,7 +28,7 @@ namespace Grupp_33
         {
             
             name = txtCatName.Text;
-            if (!Validation.CheckEmptyTxt(name) && !Validation.isCategoryNameTaken(name))
+            if (!Validation.CheckEmptyTxt(name) && !Validation.isCategoryNameTaken(name) && !Validation.ContainsWhiteSpace(name))
             {
                 CategoryController controll = new CategoryController();
                 controll.createCategory(name);
